@@ -6,7 +6,8 @@
 # Clone the repo
 git clone https://github.com/prisharpatel/mfms-app.git
 
-# Navigate to clonned folder and install dependencies
+# Navigate to cloned folder in terminal and install dependencies
+cd mfms-app
 yarn install
 
 # Install Pods
