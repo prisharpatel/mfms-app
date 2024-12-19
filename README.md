@@ -4,7 +4,7 @@
 
 ```bash
 # Clone the repo
-git clone https://github.com/prisharpatel/mfms.git
+git clone https://github.com/prisharpatel/mfms-app.git
 
 # Navigate to clonned folder and install dependencies
 yarn install
