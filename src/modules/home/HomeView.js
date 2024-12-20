@@ -59,6 +59,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
         resizeMode="cover"
       >
         <View style={styles.section}>
+          <Text size={40} black style={styles.header}></Text>
           <Text size={50} black style={styles.header}>
             WELCOME TO
           </Text>
