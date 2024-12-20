@@ -21,6 +21,36 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
   //   });
   // };
 
+  const now = new Date();
+
+  const events = [ 
+    {
+      title: "Designing Success: Women Shaping the Future of Fashion",
+      speakers: ["Jennifer Fisher", "Lisa Greenwald"],
+      location: "Robertson Auditorium",
+      startTime: now, // starts now
+      endTime: new Date("2025-03-03T23:59:59") // ends on March 3, 2025
+    },
+
+    {
+      title: "The Thing About Change",
+      speakers: ["Jonathon Newhouse", "Marcus Collins"],
+      location: "Robertson Auditorium",
+      startTime: new Date("2025-01-03T23:59:59"), 
+      endTime: new Date("2025-03-03T23:59:59") 
+    }
+  ];
+
+
+  const currentEvent = events.find(event =>
+    now >= event.startTime && now <= event.endTime
+  );
+
+  const upcomingEvent = events
+  .filter(event => event.startTime > now)
+  .sort((a, b) => a.startTime - b.startTime)[0]; // The soonest upcoming event
+
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -29,17 +59,89 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
         resizeMode="cover"
       >
         <View style={styles.section}>
-          <Text size={30} black style={styles.customFont}>
-            WELCOME TO MFMS 2025
+          <Text size={50} black style={styles.header}>
+            WELCOME TO
           </Text>
-        </View>
-        <View style={styles.section}>
-          <Text black size={15}>
-            CURRENTLY
+          <Text size={50} black style={styles.header}>
+            MFMS 2025
           </Text>
+          <Text> {'\n'} </Text>
+          <Text black size={20} style={styles.header2}>
+            Currently
+          </Text>
+          <View style={styles.divider} />
+          {currentEvent ? (
+            <>
+            
+            <Text black size={17} style={styles.time}>
+              {currentEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {currentEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+            </Text>
+
+            <Text black size={10}>  </Text>
+
+            <Text black size={20} style = {styles.panel}>
+              {currentEvent.title}
+            </Text>
+
+            <Text black size={10}>  </Text>
+
+            {currentEvent.speakers.map((speaker, index) => (
+              <><Text size={18} key={index} style={styles.speaker}>
+                {speaker}
+              </Text><Text black size={2}>  </Text></>
+            ))}
+
+            <Text black size={10}>  </Text>
+
+            <Text black size = {18} style={styles.location}>{currentEvent.location}</Text>
+          
+            </>
+          ) : (
+            <Text black size={16}>{'\n'} Stay Tuned...</Text>
+          )}
+
+
+
+          <Text> {'\n'} </Text>
+          <Text black size={20} style={styles.header2}>
+            Coming Up
+          </Text>
+          <View style={styles.divider} />
+          {upcomingEvent ? (
+            <>
+            
+            <Text black size={17} style={styles.time}>
+              {upcomingEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {upcomingEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+            </Text>
+
+            <Text black size={10}>  </Text>
+
+            <Text black size={20} style = {styles.panel}>
+              {upcomingEvent.title}
+            </Text>
+
+            <Text black size={10}>  </Text>
+
+            {upcomingEvent.speakers.map((speaker, index) => (
+              <><Text size={18} key={index} style={styles.speaker}>
+                {speaker}
+              </Text><Text black size={2}>  </Text></>
+            ))}
+
+            <Text black size={10}>  </Text>
+
+            <Text black size = {18} style={styles.location}>{upcomingEvent.location}</Text>
+          
+            </>
+          ) : (
+            <Text black size={16}>{'\n'} Stay Tuned...</Text>
+          )}
+
         </View>
         <View style={[styles.section, styles.sectionLarge]}>
         </View>
+
+
       </ImageBackground>
     </View>
   );
@@ -58,7 +160,6 @@ const styles = StyleSheet.create({
   section: {
     flex: 1,
     paddingHorizontal: 20,
-    justifyContent: 'center',
     alignItems: 'center',
     fontFamily: fonts.primaryBoldItalic,
   },
@@ -66,33 +167,41 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: 'space-around',
   },
-  sectionHeader: {
-    marginBottom: 8,
+  divider: {
+    width: '50%',       // Use less than '100%' to prevent it from reaching the edges
+    height: 1,
+    backgroundColor: '#000',
+    marginVertical: 8,
+    alignSelf: 'center' // Centers the divider within its parent container
   },
-  priceContainer: {
-    alignItems: 'center',
-  },
-  description: {
-    padding: 15,
-    lineHeight: 25,
-  },
-  titleDescription: {
-    color: '#19e7f7',
-    textAlign: 'center',
-    fontFamily: fonts.primaryBold,
-    fontSize: 15,
-  },
-  title: {
-    marginTop: 30,
-  },
-  price: {
-    marginBottom: 5,
-  },
-  priceLink: {
-    borderBottomWidth: 1,
-    borderBottomColor: colors.primary,
-  },
-  customFont: {
+  header: {
     fontFamily: "Arial",
+    fontWeight: "bold",
+    fontStyle: "italic"
   },
+  header2: {
+    fontFamily: "Times New Roman",
+    fontWeight: "bold",
+    textTransform: "up"
+    
+  }, 
+  time: {
+    fontFamily: "Times New Roman",
+  },
+  panel: {
+    width: '50%',    
+    fontFamily: "Times New Roman",
+    textAlign: 'center',
+    fontWeight: "bold",
+    // marginHorizontal: 20,
+    color: colors.blue
+  }, 
+  speaker: {
+    fontFamily: "Times New Roman",
+    fontStyle: "italic"
+  }, 
+  location: {
+    fontFamily: "Times New Roman",
+  }
+
 });
