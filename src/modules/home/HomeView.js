@@ -41,7 +41,6 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
     }
   ];
 
-
   const currentEvent = events.find(event =>
     now >= event.startTime && now <= event.endTime
   );
@@ -64,7 +63,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
             WELCOME TO
           </Text>
           <Text size={50} black style={styles.header}>
-            MFMS 2025!
+            MFMS 2025
           </Text>
           <Text> {'\n'} </Text>
           <Text black size={20} style={styles.header2}>
@@ -100,8 +99,6 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
           ) : (
             <Text black size={16}>{'\n'} Stay Tuned...</Text>
           )}
-
-
 
           <Text> {'\n'} </Text>
           <Text black size={20} style={styles.header2}>
