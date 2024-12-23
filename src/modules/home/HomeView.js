@@ -64,7 +64,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
             WELCOME TO
           </Text>
           <Text size={50} black style={styles.header}>
-            MFMS 2025
+            MFMS 2025!
           </Text>
           <Text> {'\n'} </Text>
           <Text black size={20} style={styles.header2}>
