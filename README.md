@@ -1,5 +1,5 @@
 # MFMS MOBILE APP
-The Michigan Fashion Media Summit is an annual conference bringing together leaders in retail, business, and media to provide networking opportunities for students at the University of Michigan. We are creating this app to enhance attendee experience and streamline event interactions. Visit michiganfashionmediasummit.com for more information. 
+The Michigan Fashion Media Summit is an annual conference bringing together leaders in retail, business, and media to provide networking opportunities for students at the University of Michigan. We are creating this app to enhance attendee experience and streamline event interactions. Visit [michiganfashionmediasummit.com](michiganfashionmediasummit.com) for more information. 
 
 #### 1. Clone and Install
 
