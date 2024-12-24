@@ -65,3 +65,4 @@ jest_coverage
 .metro-health-check*
 # testing
 /coverage
+node_modules
