@@ -43,7 +43,8 @@ export default function NavigatorView(props) {
             headerBackground: () => (
               <Image style={styles.headerImage} source={item.headerBackground.source} />
             ),
-            headerTitleStyle: item.headerTitleStyle,
+            headerTitle: item.headerTitle ? item.headerTitle : undefined,
+            headerTitleStyle: item.headerTitleStyle ? item.headerTitleStyle : undefined,
           }} 
         />
       ))}

@@ -1,13 +1,9 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  ImageBackground,
-} from 'react-native';
+import { StyleSheet,View, ImageBackground, ScrollView} from 'react-native';
 
 import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
+import Svg, {Text as SvgText } from 'react-native-svg';
 
 export default function HomeScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';
@@ -34,9 +30,9 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 
     {
       title: "The Thing About Change",
-      speakers: ["Jonathon Newhouse", "Marcus Collins"],
+      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "hannah Bronfman"],
       location: "Robertson Auditorium",
-      startTime: new Date("2025-01-03T23:59:59"), 
+      startTime: new Date("2025-09-03T23:59:59"), 
       endTime: new Date("2025-03-03T23:59:59") 
     }
   ];
@@ -52,42 +48,48 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 
   return (
     
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <ImageBackground
         source={require('../../../assets/images/background.png')}
         style={styles.bgImage}
         resizeMode="cover"
       >
         <View style={styles.section}>
-          <Text size={40} black style={styles.header}></Text>
-          <Text size={50} black style={styles.header}>
-            WELCOME TO
-          </Text>
-          <Text size={50} black style={styles.header}>
-            MFMS 2025
-          </Text>
+          {/* <Text size={40} black style={styles.header}></Text>
+          <Text black style={styles.outlinedText}>
+            michigan fashion media summit
+          </Text> */}
           <Text> {'\n'} </Text>
+          <View style={styles.outlinedTextContainer}>
+            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
+            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
+            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
+            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
+            <Text style={styles.outlinedText}>Michigan Fashion Media Summit</Text>
+          </View>
+          <Text> {'\n'} </Text>
+
           <Text black size={20} style={styles.header2}>
-            Currently
+            CURRENTLY
           </Text>
           <View style={styles.divider} />
           {currentEvent ? (
             <>
             
-            <Text black size={17} style={styles.time}>
+            <Text black style={styles.time}>
               {currentEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {currentEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             </Text>
 
             <Text black size={10}>  </Text>
 
-            <Text black size={20} style = {styles.panel}>
+            <Text style = {styles.panel}>
               {currentEvent.title}
             </Text>
 
             <Text black size={10}>  </Text>
 
             {currentEvent.speakers.map((speaker, index) => (
-              <Text size={18} key={index} style={styles.speaker}>
+              <Text key={index} style={styles.speaker}>
                 {speaker}
               </Text>
             ))}
@@ -98,31 +100,31 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
           
             </>
           ) : (
-            <Text black size={18} style={styles.font}>{'\n'} Stay Tuned...</Text>
+            <Text style={styles.panel}>{'\n'} Stay Tuned...</Text>
           )}
 
           <Text> {'\n'} </Text>
           <Text black size={20} style={styles.header2}>
-            Coming Up
+            COMING UP
           </Text>
           <View style={styles.divider} />
           {upcomingEvent ? (
             <>
             
-            <Text black size={17} style={styles.time}>
+            <Text black style={styles.time}>
               {upcomingEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {upcomingEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             </Text>
 
             <Text black size={10}>  </Text>
 
-            <Text black size={20} style = {styles.panel}>
+            <Text style = {styles.panel}>
               {upcomingEvent.title}
             </Text>
 
             <Text black size={10}>  </Text>
 
             {upcomingEvent.speakers.map((speaker, index) => (
-              <><Text size={18} key={index} style={styles.speaker}>
+              <><Text key={index} style={styles.speaker}>
                 {speaker}
               </Text><Text black size={2}>  </Text></>
             ))}
@@ -133,16 +135,14 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
           
             </>
           ) : (
-            <Text black size={18} style={styles.font}>{'\n'} Stay Tuned...</Text>
+            <Text style={styles.panel}>{'\n'} Stay Tuned...</Text>
           )}
 
         </View>
         <View style={[styles.section, styles.sectionLarge]}>
         </View>
-
-
       </ImageBackground>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -161,20 +161,49 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primaryBoldItalic,
   },
   sectionLarge: {
-    flex: 2,
-    justifyContent: 'space-around',
+    height: 100
+  },
+  title: {
+    fontFamily: "Times New Roman",
+    fontWeight: "bold",
+    fontStyle: "italic",
+    color: colors.blue,
+    textAlign: 'center'
+
   },
   divider: {
-    width: '50%',       // Use less than '100%' to prevent it from reaching the edges
+    width: '80%',       // Use less than '100%' to prevent it from reaching the edges
     height: 1,
     backgroundColor: '#000',
     marginVertical: 8,
     alignSelf: 'center' // Centers the divider within its parent container
   },
+  outlinedTextContainer: {
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  outlinedText: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: colors.white, // Transparent fill
+    textAlign: 'center',
+    textTransform: 'lowercase',
+  },
+  outlinedTextShadow: {
+    position: 'absolute',
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: colors.blue, // Outline color
+    textAlign: 'center',
+    textTransform: 'lowercase',
+  },
   header: {
     fontFamily: "Arial",
     fontWeight: "bold",
-    fontStyle: "italic"
+    fontStyle: "italic",
+    color: colors.blue,
+    textAlign: 'center'
   },
   header2: {
     fontFamily: "Times New Roman",
@@ -182,18 +211,22 @@ const styles = StyleSheet.create({
   }, 
   time: {
     fontFamily: "Times New Roman",
+    fontStyle: "italic",
+    fontSize: 18, 
   },
   panel: {
-    width: '50%',    
+    width: '80%',    
     fontFamily: "Times New Roman",
     textAlign: 'center',
     fontWeight: "bold",
-    // marginHorizontal: 20,
-    color: colors.blue
+    color: colors.blue,
+    fontSize: 25
   }, 
   speaker: {
     fontFamily: "Times New Roman",
-    fontStyle: "italic"
+    fontStyle: "italic",
+    fontWeight: "bold", 
+    fontSize: 20,
   }, 
   font: {
     fontFamily: "Times New Roman",
