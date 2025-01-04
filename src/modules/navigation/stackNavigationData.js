@@ -8,7 +8,7 @@ import TicketInfoView from '../tickets/TicketInfoView';
 import PartnerInfoView from '../partners/PartnerInfoView';
 import FFSInfoView from '../ffs/FFSInfoView';
 import FAQInfoView from '../faq/FAQInfoView';
-
+import WebViewScreen from '../../screens/WebViewScreen';
 import { colors, fonts } from '../../styles';
 
 const headerLeftComponent = (props) => {
@@ -174,6 +174,17 @@ const StackNavigationData = [
   {
     name: 'FAQ',
     component: FAQInfoView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  {
+    name: 'WebViewScreen',
+    component: WebViewScreen,
     headerLeft: headerLeftComponent,
     headerBackground: { source: headerBackground },
     headerTitleStyle: {
