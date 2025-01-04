@@ -29,7 +29,7 @@ export default function AvailableInFullVersionScreen(props) {
       style={styles.container}
     >
       <Image
-        source={require('../../../assets/images/RNS_nerd.png')}
+        source={require('../../../assets/images/secondary_black.png')}
         style={styles.nerdImage}
       />
 

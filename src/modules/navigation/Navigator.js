@@ -40,10 +40,12 @@ const drawerData = [
   {
     name: 'Partners',
     icon: iconPartners,
+    onPress: (navigation) => navigation.navigate('Partners'),
   },
   {
     name: 'Fashion Forward Showcase',
     icon: iconFFS,
+    onPress: (navigation) => navigation.navigate('FFS'),
   }
 ];
 
@@ -79,21 +81,7 @@ const Drawer = createDrawerNavigator();
 //   );
 // }
 
-// GITHUB COPILOT 
-// function CustomDrawerContent(props) {
-//   return (
-//     <DrawerContentScrollView {...props}>
-//       {drawerData.map((item, index) => (
-//         <DrawerItem
-//           key={index}
-//           label={item.name}
-//           icon={() => <Image source={item.icon} style={styles.icon} />}
-//           onPress={() => item.onPress(props.navigation)}
-//         />
-//       ))}
-//     </DrawerContentScrollView>
-//   );
-// }
+
 
 function CustomDrawerContent(props) {
   return (

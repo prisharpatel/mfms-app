@@ -5,12 +5,9 @@ import TabNavigator from './MainTabNavigator';
 import GalleryScreen from '../gallery/GalleryViewContainer';
 import AvailableInFullVersion from '../../modules/availableInFullVersion/AvailableInFullVersionViewContainer';
 import TicketInfoView from '../tickets/TicketInfoView';
-// import ProfileScreen from '../profile/ProfileViewContainer';
-// import ArticleScreen from '../article/ArticleViewContainer';
-// import ChatScreen from '../chat/ChatViewContainer';
-// import MessagesScreen from '../chat/MessagesViewContainer';
-// import ChartsScreen from '../charts/ChartsViewContainer';
-// import AuthScreen from '../auth/AuthViewContainer';
+import PartnerInfoView from '../partners/PartnerInfoView';
+import FfsInfoView from '../ffs/FfsInfoView';
+
 
 import { colors, fonts } from '../../styles';
 
@@ -142,8 +139,30 @@ const StackNavigationData = [
     },
   },
   {
-    name: 'TicketInfo',
+    name: 'Tickets',
     component: TicketInfoView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  {
+    name: 'Partners',
+    component: PartnerInfoView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  {
+    name: 'FFS',
+    component: FfsInfoView,
     headerLeft: headerLeftComponent,
     headerBackground: { source: headerBackground },
     headerTitleStyle: {

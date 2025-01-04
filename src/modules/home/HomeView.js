@@ -51,6 +51,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 
 
   return (
+    
     <View style={styles.container}>
       <ImageBackground
         source={require('../../../assets/images/background.png')}
@@ -148,8 +149,6 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-around',
   },
   bgImage: {
     flex: 1,
@@ -180,8 +179,6 @@ const styles = StyleSheet.create({
   header2: {
     fontFamily: "Times New Roman",
     fontWeight: "bold",
-    textTransform: "up"
-    
   }, 
   time: {
     fontFamily: "Times New Roman",
