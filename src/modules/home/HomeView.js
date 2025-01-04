@@ -87,9 +87,9 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
             <Text black size={10}>  </Text>
 
             {currentEvent.speakers.map((speaker, index) => (
-              <><Text size={18} key={index} style={styles.speaker}>
+              <Text size={18} key={index} style={styles.speaker}>
                 {speaker}
-              </Text><Text black size={2}>  </Text></>
+              </Text>
             ))}
 
             <Text black size={10}>  </Text>
