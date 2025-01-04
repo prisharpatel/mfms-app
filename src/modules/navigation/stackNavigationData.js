@@ -21,7 +21,7 @@ const headerLeftComponent = (props) => {
       }}
     >
       <Image
-        source={require('../../../assets/images/icons/arrow-back.png')}
+        source={require('../../../assets/images/icons/arrow-back3x.png')}
         resizeMode="contain"
         style={{
           height: 20,
