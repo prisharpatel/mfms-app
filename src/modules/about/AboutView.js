@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { StyleSheet,View, ImageBackground, ScrollView} from 'react-native';
 
 import { fonts, colors } from '../../styles';
@@ -18,32 +19,13 @@ export default function AboutScreen({ isExtended, setIsExtended }) {
 
   const now = new Date();
 
-  const events = [ 
-    {
-      title: "Designing Success: Women Shaping the Future of Fashion",
-      speakers: ["Jennifer Fisher", "Lisa Greenwald"],
-      location: "Robertson Auditorium",
-      startTime: now, // starts now
-      endTime: new Date("2025-03-03T23:59:59") // ends on March 3, 2025
-    },
 
-    {
-      title: "The Thing About Change",
-      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "hannah Bronfman"],
-      location: "Robertson Auditorium",
-      startTime: new Date("2025-09-03T23:59:59"), 
-      endTime: new Date("2025-03-03T23:59:59") 
-    }
-  ];
+  const [scrollPosition, setScrollPosition] = useState(0);
 
-  const currentEvent = events.find(event =>
-    now >= event.startTime && now <= event.endTime
-  );
-
-  const upcomingEvent = events
-  .filter(event => event.startTime > now)
-  .sort((a, b) => a.startTime - b.startTime)[0]; // The soonest upcoming event
-
+  const handleScroll = (event) => {
+    const yOffset = event.nativeEvent.contentOffset.y;
+    setScrollPosition(yOffset);
+  };
 
   return (
     
@@ -56,13 +38,23 @@ export default function AboutScreen({ isExtended, setIsExtended }) {
         <View style={styles.section}>
           <Text size={25} black > </Text>
           <View style={styles.outlinedTextContainer}>
-            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>about</Text>
-            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>about</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>about</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>about</Text>
-            <Text style={styles.outlinedText}>about</Text>
+            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>who we are</Text>
+            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>who we are</Text>
+            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>who we are</Text>
+            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>who we are</Text>
+            <Text style={styles.outlinedText}>who we are</Text>
           </View>
           <Text> {'\n'} </Text>
+
+          <Text size={25} style={styles.header}>Our Story</Text>
+          <Text style={styles.body}>We are a student-led organization established in 2018 to provide opportunities for students aspiring for careers in fashion and media. The MFMS was founded to connect the “leaders and best” to a multitude of career options in these fields. Our objective remains to help shape the future fabric of fashion through greater exposure to the experiences and opportunities available. </Text>
+
+          <Text size={25} style={styles.header}>Our Summit</Text>
+          <Text style={styles.body}>The Michigan Fashion Media Summit is an annual day-long event in the Ross School of Business that connects students with industry leaders. Our conference comprises keynote conversations, collaborative panel discussions, exclusive networking events, and skill-building workshops. The event concludes with the Fashion Forward Showcase, our initiative to highlight emerging, nationwide student designers.</Text>
+          
+          <Text size={25} style={styles.header}>Our Mission</Text>
+          <Text style={styles.body}>Our mission is to provide students with the resources and connections necessary to succeed in the fashion and media industries. We aim to foster a community of driven individuals who are passionate about the future of fashion and media. Our goal is to inspire and empower students to pursue their dreams and make a lasting impact on the industry.</Text>
+
 
         </View>
       </ImageBackground>
@@ -85,16 +77,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     fontFamily: fonts.primaryBoldItalic,
   },
-  sectionLarge: {
-    height: 100
-  },
   title: {
     fontFamily: "Times New Roman",
     fontWeight: "bold",
     fontStyle: "italic",
     color: colors.blue,
     textAlign: 'center'
-
   },
   divider: {
     width: '80%',       // Use less than '100%' to prevent it from reaching the edges
@@ -126,18 +114,19 @@ const styles = StyleSheet.create({
   header: {
     fontFamily: "Arial",
     fontWeight: "bold",
-    fontStyle: "italic",
-    color: colors.blue,
-    textAlign: 'center'
+    textTransform: 'uppercase',
+    color: colors.black,
+    textAlign: 'left',
   },
   header2: {
     fontFamily: "Times New Roman",
     fontWeight: "bold",
   }, 
-  time: {
+  body: {
     fontFamily: "Times New Roman",
-    fontStyle: "italic",
-    fontSize: 18, 
+    fontSize: 16, 
+    margin: 10,
+    textAlign: 'center',
   },
   panel: {
     width: '80%',    
