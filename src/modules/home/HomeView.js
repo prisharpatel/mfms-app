@@ -54,26 +54,21 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
         style={styles.bgImage}
         resizeMode="cover"
       >
-        <Svg height="60" width="300">
-        <SvgText
-          fill="transparent"
-          stroke={colors.blue}
-          strokeWidth="1"
-          fontSize="25"
-          fontWeight="bold"
-          x="50%"
-          y="50%"
-          textAnchor="middle"
-        >
-          Michigan Fashion Media Summit
-        </SvgText>
-      </Svg>
         <View style={styles.section}>
-          <Text size={40} black style={styles.header}></Text>
+          {/* <Text size={40} black style={styles.header}></Text>
           <Text black style={styles.outlinedText}>
             michigan fashion media summit
-          </Text>
+          </Text> */}
           <Text> {'\n'} </Text>
+          <View style={styles.outlinedTextContainer}>
+            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
+            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
+            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
+            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
+            <Text style={styles.outlinedText}>Michigan Fashion Media Summit</Text>
+          </View>
+          <Text> {'\n'} </Text>
+
           <Text black size={20} style={styles.header2}>
             CURRENTLY
           </Text>
@@ -168,6 +163,14 @@ const styles = StyleSheet.create({
   sectionLarge: {
     height: 100
   },
+  title: {
+    fontFamily: "Times New Roman",
+    fontWeight: "bold",
+    fontStyle: "italic",
+    color: colors.blue,
+    textAlign: 'center'
+
+  },
   divider: {
     width: '80%',       // Use less than '100%' to prevent it from reaching the edges
     height: 1,
@@ -175,16 +178,25 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     alignSelf: 'center' // Centers the divider within its parent container
   },
+  outlinedTextContainer: {
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   outlinedText: {
-    fontSize: 25,
+    fontSize: 40,
     fontWeight: 'bold',
-    color: 'transparent',
+    color: colors.white, // Transparent fill
     textAlign: 'center',
-    textTransform: "lowercase",
-    borderColor: colors.blue,
-    borderWidth: 1,
-    padding: 5,
-    // Remove all textShadow properties
+    textTransform: 'lowercase',
+  },
+  outlinedTextShadow: {
+    position: 'absolute',
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: colors.blue, // Outline color
+    textAlign: 'center',
+    textTransform: 'lowercase',
   },
   header: {
     fontFamily: "Arial",
