@@ -2,6 +2,8 @@ import HomeScreen from '../home/HomeViewContainer';
 import CalendarScreen from '../calendar/CalendarViewContainer';
 import PagesScreen from '../pages/PagesViewContainer';
 import ComponentsScreen from '../components/ComponentsViewContainer';
+import AboutScreen from '../about/AboutViewContainer';
+import SpeakersScreen from '../speakers/SpeakersView';
 
 const iconHome = require('../../../assets/images/home.png');
 const iconMFMS = require('../../../assets/images/transparent_black.png');
@@ -12,9 +14,8 @@ const iconSpeakers = require('../../../assets/images/speakers.png');
 const tabNavigationData = [
   {
     name: 'MFMS',
-    component: HomeScreen,
+    component: AboutScreen,
     icon: iconMFMS,
-    externalLink: 'https://michiganfashionmediasummit.com/',
   },
   {
     name: 'Calendar',
@@ -28,7 +29,7 @@ const tabNavigationData = [
   },
   {
     name: 'Speakers',
-    component: PagesScreen,
+    component: SpeakersScreen,
     icon: iconSpeakers,
   },
   {
