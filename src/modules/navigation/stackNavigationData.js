@@ -4,7 +4,6 @@ import { TouchableOpacity, Image } from 'react-native';
 import TabNavigator from './MainTabNavigator';
 import GalleryScreen from '../gallery/GalleryViewContainer';
 import AvailableInFullVersion from '../../modules/availableInFullVersion/AvailableInFullVersionViewContainer';
-import TicketInfoView from '../tickets/TicketInfoView';
 import PartnerInfoView from '../partners/PartnerInfoView';
 import FFSInfoView from '../ffs/FFSInfoView';
 import FAQInfoView from '../faq/FAQInfoView';
@@ -140,17 +139,6 @@ const StackNavigationData = [
     },
   },
   {
-    name: 'Tickets',
-    component: TicketInfoView,
-    headerLeft: headerLeftComponent,
-    headerBackground: { source: headerBackground },
-    headerTitleStyle: {
-      fontFamily: fonts.primaryRegular,
-      color: colors.white,
-      fontSize: 18,
-    },
-  },
-  {
     name: 'Partners',
     component: PartnerInfoView,
     headerLeft: headerLeftComponent,
@@ -183,17 +171,7 @@ const StackNavigationData = [
       fontSize: 18,
     },
   },
-  {
-    name: 'About',
-    component: AboutInfoView,
-    headerLeft: headerLeftComponent,
-    headerBackground: { source: headerBackground },
-    headerTitleStyle: {
-      fontFamily: fonts.primaryRegular,
-      color: colors.white,
-      fontSize: 18,
-    },
-  },
+  
 ]
 
 export default StackNavigationData;

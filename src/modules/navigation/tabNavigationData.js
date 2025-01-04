@@ -1,9 +1,8 @@
 import HomeScreen from '../home/HomeViewContainer';
 import CalendarScreen from '../calendar/CalendarViewContainer';
-import PagesScreen from '../pages/PagesViewContainer';
-import ComponentsScreen from '../components/ComponentsViewContainer';
 import AboutScreen from '../about/AboutViewContainer';
 import SpeakersScreen from '../speakers/SpeakersView';
+import TicketsScreen from '../tickets/TicketsViewContainer';
 
 const iconHome = require('../../../assets/images/home.png');
 const iconMFMS = require('../../../assets/images/transparent_black.png');
@@ -34,7 +33,7 @@ const tabNavigationData = [
   },
   {
     name: 'Tickets',
-    component: ComponentsScreen,
+    component: TicketsScreen,
     icon: iconTickets,
   },
 ];
