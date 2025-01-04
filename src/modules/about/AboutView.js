@@ -3,7 +3,6 @@ import { StyleSheet,View, ImageBackground, ScrollView} from 'react-native';
 
 import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
-import Svg, {Text as SvgText } from 'react-native-svg';
 
 export default function AboutScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';
@@ -74,6 +73,7 @@ export default function AboutScreen({ isExtended, setIsExtended }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.white
   },
   bgImage: {
     flex: 1,

@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ImageBackground } from 'react-native';
+import { fonts, colors } from '../../styles';
 
 export default function TicketsScreen(){
   return (
@@ -10,16 +11,14 @@ export default function TicketsScreen(){
             resizeMode="cover"
           >
             <View style={styles.section}>
-              <Text size={25} black > </Text>
-              <View style={styles.outlinedTextContainer}>
-                <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>speakers</Text>
-                <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>speakers</Text>
-                <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>speakers</Text>
-                <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>speakers</Text>
-                <Text style={styles.outlinedText}>speakers</Text>
-              </View>
               <Text> {'\n'} </Text>
-    
+                        <View style={styles.outlinedTextContainer}>
+                          <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>tickets</Text>
+                          <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>tickets</Text>
+                          <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>tickets</Text>
+                          <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>tickets</Text>
+                          <Text style={styles.outlinedText}>tickets</Text>
+              </View>
             </View>
           </ImageBackground>
     </ScrollView>
@@ -29,15 +28,88 @@ export default function TicketsScreen(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white
+  },
+  bgImage: {
+    flex: 1,
+    marginHorizontal: -20,
+  },
+  section: {
+    flex: 1,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    fontFamily: fonts.primaryBoldItalic,
+  },
+  sectionLarge: {
+    height: 100
   },
   title: {
-    fontSize: 24,
+    fontFamily: "Times New Roman",
+    fontWeight: "bold",
+    fontStyle: "italic",
+    color: colors.blue,
+    textAlign: 'center'
+
+  },
+  divider: {
+    width: '80%',       // Use less than '100%' to prevent it from reaching the edges
+    height: 1,
+    backgroundColor: '#000',
+    marginVertical: 8,
+    alignSelf: 'center' // Centers the divider within its parent container
+  },
+  outlinedTextContainer: {
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  outlinedText: {
+    fontSize: 40,
     fontWeight: 'bold',
-    marginBottom: 20,
+    color: colors.white, // Transparent fill
+    textAlign: 'center',
+    textTransform: 'lowercase',
   },
-  content: {
-    fontSize: 16,
+  outlinedTextShadow: {
+    position: 'absolute',
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: colors.blue, // Outline color
+    textAlign: 'center',
+    textTransform: 'lowercase',
   },
+  header: {
+    fontFamily: "Arial",
+    fontWeight: "bold",
+    fontStyle: "italic",
+    color: colors.blue,
+    textAlign: 'center'
+  },
+  header2: {
+    fontFamily: "Times New Roman",
+    fontWeight: "bold",
+  }, 
+  time: {
+    fontFamily: "Times New Roman",
+    fontStyle: "italic",
+    fontSize: 18, 
+  },
+  panel: {
+    width: '80%',    
+    fontFamily: "Times New Roman",
+    textAlign: 'center',
+    fontWeight: "bold",
+    color: colors.blue,
+    fontSize: 25
+  }, 
+  speaker: {
+    fontFamily: "Times New Roman",
+    fontStyle: "italic",
+    // fontWeight: "bold", 
+    fontSize: 20,
+  }, 
+  font: {
+    fontFamily: "Times New Roman",
+  }
+
 });

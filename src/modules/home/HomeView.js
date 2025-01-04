@@ -3,7 +3,6 @@ import { StyleSheet,View, ImageBackground, ScrollView} from 'react-native';
 
 import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
-import Svg, {Text as SvgText } from 'react-native-svg';
 
 export default function HomeScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';
@@ -30,7 +29,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 
     {
       title: "The Thing About Change",
-      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "hannah Bronfman"],
+      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
       location: "Robertson Auditorium",
       startTime: new Date("2025-09-03T23:59:59"), 
       endTime: new Date("2025-03-03T23:59:59") 
@@ -55,10 +54,6 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
         resizeMode="cover"
       >
         <View style={styles.section}>
-          {/* <Text size={40} black style={styles.header}></Text>
-          <Text black style={styles.outlinedText}>
-            michigan fashion media summit
-          </Text> */}
           <Text> {'\n'} </Text>
           <View style={styles.outlinedTextContainer}>
             <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
@@ -124,9 +119,10 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
             <Text black size={10}>  </Text>
 
             {upcomingEvent.speakers.map((speaker, index) => (
-              <><Text key={index} style={styles.speaker}>
-                {speaker}
-              </Text><Text black size={2}>  </Text></>
+               <React.Fragment key={index}>
+               <Text style={styles.speaker}>{speaker}</Text>
+               <Text black size={2}>  </Text>
+             </React.Fragment>
             ))}
 
             <Text black size={10}>  </Text>
@@ -149,6 +145,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.white
   },
   bgImage: {
     flex: 1,
@@ -225,7 +222,7 @@ const styles = StyleSheet.create({
   speaker: {
     fontFamily: "Times New Roman",
     fontStyle: "italic",
-    fontWeight: "bold", 
+    // fontWeight: "bold", 
     fontSize: 20,
   }, 
   font: {
