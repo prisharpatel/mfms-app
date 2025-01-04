@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Linking } from 'react-native';
 import { 
   createDrawerNavigator,
   DrawerItem,
@@ -21,14 +21,17 @@ const drawerData = [
   {
     name: 'Home',
     icon: iconHome,
+    onPress: (navigation) => navigation.navigate('Home'),
   },
   {
     name: 'Buy Your Ticket',
     icon: iconTicket,
+    onPress: () => Linking.openURL('https://www.eventbrite.com/'),
   },
   {
     name: 'Resume Drop',
     icon: iconResumeDrop,
+    onPress: () => Linking.openURL('https://www.google.com/'),
   },
   {
     name: 'FAQ',
@@ -46,35 +49,82 @@ const drawerData = [
 
 const Drawer = createDrawerNavigator();
 
+// function CustomDrawerContent(props) {
+//   return (
+//     <DrawerContentScrollView {...props} style={{ padding: 0 }}>
+//       <View style={styles.imageContainer}>
+//         <Image style={styles.drawerImage} source={logoImage} />
+//       </View>
+//       {drawerData.map((item, idx) => (
+//         <><DrawerItem
+//           key={`drawer_item-${idx + 1}`}
+//           label={() => (
+//             <View
+//               style={styles.menuLabelFlex}>
+//               <Image
+//                 style={{ width: 25, height: 25, resizeMode: 'contain' }}
+//                 source={item.icon}
+//               />
+//               <Text style={styles.menuTitle}>{item.name}</Text>
+//             </View>
+//           )}
+//           onPress={() => props.navigation.navigate(item.name)} 
+//           activeBackgroundColor={colors.blue} 
+//           activeTintColor={colors.white}
+//           />
+//           {idx < drawerData.length - 1 && <View style={styles.divider} />}
+//          </>
+//       ))}
+//       </DrawerContentScrollView>
+//   );
+// }
+
+// GITHUB COPILOT 
+// function CustomDrawerContent(props) {
+//   return (
+//     <DrawerContentScrollView {...props}>
+//       {drawerData.map((item, index) => (
+//         <DrawerItem
+//           key={index}
+//           label={item.name}
+//           icon={() => <Image source={item.icon} style={styles.icon} />}
+//           onPress={() => item.onPress(props.navigation)}
+//         />
+//       ))}
+//     </DrawerContentScrollView>
+//   );
+// }
+
 function CustomDrawerContent(props) {
   return (
-
-    
     <DrawerContentScrollView {...props} style={{ padding: 0 }}>
+      {/* Header Section with Logo */}
       <View style={styles.imageContainer}>
         <Image style={styles.drawerImage} source={logoImage} />
       </View>
+
+      {/* Drawer Items */}
       {drawerData.map((item, idx) => (
-        <><DrawerItem
-          key={`drawer_item-${idx + 1}`}
-          label={() => (
-            <View
-              style={styles.menuLabelFlex}>
-              <Image
-                style={{ width: 25, height: 25, resizeMode: 'contain' }}
-                source={item.icon}
-              />
-              <Text style={styles.menuTitle}>{item.name}</Text>
-            </View>
-          )}
-          onPress={() => props.navigation.navigate(item.name)} 
-          activeBackgroundColor={colors.blue} 
-          activeTintColor={colors.white}
+        <View key={`drawer_item-${idx + 1}`}>
+          <DrawerItem
+            label={() => (
+              <View style={styles.menuLabelFlex}>
+                <Image
+                  style={{ width: 25, height: 25, resizeMode: 'contain' }}
+                  source={item.icon}
+                />
+                <Text style={styles.menuTitle}>{item.name}</Text>
+              </View>
+            )}
+            onPress={() => item.onPress(props.navigation)}
+            activeBackgroundColor={colors.blue}
+            activeTintColor={colors.white}
           />
+          {/* Divider */}
           {idx < drawerData.length - 1 && <View style={styles.divider} />}
-         </>
+        </View>
       ))}
-      </DrawerContentScrollView>
+    </DrawerContentScrollView>
   );
 }
 
@@ -121,5 +171,4 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
 });
-
 
