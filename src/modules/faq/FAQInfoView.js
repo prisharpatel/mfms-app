@@ -10,7 +10,7 @@ import {
 import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
 
-export default function FFSScreen({ isExtended, setIsExtended }) {
+export default function FAQScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';
   // const handleClick = () => {
   //   Linking.canOpenURL(rnsUrl).then(supported => {
@@ -41,7 +41,7 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
         <View style={styles.section}>
           <Text size={10} black style={styles.header}> </Text>
           <Text size={20} black style={styles.header}>
-            2025 Fashion Forward Showcase
+            FAQ
           </Text>
         </View>
       </ImageBackground>

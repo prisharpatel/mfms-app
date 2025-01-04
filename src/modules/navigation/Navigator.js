@@ -36,6 +36,7 @@ const drawerData = [
   {
     name: 'FAQ',
     icon: iconFAQ,
+    onPress: (navigation) => navigation.navigate('FAQ')
   },
   {
     name: 'Partners',

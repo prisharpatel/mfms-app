@@ -94,11 +94,11 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 
             <Text black size={10}>  </Text>
 
-            <Text black size = {18} style={styles.location}>{currentEvent.location}</Text>
+            <Text black size = {18} style={styles.font}>{currentEvent.location}</Text>
           
             </>
           ) : (
-            <Text black size={16}>{'\n'} Stay Tuned...</Text>
+            <Text black size={18} style={styles.font}>{'\n'} Stay Tuned...</Text>
           )}
 
           <Text> {'\n'} </Text>
@@ -129,11 +129,11 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 
             <Text black size={10}>  </Text>
 
-            <Text black size = {18} style={styles.location}>{upcomingEvent.location}</Text>
+            <Text black size = {18} style={styles.font}>{upcomingEvent.location}</Text>
           
             </>
           ) : (
-            <Text black size={16}>{'\n'} Stay Tuned...</Text>
+            <Text black size={18} style={styles.font}>{'\n'} Stay Tuned...</Text>
           )}
 
         </View>
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     fontFamily: "Times New Roman",
     fontStyle: "italic"
   }, 
-  location: {
+  font: {
     fontFamily: "Times New Roman",
   }
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, Image, StyleSheet, Platform } from 'react-native';
+import { Text, View, Image, StyleSheet, Platform, TouchableOpacity, Linking} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors } from '../../styles';
 
@@ -24,6 +24,18 @@ export default function BottomTabs() {
                 style={[styles.tabBarIcon, focused && styles.tabBarIconFocused]}
               />
             </View>
+          ),
+          tabBarButton: (props) => (
+            item.externalLink ? (
+              <TouchableOpacity
+                {...props}
+                onPress={() => Linking.openURL(item.externalLink)}
+              >
+                
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity {...props} />
+            )
           ),
           tabBarLabel: ({ focused }) => <Text style={{fontSize: 10, color: focused ? colors.blue : colors.white }}>{item.name}</Text>,
         }}

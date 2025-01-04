@@ -6,8 +6,8 @@ import GalleryScreen from '../gallery/GalleryViewContainer';
 import AvailableInFullVersion from '../../modules/availableInFullVersion/AvailableInFullVersionViewContainer';
 import TicketInfoView from '../tickets/TicketInfoView';
 import PartnerInfoView from '../partners/PartnerInfoView';
-import FfsInfoView from '../ffs/FfsInfoView';
-
+import FFSInfoView from '../ffs/FFSInfoView';
+import FAQInfoView from '../faq/FAQInfoView';
 
 import { colors, fonts } from '../../styles';
 
@@ -162,7 +162,18 @@ const StackNavigationData = [
   },
   {
     name: 'FFS',
-    component: FfsInfoView,
+    component: FFSInfoView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  {
+    name: 'FAQ',
+    component: FAQInfoView,
     headerLeft: headerLeftComponent,
     headerBackground: { source: headerBackground },
     headerTitleStyle: {
