@@ -4,13 +4,10 @@ import { TouchableOpacity, Image } from 'react-native';
 import TabNavigator from './MainTabNavigator';
 import GalleryScreen from '../gallery/GalleryViewContainer';
 import AvailableInFullVersion from '../../modules/availableInFullVersion/AvailableInFullVersionViewContainer';
-
-// import ProfileScreen from '../profile/ProfileViewContainer';
-// import ArticleScreen from '../article/ArticleViewContainer';
-// import ChatScreen from '../chat/ChatViewContainer';
-// import MessagesScreen from '../chat/MessagesViewContainer';
-// import ChartsScreen from '../charts/ChartsViewContainer';
-// import AuthScreen from '../auth/AuthViewContainer';
+import TicketInfoView from '../tickets/TicketInfoView';
+import PartnerInfoView from '../partners/PartnerInfoView';
+import FFSInfoView from '../ffs/FFSInfoView';
+import FAQInfoView from '../faq/FAQInfoView';
 
 import { colors, fonts } from '../../styles';
 
@@ -24,7 +21,7 @@ const headerLeftComponent = (props) => {
       }}
     >
       <Image
-        source={require('../../../assets/images/icons/arrow-back.png')}
+        source={require('../../../assets/images/icons/arrow-back3x.png')}
         resizeMode="contain"
         style={{
           height: 20,
@@ -133,6 +130,50 @@ const StackNavigationData = [
   {
     name: 'Auth',
     component: AvailableInFullVersion,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  {
+    name: 'Tickets',
+    component: TicketInfoView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  {
+    name: 'Partners',
+    component: PartnerInfoView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  {
+    name: 'FFS',
+    component: FFSInfoView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  {
+    name: 'FAQ',
+    component: FAQInfoView,
     headerLeft: headerLeftComponent,
     headerBackground: { source: headerBackground },
     headerTitleStyle: {

@@ -14,6 +14,7 @@ const tabNavigationData = [
     name: 'MFMS',
     component: HomeScreen,
     icon: iconMFMS,
+    externalLink: 'https://michiganfashionmediasummit.com/',
   },
   {
     name: 'Calendar',

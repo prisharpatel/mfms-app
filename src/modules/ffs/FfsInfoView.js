@@ -4,12 +4,13 @@ import {
   View,
   TouchableOpacity,
   ImageBackground,
+  Image,
 } from 'react-native';
 
 import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
 
-export default function Partner({ isExtended, setIsExtended }) {
+export default function FFSScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';
   // const handleClick = () => {
   //   Linking.canOpenURL(rnsUrl).then(supported => {
@@ -21,6 +22,7 @@ export default function Partner({ isExtended, setIsExtended }) {
   //   });
   // };
 
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -28,17 +30,19 @@ export default function Partner({ isExtended, setIsExtended }) {
         style={styles.bgImage}
         resizeMode="cover"
       >
-        <View style={styles.section}>
-          <Text size={30} black style={styles.customFont}>
-            WELCOME TO MFMS 2025
-          </Text>
+
+        <View style={styles.logoContainer}>
+          <Image
+            source={require('../../../assets/images/transparent_black.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
         </View>
         <View style={styles.section}>
-          <Text black size={15}>
-            CURRENTLY
+          <Text size={10} black style={styles.header}> </Text>
+          <Text size={20} black style={styles.header}>
+            2025 Fashion Forward Showcase
           </Text>
-        </View>
-        <View style={[styles.section, styles.sectionLarge]}>
         </View>
       </ImageBackground>
     </View>
@@ -48,8 +52,13 @@ export default function Partner({ isExtended, setIsExtended }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  logoContainer: {
     alignItems: 'center',
-    justifyContent: 'space-around',
+  },
+  logo :{
+    width: 50,
+    height: 50,
   },
   bgImage: {
     flex: 1,
@@ -58,7 +67,6 @@ const styles = StyleSheet.create({
   section: {
     flex: 1,
     paddingHorizontal: 20,
-    justifyContent: 'center',
     alignItems: 'center',
     fontFamily: fonts.primaryBoldItalic,
   },
@@ -66,33 +74,20 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: 'space-around',
   },
-  sectionHeader: {
-    marginBottom: 8,
+  divider: {
+    width: '50%',       // Use less than '100%' to prevent it from reaching the edges
+    height: 1,
+    backgroundColor: '#000',
+    marginVertical: 8,
+    alignSelf: 'center' // Centers the divider within its parent container
   },
-  priceContainer: {
-    alignItems: 'center',
-  },
-  description: {
-    padding: 15,
-    lineHeight: 25,
-  },
-  titleDescription: {
-    color: '#19e7f7',
-    textAlign: 'center',
-    fontFamily: fonts.primaryBold,
-    fontSize: 15,
-  },
-  title: {
-    marginTop: 30,
-  },
-  price: {
-    marginBottom: 5,
-  },
-  priceLink: {
-    borderBottomWidth: 1,
-    borderBottomColor: colors.primary,
-  },
-  customFont: {
+  header: {
     fontFamily: "Arial",
+    fontWeight: "bold",
+    fontStyle: "italic"
   },
+  header2: {
+    fontFamily: "Times New Roman",
+    fontWeight: "bold",
+  }, 
 });

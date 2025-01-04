@@ -22,7 +22,9 @@ export default function NavigatorView(props) {
           source={require('../../../assets/images/drawer/menu.png')}
           resizeMode="contain"
           style={{
-            height: 20,
+            height: 30,
+            width: 30, // Adjust the width as needed
+            marginLeft: 10, // Adjust the marginLeft to move the image to the right
           }}
         />
       </TouchableOpacity>    

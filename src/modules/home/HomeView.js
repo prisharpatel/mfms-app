@@ -51,6 +51,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 
 
   return (
+    
     <View style={styles.container}>
       <ImageBackground
         source={require('../../../assets/images/background.png')}
@@ -93,11 +94,11 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 
             <Text black size={10}>  </Text>
 
-            <Text black size = {18} style={styles.location}>{currentEvent.location}</Text>
+            <Text black size = {18} style={styles.font}>{currentEvent.location}</Text>
           
             </>
           ) : (
-            <Text black size={16}>{'\n'} Stay Tuned...</Text>
+            <Text black size={18} style={styles.font}>{'\n'} Stay Tuned...</Text>
           )}
 
           <Text> {'\n'} </Text>
@@ -128,11 +129,11 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 
             <Text black size={10}>  </Text>
 
-            <Text black size = {18} style={styles.location}>{upcomingEvent.location}</Text>
+            <Text black size = {18} style={styles.font}>{upcomingEvent.location}</Text>
           
             </>
           ) : (
-            <Text black size={16}>{'\n'} Stay Tuned...</Text>
+            <Text black size={18} style={styles.font}>{'\n'} Stay Tuned...</Text>
           )}
 
         </View>
@@ -148,8 +149,6 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-around',
   },
   bgImage: {
     flex: 1,
@@ -180,8 +179,6 @@ const styles = StyleSheet.create({
   header2: {
     fontFamily: "Times New Roman",
     fontWeight: "bold",
-    textTransform: "up"
-    
   }, 
   time: {
     fontFamily: "Times New Roman",
@@ -198,7 +195,7 @@ const styles = StyleSheet.create({
     fontFamily: "Times New Roman",
     fontStyle: "italic"
   }, 
-  location: {
+  font: {
     fontFamily: "Times New Roman",
   }
 
