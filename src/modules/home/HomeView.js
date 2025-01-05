@@ -1,52 +1,70 @@
-import React from 'react';
-import { StyleSheet,View, ImageBackground, ScrollView} from 'react-native';
-
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, ImageBackground, ScrollView, Animated, TouchableOpacity, Dimensions, Easing } from 'react-native';
 import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
 
-export default function HomeScreen({ isExtended, setIsExtended }) {
-  // const rnsUrl = 'https://reactnativestarter.com';
-  // const handleClick = () => {
-  //   Linking.canOpenURL(rnsUrl).then(supported => {
-  //     if (supported) {
-  //       Linking.openURL(rnsUrl);
-  //     } else {
-  //       console.log(`Don't know how to open URI: ${rnsUrl}`);
-  //     }
-  //   });
-  // };
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
+export default function HomeScreen({ navigation }) {
+  const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
+  const [slideAnim2] = useState(new Animated.Value(-300)); // Animation for "COMING UP"
   const now = new Date();
 
-  const events = [ 
+  const events = [
     {
       title: "Designing Success: Women Shaping the Future of Fashion",
       speakers: ["Jennifer Fisher", "Lisa Greenwald"],
       location: "Robertson Auditorium",
-      startTime: now, // starts now
-      endTime: new Date("2025-03-03T23:59:59") // ends on March 3, 2025
+      startTime: now,
+      endTime: new Date("2025-03-03T10:30:00"),
+      description: "A panel discussing the pivotal role of women in shaping the future of fashion."
     },
-
     {
       title: "The Thing About Change",
       speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
       location: "Robertson Auditorium",
-      startTime: new Date("2025-09-03T23:59:59"), 
-      endTime: new Date("2025-03-03T23:59:59") 
+      startTime: new Date("2025-09-03T23:59:59"),
+      endTime: new Date("2025-09-04T23:59:59"),
+      description: "A discussion on the dynamics of change in fashion and media."
     }
   ];
+  let currentEvent = null;
+  let upcomingEvent = null;
+  if (events.length != 0) {
+    currentEvent = events.find(event => now >= event.startTime && now <= event.endTime);
+    upcomingEvent = events
+      .filter(event => event.startTime > now)
+      .sort((a, b) => a.startTime - b.startTime)[0]
+  }
+;
 
-  const currentEvent = events.find(event =>
-    now >= event.startTime && now <= event.endTime
-  );
+  const REPEATING_TEXT_1 = Array(1000).fill('CURRENTLY   -   ');
+  const REPEATING_TEXT_2 = Array(1000).fill('COMING UP   -   ');
 
-  const upcomingEvent = events
-  .filter(event => event.startTime > now)
-  .sort((a, b) => a.startTime - b.startTime)[0]; // The soonest upcoming event
+  useEffect(() => {
+    const animateStream = (animation) => {
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(animation, {
+            toValue: -SCREEN_WIDTH * 50,
+            duration: 900000,
+            easing: Easing.linear,
+            useNativeDriver: true,
+          })
+        ])
+      ).start();
+    };
+  
+    animateStream(slideAnim1);
+    animateStream(slideAnim2);
+  }, [slideAnim1, slideAnim2]);
 
-
+  const calculateProgress = (start, end) => {
+    const totalDuration = end - start;
+    const elapsed = now - start;
+    return Math.min((elapsed / totalDuration) * 100, 100);
+  };
   return (
-    
     <ScrollView style={styles.container}>
       <ImageBackground
         source={require('../../../assets/images/background.png')}
@@ -54,7 +72,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
         resizeMode="cover"
       >
         <View style={styles.section}>
-          <Text> {'\n'} </Text>
+          {/* Outlined Text */}
           <View style={styles.outlinedTextContainer}>
             <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
             <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
@@ -62,80 +80,139 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
             <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
             <Text style={styles.outlinedText}>Michigan Fashion Media Summit</Text>
           </View>
-          <Text> {'\n'} </Text>
 
-          <Text black size={20} style={styles.header2}>
-            CURRENTLY
-          </Text>
-          <View style={styles.divider} />
-          {currentEvent ? (
+          <Text size={10}> {'\n'} </Text>
+
+
+          {/* Sliding "CURRENTLY" */}
+          {currentEvent && (
             <>
-            
+              <View style={styles.slidingContainer}>
+                <Animated.View 
+                  style={[
+                    styles.slidingStream, 
+                    { transform: [{ translateX: slideAnim2 }] }
+                  ]}
+                >
+                  <Text style={styles.slidingText}>{REPEATING_TEXT_1}</Text>
+                  <Text style={styles.slidingText}>{REPEATING_TEXT_1}</Text>
+                </Animated.View>
+              </View>
+              <View style={styles.divider} />
+              <Text black style={styles.time}>
+                {currentEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {currentEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+              </Text>
+              <View style={styles.progressBar}>
+                <View
+                  style={[
+                    styles.progressIndicator,
+                    { width: `${calculateProgress(currentEvent.startTime, currentEvent.endTime)}%` }
+                  ]}
+                />
+              </View>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('EventDetails', { event: currentEvent })
+                }
+              >
+                <Text style={styles.panel}>{currentEvent.title}</Text>
+              </TouchableOpacity>
+              {currentEvent.speakers.map((speaker, index) => (
+                <Text key={index} style={styles.speaker}>
+                  {speaker}
+                </Text>
+              ))}
+              <Text black size={18} style={styles.font}>{currentEvent.location}</Text>
+            </>
+          )}
+
+          {/* "COMING UP" */}
+          {upcomingEvent && currentEvent && (
+            <>
+              <Text> {'\n'} </Text>
+
+              <Text black size={20} style={styles.header2}>
+                COMING UP
+              </Text>
+
+              <View style={styles.divider} />
+
+              <Text black style={styles.time}>
+                {upcomingEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {upcomingEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+              </Text>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('EventDetails', { event: upcomingEvent })
+                }
+              >
+                <Text style={styles.panel}>{upcomingEvent.title}</Text>
+              </TouchableOpacity>
+              {upcomingEvent.speakers.map((speaker, index) => (
+                <Text key={index} style={styles.speaker}>
+                  {speaker}
+                </Text>
+              ))}
+              <Text black size={18} style={styles.font}>{upcomingEvent.location}</Text>
+            </>
+          )}
+
+          {!currentEvent && upcomingEvent && (
+            <>
+            <View style={styles.slidingContainer}>
+              <Animated.View 
+                style={[
+                  styles.slidingStream, 
+                  { transform: [{ translateX: slideAnim2 }] }
+                ]}
+              >
+                <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
+                <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
+              </Animated.View>
+            </View>
+            <View style={styles.divider} />
             <Text black style={styles.time}>
-              {currentEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {currentEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+              {upcomingEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {upcomingEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             </Text>
-
-            <Text black size={10}>  </Text>
-
-            <Text style = {styles.panel}>
-              {currentEvent.title}
-            </Text>
-
-            <Text black size={10}>  </Text>
-
-            {currentEvent.speakers.map((speaker, index) => (
+            
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('EventDetails', { event: upcomingEvent })
+              }
+            >
+              <Text style={styles.panel}>{upcomingEvent.title}</Text>
+            </TouchableOpacity>
+            {upcomingEvent.speakers.map((speaker, index) => (
               <Text key={index} style={styles.speaker}>
                 {speaker}
               </Text>
             ))}
+            <Text black size={18} style={styles.font}>{upcomingEvent.location}</Text>
+          </>
 
-            <Text black size={10}>  </Text>
-
-            <Text black size = {18} style={styles.font}>{currentEvent.location}</Text>
-          
-            </>
-          ) : (
-            <Text style={styles.panel}>{'\n'} Stay Tuned...</Text>
           )}
 
-          <Text> {'\n'} </Text>
-          <Text black size={20} style={styles.header2}>
-            COMING UP
-          </Text>
-          <View style={styles.divider} />
-          {upcomingEvent ? (
-            <>
-            
-            <Text black style={styles.time}>
-              {upcomingEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {upcomingEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-            </Text>
+          { !currentEvent && !upcomingEvent &&
+            (<>
+              <View style={styles.slidingContainer}>
+                <Animated.View 
+                  style={[
+                    styles.slidingStream, 
+                    { transform: [{ translateX: slideAnim2 }] }
+                  ]}
+                >
+                  <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
+                  <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
+                </Animated.View>
+              </View>
 
-            <Text black size={10}>  </Text>
-
-            <Text style = {styles.panel}>
-              {upcomingEvent.title}
-            </Text>
-
-            <Text black size={10}>  </Text>
-
-            {upcomingEvent.speakers.map((speaker, index) => (
-               <React.Fragment key={index}>
-               <Text style={styles.speaker}>{speaker}</Text>
-               <Text black size={2}>  </Text>
-             </React.Fragment>
-            ))}
-
-            <Text black size={10}>  </Text>
-
-            <Text black size = {18} style={styles.font}>{upcomingEvent.location}</Text>
-          
+              <View style={styles.divider} />
+              <Text> {'\n'} </Text>
+              <Text size = {25} style={styles.panel}>Stay Tuned...</Text>
+              <Text size = {25} style={styles.panel}></Text>
+              <Text size = {25} style={styles.panel}>New Events Coming Soon</Text>
             </>
-          ) : (
-            <Text style={styles.panel}>{'\n'} Stay Tuned...</Text>
-          )}
-
-        </View>
-        <View style={[styles.section, styles.sectionLarge]}>
+          )
+        }
         </View>
       </ImageBackground>
     </ScrollView>
@@ -157,23 +234,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     fontFamily: fonts.primaryBoldItalic,
   },
-  sectionLarge: {
-    height: 100
+  slidingContainer: {
+    width: SCREEN_WIDTH*2,
+    overflow: 'hidden',
+    height: 22,
+    marginVertical: 10,
   },
-  title: {
+  slidingStream: {
+    flexDirection: 'row',
+    position: 'absolute',
+    width: SCREEN_WIDTH * 100,
+  },
+  slidingText: {
+    fontSize: 20,
     fontFamily: "Times New Roman",
     fontWeight: "bold",
-    fontStyle: "italic",
-    color: colors.blue,
-    textAlign: 'center'
-
+    color: colors.black,
+  },
+  header2: {
+    fontFamily: "Times New Roman",
+    fontWeight: "bold",
   },
   divider: {
-    width: '80%',       // Use less than '100%' to prevent it from reaching the edges
+    width: '80%',
     height: 1,
     backgroundColor: '#000',
     marginVertical: 8,
-    alignSelf: 'center' // Centers the divider within its parent container
+    alignSelf: 'center'
   },
   outlinedTextContainer: {
     position: 'relative',
@@ -183,7 +270,7 @@ const styles = StyleSheet.create({
   outlinedText: {
     fontSize: 40,
     fontWeight: 'bold',
-    color: colors.white, // Transparent fill
+    color: colors.white,
     textAlign: 'center',
     textTransform: 'lowercase',
   },
@@ -191,42 +278,41 @@ const styles = StyleSheet.create({
     position: 'absolute',
     fontSize: 40,
     fontWeight: 'bold',
-    color: colors.blue, // Outline color
+    color: colors.blue,
     textAlign: 'center',
     textTransform: 'lowercase',
   },
-  header: {
-    fontFamily: "Arial",
-    fontWeight: "bold",
-    fontStyle: "italic",
-    color: colors.blue,
-    textAlign: 'center'
+  progressBar: {
+    height: 10,
+    width: '80%',
+    backgroundColor: '#ddd',
+    borderRadius: 5,
+    marginVertical: 8
   },
-  header2: {
-    fontFamily: "Times New Roman",
-    fontWeight: "bold",
-  }, 
-  time: {
-    fontFamily: "Times New Roman",
-    fontStyle: "italic",
-    fontSize: 18, 
+  progressIndicator: {
+    height: '100%',
+    backgroundColor: colors.blue,
+    borderRadius: 5
   },
   panel: {
-    width: '80%',    
+    width: '80%',
     fontFamily: "Times New Roman",
     textAlign: 'center',
     fontWeight: "bold",
     color: colors.blue,
     fontSize: 25
-  }, 
+  },
   speaker: {
     fontFamily: "Times New Roman",
     fontStyle: "italic",
-    // fontWeight: "bold", 
     fontSize: 20,
-  }, 
+  },
   font: {
     fontFamily: "Times New Roman",
-  }
-
+  },
+  time: {
+    fontFamily: "Times New Roman",
+    fontStyle: "italic",
+    fontSize: 18,
+  },
 });
