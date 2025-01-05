@@ -1,5 +1,6 @@
 import HomeScreen from '../home/HomeViewContainer';
-import CalendarScreen from '../calendar/CalendarViewContainer';
+// import CalendarScreen from '../calendar/CalendarViewContainer';
+import ScheduleScreen from '../schedule/ScheduleViewContainer';
 import AboutScreen from '../about/AboutViewContainer';
 import SpeakersScreen from '../speakers/SpeakersView';
 import TicketsScreen from '../tickets/TicketsViewContainer';
@@ -17,8 +18,8 @@ const tabNavigationData = [
     icon: iconMFMS,
   },
   {
-    name: 'Calendar',
-    component: CalendarScreen,
+    name: 'Schedule',
+    component: ScheduleScreen,
     icon: iconCalendar,
   },
   {
