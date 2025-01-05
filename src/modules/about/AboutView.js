@@ -4,7 +4,7 @@ import { StyleSheet,View, ImageBackground, ScrollView} from 'react-native';
 import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
 
-export default function HomeScreen({ isExtended, setIsExtended }) {
+export default function AboutScreen({ isExtended, setIsExtended }) {
   // const rnsUrl = 'https://reactnativestarter.com';
   // const handleClick = () => {
   //   Linking.canOpenURL(rnsUrl).then(supported => {
@@ -29,7 +29,7 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
 
     {
       title: "The Thing About Change",
-      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
+      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "hannah Bronfman"],
       location: "Robertson Auditorium",
       startTime: new Date("2025-09-03T23:59:59"), 
       endTime: new Date("2025-03-03T23:59:59") 
@@ -54,88 +54,16 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
         resizeMode="cover"
       >
         <View style={styles.section}>
-          <Text> {'\n'} </Text>
+          <Text size={25} black > </Text>
           <View style={styles.outlinedTextContainer}>
-            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
-            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
-            <Text style={styles.outlinedText}>Michigan Fashion Media Summit</Text>
+            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>about</Text>
+            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>about</Text>
+            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>about</Text>
+            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>about</Text>
+            <Text style={styles.outlinedText}>about</Text>
           </View>
           <Text> {'\n'} </Text>
 
-          <Text black size={20} style={styles.header2}>
-            CURRENTLY
-          </Text>
-          <View style={styles.divider} />
-          {currentEvent ? (
-            <>
-            
-            <Text black style={styles.time}>
-              {currentEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {currentEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-            </Text>
-
-            <Text black size={10}>  </Text>
-
-            <Text style = {styles.panel}>
-              {currentEvent.title}
-            </Text>
-
-            <Text black size={10}>  </Text>
-
-            {currentEvent.speakers.map((speaker, index) => (
-              <Text key={index} style={styles.speaker}>
-                {speaker}
-              </Text>
-            ))}
-
-            <Text black size={10}>  </Text>
-
-            <Text black size = {18} style={styles.font}>{currentEvent.location}</Text>
-          
-            </>
-          ) : (
-            <Text style={styles.panel}>{'\n'} Stay Tuned...</Text>
-          )}
-
-          <Text> {'\n'} </Text>
-          <Text black size={20} style={styles.header2}>
-            COMING UP
-          </Text>
-          <View style={styles.divider} />
-          {upcomingEvent ? (
-            <>
-            
-            <Text black style={styles.time}>
-              {upcomingEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {upcomingEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-            </Text>
-
-            <Text black size={10}>  </Text>
-
-            <Text style = {styles.panel}>
-              {upcomingEvent.title}
-            </Text>
-
-            <Text black size={10}>  </Text>
-
-            {upcomingEvent.speakers.map((speaker, index) => (
-               <React.Fragment key={index}>
-               <Text style={styles.speaker}>{speaker}</Text>
-               <Text black size={2}>  </Text>
-             </React.Fragment>
-            ))}
-
-            <Text black size={10}>  </Text>
-
-            <Text black size = {18} style={styles.font}>{upcomingEvent.location}</Text>
-          
-            </>
-          ) : (
-            <Text style={styles.panel}>{'\n'} Stay Tuned...</Text>
-          )}
-
-        </View>
-        <View style={[styles.section, styles.sectionLarge]}>
         </View>
       </ImageBackground>
     </ScrollView>
@@ -222,7 +150,7 @@ const styles = StyleSheet.create({
   speaker: {
     fontFamily: "Times New Roman",
     fontStyle: "italic",
-    // fontWeight: "bold", 
+    fontWeight: "bold", 
     fontSize: 20,
   }, 
   font: {

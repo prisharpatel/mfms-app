@@ -4,13 +4,10 @@ import { TouchableOpacity, Image } from 'react-native';
 import TabNavigator from './MainTabNavigator';
 import GalleryScreen from '../gallery/GalleryViewContainer';
 import AvailableInFullVersion from '../../modules/availableInFullVersion/AvailableInFullVersionViewContainer';
-
-// import ProfileScreen from '../profile/ProfileViewContainer';
-// import ArticleScreen from '../article/ArticleViewContainer';
-// import ChatScreen from '../chat/ChatViewContainer';
-// import MessagesScreen from '../chat/MessagesViewContainer';
-// import ChartsScreen from '../charts/ChartsViewContainer';
-// import AuthScreen from '../auth/AuthViewContainer';
+import PartnerInfoView from '../partners/PartnerInfoView';
+import FFSInfoView from '../ffs/FFSInfoView';
+import FAQInfoView from '../faq/FAQInfoView';
+import AboutInfoView from '../about/AboutView'; 
 
 import { colors, fonts } from '../../styles';
 
@@ -24,7 +21,7 @@ const headerLeftComponent = (props) => {
       }}
     >
       <Image
-        source={require('../../../assets/images/icons/arrow-back.png')}
+        source={require('../../../assets/images/icons/arrow-back3x.png')}
         resizeMode="contain"
         style={{
           height: 20,
@@ -44,10 +41,10 @@ const StackNavigationData = [
     headerBackground: { source: headerBackground },
     headerTitle: () => (
       <Image
-        source={require('../../../assets/images/primary_black.png')} 
+        source={require('../../../assets/images/transparent_black.png')} 
         style={{
-          height: 300, 
-          width: 100, 
+          height: 55, 
+          width: 55, 
           resizeMode: 'contain',
         }}
       />
@@ -141,6 +138,40 @@ const StackNavigationData = [
       fontSize: 18,
     },
   },
+  {
+    name: 'Partners',
+    component: PartnerInfoView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  {
+    name: 'FFS',
+    component: FFSInfoView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  {
+    name: 'FAQ',
+    component: FAQInfoView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  
 ]
 
 export default StackNavigationData;

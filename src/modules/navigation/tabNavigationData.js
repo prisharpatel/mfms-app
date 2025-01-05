@@ -1,8 +1,9 @@
 import HomeScreen from '../home/HomeViewContainer';
 // import CalendarScreen from '../calendar/CalendarViewContainer';
 import ScheduleScreen from '../schedule/ScheduleViewContainer';
-import PagesScreen from '../pages/PagesViewContainer';
-import ComponentsScreen from '../components/ComponentsViewContainer';
+import AboutScreen from '../about/AboutViewContainer';
+import SpeakersScreen from '../speakers/SpeakersView';
+import TicketsScreen from '../tickets/TicketsViewContainer';
 
 const iconHome = require('../../../assets/images/home.png');
 const iconMFMS = require('../../../assets/images/transparent_black.png');
@@ -13,7 +14,7 @@ const iconSpeakers = require('../../../assets/images/speakers.png');
 const tabNavigationData = [
   {
     name: 'MFMS',
-    component: HomeScreen,
+    component: AboutScreen,
     icon: iconMFMS,
   },
   {
@@ -28,12 +29,12 @@ const tabNavigationData = [
   },
   {
     name: 'Speakers',
-    component: PagesScreen,
+    component: SpeakersScreen,
     icon: iconSpeakers,
   },
   {
     name: 'Tickets',
-    component: ComponentsScreen,
+    component: TicketsScreen,
     icon: iconTickets,
   },
 ];
