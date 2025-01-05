@@ -15,14 +15,14 @@ export default function HomeScreen({ navigation }) {
       title: "Designing Success: Women Shaping the Future of Fashion",
       speakers: ["Jennifer Fisher", "Lisa Greenwald"],
       location: "Robertson Auditorium",
-      startTime: now,
-      endTime: new Date("2025-03-03T10:30:00"),
+      startTime: new Date("2025-01-05T13:00:00"),
+      endTime: new Date("2025-01-05T14:30:00"),
       description: "A panel discussing the pivotal role of women in shaping the future of fashion."
     },
     {
       title: "The Thing About Change",
       speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
-      location: "Robertson Auditorium",
+      location: "Kresge Suites",
       startTime: new Date("2025-09-03T23:59:59"),
       endTime: new Date("2025-09-04T23:59:59"),
       description: "A discussion on the dynamics of change in fashion and media."
@@ -73,6 +73,7 @@ export default function HomeScreen({ navigation }) {
       >
         <View style={styles.section}>
           {/* Outlined Text */}
+          <Text size={10}> {'\n'} </Text>
           <View style={styles.outlinedTextContainer}>
             <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
             <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
@@ -82,7 +83,8 @@ export default function HomeScreen({ navigation }) {
           </View>
 
           <Text size={10}> {'\n'} </Text>
-
+          <Text style={styles.header}> WELCOME TO MFMS 2025 </Text>
+          <Text size={10}> {'\n'} </Text>
 
           {/* Sliding "CURRENTLY" */}
           {currentEvent && (
@@ -114,15 +116,17 @@ export default function HomeScreen({ navigation }) {
                 onPress={() =>
                   navigation.navigate('EventDetails', { event: currentEvent })
                 }
+                style = {styles.panelContainer}
               >
                 <Text style={styles.panel}>{currentEvent.title}</Text>
               </TouchableOpacity>
-              {currentEvent.speakers.map((speaker, index) => (
+              {/* {currentEvent.speakers.map((speaker, index) => (
                 <Text key={index} style={styles.speaker}>
                   {speaker}
                 </Text>
-              ))}
-              <Text black size={18} style={styles.font}>{currentEvent.location}</Text>
+              ))} */}
+              <Text size={5}> {'\n'} </Text>
+              <Text black size={18} style={styles.font}>@ {currentEvent.location}</Text>
             </>
           )}
 
@@ -140,6 +144,8 @@ export default function HomeScreen({ navigation }) {
               <Text black style={styles.time}>
                 {upcomingEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {upcomingEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </Text>
+              <Text size={5}> {'\n'} </Text>
+
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate('EventDetails', { event: upcomingEvent })
@@ -147,12 +153,13 @@ export default function HomeScreen({ navigation }) {
               >
                 <Text style={styles.panel}>{upcomingEvent.title}</Text>
               </TouchableOpacity>
-              {upcomingEvent.speakers.map((speaker, index) => (
+              {/* {upcomingEvent.speakers.map((speaker, index) => (
                 <Text key={index} style={styles.speaker}>
                   {speaker}
                 </Text>
-              ))}
-              <Text black size={18} style={styles.font}>{upcomingEvent.location}</Text>
+              ))} */}
+              <Text size={5}> {'\n'} </Text>
+              <Text black size={18} style={styles.font}>@ {upcomingEvent.location}</Text>
             </>
           )}
 
@@ -173,7 +180,9 @@ export default function HomeScreen({ navigation }) {
             <Text black style={styles.time}>
               {upcomingEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {upcomingEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             </Text>
-            
+
+            <Text size={5}> {'\n'} </Text>
+
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate('EventDetails', { event: upcomingEvent })
@@ -181,12 +190,12 @@ export default function HomeScreen({ navigation }) {
             >
               <Text style={styles.panel}>{upcomingEvent.title}</Text>
             </TouchableOpacity>
-            {upcomingEvent.speakers.map((speaker, index) => (
+            {/* {upcomingEvent.speakers.map((speaker, index) => (
               <Text key={index} style={styles.speaker}>
                 {speaker}
               </Text>
-            ))}
-            <Text black size={18} style={styles.font}>{upcomingEvent.location}</Text>
+            ))} */}
+            <Text black size={18} style={styles.font}>at {upcomingEvent.location}</Text>
           </>
 
           )}
@@ -237,8 +246,8 @@ const styles = StyleSheet.create({
   slidingContainer: {
     width: SCREEN_WIDTH*2,
     overflow: 'hidden',
-    height: 22,
-    marginVertical: 10,
+    height: 19,
+    marginVertical: 5,
   },
   slidingStream: {
     flexDirection: 'row',
@@ -250,6 +259,12 @@ const styles = StyleSheet.create({
     fontFamily: "Times New Roman",
     fontWeight: "bold",
     color: colors.black,
+  },
+  header:{
+    fontFamily: "Arial",
+    fontSize: 20,
+    fontWeight: "bold",
+    fontStyle: "italic",
   },
   header2: {
     fontFamily: "Times New Roman",
@@ -283,7 +298,7 @@ const styles = StyleSheet.create({
     textTransform: 'lowercase',
   },
   progressBar: {
-    height: 10,
+    height: 5,
     width: '80%',
     backgroundColor: '#ddd',
     borderRadius: 5,
@@ -294,13 +309,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.blue,
     borderRadius: 5
   },
+  panelContainer:{
+    alignItems: 'center',
+    width: '95%'
+  },
   panel: {
     width: '80%',
     fontFamily: "Times New Roman",
     textAlign: 'center',
     fontWeight: "bold",
     color: colors.blue,
-    fontSize: 25
+    fontSize: 22
   },
   speaker: {
     fontFamily: "Times New Roman",
