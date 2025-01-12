@@ -2,7 +2,7 @@ import HomeScreen from '../home/HomeViewContainer';
 // import CalendarScreen from '../calendar/CalendarViewContainer';
 import ScheduleScreen from '../schedule/ScheduleViewContainer';
 import AboutScreen from '../about/AboutViewContainer';
-import SpeakersScreen from '../speakers/SpeakersView';
+import SpeakersScreen from '../speakers/SpeakersViewContainer';
 import TicketsScreen from '../tickets/TicketsViewContainer';
 
 const iconHome = require('../../../assets/images/home.png');
