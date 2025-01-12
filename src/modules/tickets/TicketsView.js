@@ -29,7 +29,7 @@ export default function EventTicketsView() {
         {/* Centered Eventbrite Widget */}
         <View style={styles.widgetContainer}>
           <WebView
-            source={{ uri: 'https://www.eventbrite.com/e/jazz-at-webers-general-admission-ticket-wont-guarantee-a-seat-tickets-1131303241449?aff=ebdssbcitybrowsenightlife' }}
+            source={{ uri: 'https://www.eventbrite.com/e/michigan-fashion-media-summit-2024-tickets-837805878937' }}
             javaScriptEnabled={true}
             domStorageEnabled={true}
             startInLoadingState={true}
