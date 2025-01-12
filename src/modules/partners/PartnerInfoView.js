@@ -11,7 +11,16 @@ import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
 
 export default function PartnerScreen({ isExtended, setIsExtended }) {
-
+  const partners = [
+    { id: '1', name: 'LVMH', logo: require('../../../../assets/images/partners/lvmh.png') },
+    { id: '2', name: 'Steve Madden', logo: require('../../../../assets/images/partners/Steve-Madden.png') },
+    { id: '3', name: 'Louis Vuitton', logo: require('../../../assets/logos/Louis-Vuitton.png') },
+    { id: '4', name: 'Dior', logo: require('../../../assets/logos/dior.png') },
+    { id: '5', name: 'Sweetgreen', logo: require('../../../assets/logos/sweetgreen.png') },
+    { id: '6', name: 'Saks Fifth Avenue', logo: require('../../../assets/logos/saks.png') },
+    { id: '7', name: 'Amazon', logo: require('../../../assets/logos/amazon.png') },
+    { id: '8', name: 'WME', logo: require('../../../assets/logos/wme.png') },
+  ]
   return (
     
     <View style={styles.container}>
