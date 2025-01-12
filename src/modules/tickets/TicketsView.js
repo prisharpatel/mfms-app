@@ -46,7 +46,7 @@ export default function EventTicketsView() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    
     backgroundColor: colors.white,
   },
   bgImage: {
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     textTransform: 'lowercase',
   },
   widgetContainer: {
-    height: 600,
+    height: 570,
     width: '100%',
     marginVertical: 20,
     alignItems: 'center', // Centers the WebView horizontally
