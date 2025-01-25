@@ -5,9 +5,8 @@ import TabNavigator from './MainTabNavigator';
 import GalleryScreen from '../gallery/GalleryViewContainer';
 import AvailableInFullVersion from '../../modules/availableInFullVersion/AvailableInFullVersionViewContainer';
 import PartnerInfoView from '../partners/PartnerInfoView';
-import FFSInfoView from '../ffs/FFSInfoView';
 import FAQInfoView from '../faq/FAQInfoView';
-import AboutInfoView from '../about/AboutView'; 
+import FFSInfoView from '../ffs/FfsInfoView';
 
 import { colors, fonts } from '../../styles';
 
