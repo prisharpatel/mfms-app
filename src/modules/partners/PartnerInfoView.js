@@ -41,8 +41,6 @@ export default function PartnerScreen({ isExtended, setIsExtended }) {
     { id: '26', name: 'Intelligent Change', logo: require('../../../assets/images/partners/intelligent-change.png') },
   ]
 
-  console.log('Partners:', partners);
-
   return (
     
     <View style={styles.container}>

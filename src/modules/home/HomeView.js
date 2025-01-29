@@ -10,23 +10,24 @@ export default function HomeScreen({ navigation }) {
   const [slideAnim2] = useState(new Animated.Value(-300)); // Animation for "COMING UP"
   const now = new Date();
 
+  // events
   const events = [
-    {
-      title: "Designing Success: Women Shaping the Future of Fashion",
-      speakers: ["Jennifer Fisher", "Lisa Greenwald"],
-      location: "Robertson Auditorium",
-      startTime: new Date("2025-01-05T13:00:00"),
-      endTime: new Date("2025-01-05T15:30:00"),
-      description: "A panel discussing the pivotal role of women in shaping the future of fashion."
-    },
-    {
-      title: "The Thing About Change",
-      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
-      location: "Kresge Suites",
-      startTime: new Date("2025-09-03T23:59:59"),
-      endTime: new Date("2025-09-04T23:59:59"),
-      description: "A discussion on the dynamics of change in fashion and media."
-    }
+    // {
+    //   title: "Designing Success: Women Shaping the Future of Fashion",
+    //   speakers: ["Jennifer Fisher", "Lisa Greenwald"],
+    //   location: "Robertson Auditorium",
+    //   startTime: new Date("2025-01-27T19:00:00"),
+    //   endTime: new Date("2025-01-27T23:00:00"),      
+    //   description: "A panel discussing the pivotal role of women in shaping the future of fashion."
+    // },
+    // {
+    //   title: "The Thing About Change",
+    //   speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
+    //   location: "Kresge Suites",
+    //   startTime: new Date("2025-09-03T23:59:59"),
+    //   endTime: new Date("2025-09-04T23:59:59"),
+    //   description: "A discussion on the dynamics of change in fashion and media."
+    // }
   ];
   let currentEvent = null;
   let upcomingEvent = null;
@@ -35,9 +36,9 @@ export default function HomeScreen({ navigation }) {
     upcomingEvent = events
       .filter(event => event.startTime > now)
       .sort((a, b) => a.startTime - b.startTime)[0]
-  }
-;
+  };
 
+  // moving text
   const REPEATING_TEXT_1 = Array(1000).fill('CURRENTLY    -    ');
   const REPEATING_TEXT_2 = Array(1000).fill('COMING UP    -    ');
 
@@ -64,6 +65,34 @@ export default function HomeScreen({ navigation }) {
     const elapsed = now - start;
     return Math.min((elapsed / totalDuration) * 100, 100);
   };
+
+  // countdown 
+  const [countdown, setCountdown] = useState("");
+
+  useEffect(() => {
+    const targetDate = new Date("2025-03-28T08:00:00");;
+    const updateCountdown = () => {
+      const now = new Date();
+      const timeDifference = targetDate - now;
+
+      if (timeDifference > 0) {
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+        const seconds = Math.floor((timeDifference / 1000) % 60);
+
+        setCountdown(
+          `${days} days ${hours} hours ${minutes} minutes`
+        );
+      } else {
+        setCountdown("The event has started!");
+      }
+    };
+
+    const interval = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, []);
   return (
     <ScrollView style={styles.container}>
       <ImageBackground
@@ -187,6 +216,7 @@ export default function HomeScreen({ navigation }) {
               
               <Text> {'\n'} </Text>
               <Text size = {22} style={styles.panel}>Stay Tuned...</Text>
+
             </>
           )}
 
@@ -233,7 +263,7 @@ export default function HomeScreen({ navigation }) {
 
           )}
 
-          { (!currentEvent && !upcomingEvent &&
+          { (!currentEvent && !upcomingEvent && now < new Date("2025-03-28T08:00:00") &&
             (<>
               <View style={styles.divider} />
               <View style={styles.slidingContainer}>
@@ -249,6 +279,15 @@ export default function HomeScreen({ navigation }) {
               </View>
 
               <View style={styles.divider} />
+              <Text> {'\n'} </Text>
+              
+              
+              <Text style={styles.header}>
+                COUNTDOWN
+              </Text>
+              <Text style={styles.countdownTime}>
+                {countdown}
+              </Text>
               <Text> {'\n'} </Text>
               <Text size = {22} style={styles.panel}>Stay Tuned...</Text>
             </>
@@ -364,5 +403,19 @@ const styles = StyleSheet.create({
     fontFamily: "Times New Roman",
     fontStyle: "italic",
     fontSize: 18,
+  },
+  countdownTime: {
+    textAlign: "center",
+    fontWeight: "bold",
+    marginTop: 30,
+    fontSize: 25,
+    color: colors.blue,
+  },
+  countdown: {
+    textAlign: "center",
+    fontSize: 25,
+    fontWeight: "bold",
+    fontStyle: "italic",
+    color: colors.black,
   },
 });

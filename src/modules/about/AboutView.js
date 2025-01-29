@@ -16,33 +16,6 @@ export default function AboutScreen({ isExtended, setIsExtended }) {
   //   });
   // };
 
-  const now = new Date();
-
-  const events = [ 
-    {
-      title: "Designing Success: Women Shaping the Future of Fashion",
-      speakers: ["Jennifer Fisher", "Lisa Greenwald"],
-      location: "Robertson Auditorium",
-      startTime: now, // starts now
-      endTime: new Date("2025-03-03T23:59:59") // ends on March 3, 2025
-    },
-
-    {
-      title: "The Thing About Change",
-      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "hannah Bronfman"],
-      location: "Robertson Auditorium",
-      startTime: new Date("2025-09-03T23:59:59"), 
-      endTime: new Date("2025-03-03T23:59:59") 
-    }
-  ];
-
-  const currentEvent = events.find(event =>
-    now >= event.startTime && now <= event.endTime
-  );
-
-  const upcomingEvent = events
-  .filter(event => event.startTime > now)
-  .sort((a, b) => a.startTime - b.startTime)[0]; // The soonest upcoming event
 
 
   return (
@@ -130,29 +103,6 @@ const styles = StyleSheet.create({
     color: colors.blue,
     textAlign: 'center'
   },
-  header2: {
-    fontFamily: "Times New Roman",
-    fontWeight: "bold",
-  }, 
-  time: {
-    fontFamily: "Times New Roman",
-    fontStyle: "italic",
-    fontSize: 18, 
-  },
-  panel: {
-    width: '80%',    
-    fontFamily: "Times New Roman",
-    textAlign: 'center',
-    fontWeight: "bold",
-    color: colors.blue,
-    fontSize: 25
-  }, 
-  speaker: {
-    fontFamily: "Times New Roman",
-    fontStyle: "italic",
-    fontWeight: "bold", 
-    fontSize: 20,
-  }, 
   font: {
     fontFamily: "Times New Roman",
   }
