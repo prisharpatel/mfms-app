@@ -8,23 +8,26 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
   const [slideAnim2] = useState(new Animated.Value(-300)); // Animation for "COMING UP"
-  const now = new Date();
+  const now = new Date("2025-03-28T09:00:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
+  const summitStart = new Date("2025-03-28T08:00:00"); 
+  const summitEnd = new Date("2025-03-28T17:00:00"); 
 
+  // events
   const events = [
     {
       title: "Designing Success: Women Shaping the Future of Fashion",
       speakers: ["Jennifer Fisher", "Lisa Greenwald"],
       location: "Robertson Auditorium",
-      startTime: new Date("2025-01-05T13:00:00"),
-      endTime: new Date("2025-01-05T15:30:00"),
+      startTime: new Date("2025-03-28T09:00:00"),
+      endTime: new Date("2025-03-28T010:00:00"),
       description: "A panel discussing the pivotal role of women in shaping the future of fashion."
     },
     {
       title: "The Thing About Change",
       speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
       location: "Kresge Suites",
-      startTime: new Date("2025-09-03T23:59:59"),
-      endTime: new Date("2025-09-04T23:59:59"),
+      startTime: new Date("2025-03-28T11:00:00"),
+      endTime: new Date("2025-03-28T12:00:00"),
       description: "A discussion on the dynamics of change in fashion and media."
     }
   ];
@@ -35,9 +38,9 @@ export default function HomeScreen({ navigation }) {
     upcomingEvent = events
       .filter(event => event.startTime > now)
       .sort((a, b) => a.startTime - b.startTime)[0]
-  }
-;
+  };
 
+  // moving text
   const REPEATING_TEXT_1 = Array(1000).fill('CURRENTLY    -    ');
   const REPEATING_TEXT_2 = Array(1000).fill('COMING UP    -    ');
 
@@ -64,6 +67,41 @@ export default function HomeScreen({ navigation }) {
     const elapsed = now - start;
     return Math.min((elapsed / totalDuration) * 100, 100);
   };
+
+  // countdown 
+  const [countdown, setCountdown] = useState([]);
+
+  useEffect(() => {
+    const targetDate = summitStart;
+  
+    const updateCountdown = () => {
+      const now = new Date();
+      const timeDifference = targetDate - now;
+  
+      if (timeDifference > 0) {
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+  
+        setCountdown([
+          days,
+          hours,
+           minutes,
+        ]);
+      } else {
+        setCountdown([
+          0,
+          0,
+          0,
+        ]);
+      }
+    };
+  
+
+    const interval = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, []);
   return (
     <ScrollView style={styles.container}>
       <ImageBackground
@@ -73,7 +111,7 @@ export default function HomeScreen({ navigation }) {
       >
         <View style={styles.section}>
           {/* Outlined Text */}
-          <Text size={10}> {'\n'} </Text>
+          <Text size={20}> {'\n'} </Text>
           <View style={styles.outlinedTextContainer}>
             <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
             <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
@@ -83,13 +121,34 @@ export default function HomeScreen({ navigation }) {
           </View>
 
           <Text size={10}> {'\n'} </Text>
-          <Text style={styles.header}> WELCOME TO MFMS 2025 </Text>
-          <Text size={10}> {'\n'} </Text>
 
-          {/* Sliding "CURRENTLY" */}
-          {currentEvent && (
-            <>
+          {/* COUNTDOWN BEFORE SUMMIT DAY */}
+          { (now <= summitStart &&
+            (<>
+              <Text size={25}> {'\n'} </Text>
+              <View style={styles.outlinedTextContainer}>
+                  <Text style={styles.countdown}>countdown</Text>
+              </View>
               
+              <Text style={styles.countdownTime}>
+                {countdown[0]} days
+              </Text>
+
+              <Text style={styles.countdownTime}>
+                {countdown[1]} hours
+              </Text>
+
+              <Text style={styles.countdownTime}>
+                {countdown[2]} minutes
+              </Text>
+            </>
+          ))
+        }
+
+          
+          {currentEvent && now > summitStart && (
+            <>
+              <Text size={10}> {'\n'} </Text>
               <View style={styles.slidingContainer}>
                 <Animated.View 
                   style={[
@@ -104,14 +163,11 @@ export default function HomeScreen({ navigation }) {
               <Text size={2}> {'\n'} </Text>
               <Text size={20}> {'•••'} </Text>
 
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('EventDetails', { event: currentEvent })
-                }
+              <View
                 style = {styles.panelContainer}
               >
                 <Text style={styles.panel}>{currentEvent.title}</Text>
-              </TouchableOpacity>
+              </View>
               <Text size={5}> {'\n'} </Text>
               <Text black style={styles.time}>
                 {currentEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {currentEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -134,18 +190,35 @@ export default function HomeScreen({ navigation }) {
             </>
           )}
 
-          {/* "COMING UP" */}
-          {currentEvent && upcomingEvent && (
+          {currentEvent && upcomingEvent && now > summitStart &&(
             <>
+
               <Text> {'\n'} </Text>
 
-              <View style={styles.divider} />
+              {/* <View style={styles.divider} />
 
               <Text black size={20} style={styles.header2}>
                 COMING UP
               </Text>
 
-              <View style={styles.divider} />
+              <View style={styles.divider} /> */}
+
+              
+              <View style={styles.slidingContainer}>
+                <Animated.View 
+                  style={[
+                    styles.slidingStream, 
+                    { transform: [{ translateX: slideAnim2 }] }
+                  ]}
+                >
+                  <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
+                  <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
+                </Animated.View>
+              </View>
+
+              
+
+              <Text size={10}> {'\n'} </Text>
 
               <TouchableOpacity
                 onPress={() =>
@@ -160,17 +233,11 @@ export default function HomeScreen({ navigation }) {
               </Text>
               <Text size={5}> {'\n'} </Text>
 
-              
-              {/* {upcomingEvent.speakers.map((speaker, index) => (
-                <Text key={index} style={styles.speaker}>
-                  {speaker}
-                </Text>
-              ))} */}
               <Text black size={18} style={styles.font}>@ {upcomingEvent.location}</Text>
             </>
           )}
 
-          {currentEvent && !upcomingEvent && (
+          {currentEvent && !upcomingEvent && now > summitStart && (
             <>
               <Text> {'\n'} </Text>
 
@@ -187,12 +254,16 @@ export default function HomeScreen({ navigation }) {
               
               <Text> {'\n'} </Text>
               <Text size = {22} style={styles.panel}>Stay Tuned...</Text>
+
             </>
           )}
 
 
-          {!currentEvent && upcomingEvent && (
+          {!currentEvent && upcomingEvent && now > summitStart && (
             <>
+
+            <Text size={25}> {'\n'} </Text>
+
             <View style={styles.divider} />
             <View style={styles.slidingContainer}>
               <Animated.View 
@@ -206,7 +277,7 @@ export default function HomeScreen({ navigation }) {
               </Animated.View>
             </View>
             <View style={styles.divider} />
-            <Text size={5}> {'\n'} </Text>
+            <Text size={10}> {'\n'} </Text>
 
             <TouchableOpacity
               onPress={() =>
@@ -233,27 +304,7 @@ export default function HomeScreen({ navigation }) {
 
           )}
 
-          { (!currentEvent && !upcomingEvent &&
-            (<>
-              <View style={styles.divider} />
-              <View style={styles.slidingContainer}>
-                <Animated.View 
-                  style={[
-                    styles.slidingStream, 
-                    { transform: [{ translateX: slideAnim2 }] }
-                  ]}
-                >
-                  <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
-                  <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
-                </Animated.View>
-              </View>
-
-              <View style={styles.divider} />
-              <Text> {'\n'} </Text>
-              <Text size = {22} style={styles.panel}>Stay Tuned...</Text>
-            </>
-          ))
-        }
+          
         </View>
       </ImageBackground>
     </ScrollView>
@@ -287,13 +338,14 @@ const styles = StyleSheet.create({
   },
   slidingText: {
     fontSize: 20,
-    fontFamily: "Times New Roman",
+    fontFamily: "Inter",
     fontWeight: "bold",
     color: colors.black,
+    lineHeight: 21
   },
   header:{
-    fontFamily: "Arial",
-    fontSize: 20,
+    fontFamily: "Inter",
+    fontSize: 25,
     fontWeight: "bold",
     fontStyle: "italic",
   },
@@ -314,19 +366,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   outlinedText: {
-    fontSize: 40,
+    fontSize: 37,
     fontWeight: 'bold',
     color: colors.white,
     textAlign: 'center',
+    fontFamily: "Arial",
     textTransform: 'lowercase',
+    fontStyle: 'italic',
   },
   outlinedTextShadow: {
     position: 'absolute',
-    fontSize: 40,
+    fontSize: 37,
     fontWeight: 'bold',
-    color: colors.blue,
+    color: colors.black,
     textAlign: 'center',
+    fontFamily: "Arial",
     textTransform: 'lowercase',
+    fontStyle: 'italic',
   },
   progressBar: {
     height: 5,
@@ -342,15 +398,16 @@ const styles = StyleSheet.create({
   },
   panelContainer:{
     alignItems: 'center',
-    width: '95%'
+    width: '100%',
+    border: '1px solid black',
   },
   panel: {
-    width: '80%',
+    width: '90%',
     fontFamily: "Times New Roman",
     textAlign: 'center',
     fontWeight: "bold",
     color: colors.blue,
-    fontSize: 22
+    fontSize: 24
   },
   speaker: {
     fontFamily: "Times New Roman",
@@ -364,5 +421,20 @@ const styles = StyleSheet.create({
     fontFamily: "Times New Roman",
     fontStyle: "italic",
     fontSize: 18,
+  },
+  countdownTime: {
+    textAlign: "center",
+    fontWeight: "bold",
+    marginTop: 30,
+    fontSize: 25,
+    color: colors.blue,
+  },
+  countdown: {
+    fontSize: 35,
+    fontWeight: 'bold',
+    fontStyle: "italic",
+    color: colors.blue,
+    textAlign: 'center',
+    fontFamily: "Arial",
   },
 });
