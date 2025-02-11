@@ -7,6 +7,8 @@ import AvailableInFullVersion from '../../modules/availableInFullVersion/Availab
 import PartnerInfoView from '../partners/PartnerInfoView';
 import FAQInfoView from '../faq/FAQInfoView';
 import FFSInfoView from '../ffs/FfsInfoView';
+import SpeakerDetailsView from '../speakers/SpeakerDetails'
+import TicketsView from '../tickets/TicketsView'
 
 import { colors, fonts } from '../../styles';
 
@@ -170,6 +172,29 @@ const StackNavigationData = [
       fontSize: 18,
     },
   },
+
+  {
+    name: 'SpeakerDetails',
+    component: SpeakerDetailsView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  {
+    name: 'TicketsView',
+    component: TicketsView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  }
   
 ]
 
