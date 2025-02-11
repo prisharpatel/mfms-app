@@ -48,7 +48,7 @@ const SpeakersScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>MFMS 2024 SPEAKERS</Text>
+      <Text style={styles.title}>MFMS 2025 SPEAKERS</Text>
       <Text style={styles.subtitle}>Click on our speakers to learn more.</Text>
 
       {/* Speaker Grid */}

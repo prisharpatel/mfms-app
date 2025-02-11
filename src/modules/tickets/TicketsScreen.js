@@ -9,14 +9,18 @@ const TicketsScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.sectionTitle}>About Tickets</Text>
+      {/* <Text size="2"></Text>
       <Text style={styles.description}>
         Attendees can purchase two types of tickets to the MFMS
-      </Text>
+      </Text> */}
 
       <View style={styles.ticketContainer}>
-        <Text style={styles.ticketType}>General Admissions</Text>
+        <Text style={styles.ticketType}>General Admission</Text>
         <Text style={styles.ticketPrice}>$35</Text>
       </View>
+
+      <Text size="2"></Text>
+
       <Text style={styles.ticketDescription}>
         This is an all-inclusive ticket to the summit from 8am-5pm
       </Text>
@@ -25,15 +29,29 @@ const TicketsScreen = () => {
         <Text style={styles.ticketType}>VIP Ticket</Text>
         <Text style={styles.ticketPrice}>$45</Text>
       </View>
+
+      <Text size="2"></Text>
+
       <Text style={styles.ticketDescription}>
         This ticket includes the summit and the Thursday Night Launch Party
+      </Text>
+
+      <View style={styles.ticketContainer}>
+        <Text style={styles.ticketType}>Virtual Ticket</Text>
+        <Text style={styles.ticketPrice}>$15</Text>
+      </View>
+
+      <Text size="2"></Text>
+
+      <Text style={styles.ticketDescription}>
+        This ticket allows you to watch the summit virtually.
       </Text>
 
       <View style={styles.divider} />
 
       <Text style={styles.sectionTitle}>Your MFMS Ticket</Text>
       <Text style={styles.description}>
-        The MFMS handles all ticket transactions through Eventbrite. Click the button below to be redirected to an external site where you can purchase your ticket.
+        The MFMS handles all ticket transactions through Eventbrite. Click the button below to purchase your ticket.
       </Text>
 
       <TouchableOpacity
@@ -53,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
     fontFamily: fonts.primaryBold,
@@ -61,10 +79,8 @@ const styles = StyleSheet.create({
     marginTop: 30
   },
   description: {
-    fontSize: 13,
+    fontSize: 14,
     color: colors.gray,
-    marginBottom: 15,
-    marginTop: 15,
     textAlign: 'center'
   },
   ticketContainer: {
@@ -87,15 +103,13 @@ const styles = StyleSheet.create({
   ticketDescription: {
     fontSize: 14,
     color: colors.gray,
-    marginBottom: 15,
     marginLeft: 20,
     marginRight: 20
   },
   divider: {
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    marginVertical: 20,
-    marginTop: 50,
+    borderBottomColor: colors.gray,
+    marginTop: 30,
   },
   button: {
     backgroundColor: colors.white, // White background
