@@ -1,16 +1,24 @@
-import { compose, lifecycle } from 'recompose';
+import React, { useEffect, useState } from 'react';
 import { Platform, UIManager } from 'react-native';
 
 import AppView from './AppView';
 
-export default compose(
-  lifecycle({
-    componentDidMount() {
-      if (Platform.OS === 'android') {
-        // eslint-disable-next-line no-unused-expressions
-        UIManager.setLayoutAnimationEnabledExperimental &&
-          UIManager.setLayoutAnimationEnabledExperimental(true);
-      }
-    },
-  }),
-)(AppView);
+const AppContainer = () => {
+  const [mounted, setMounted] = useState(true); // Track component mount state
+
+  useEffect(() => {
+    if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+      UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
+
+    return () => {
+      setMounted(false); // Mark component as unmounted when cleaning up
+    };
+  }, []);
+
+  if (!mounted) return null; // Prevent updates on an unmounted component
+
+  return <AppView />;
+};
+
+export default AppContainer;

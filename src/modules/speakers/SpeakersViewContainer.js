@@ -1,7 +1,10 @@
-import { compose, withState } from 'recompose';
-
+import React, { useState } from 'react';
 import SpeakersScreen from './SpeakersView';
 
-export default compose(withState('isExtended', 'setIsExtended', false))(
-  SpeakersScreen,
-);
+const SpeakersContainer = () => {
+  const [isExtended, setIsExtended] = useState(false);
+
+  return <SpeakersScreen isExtended={isExtended} setIsExtended={setIsExtended} />;
+};
+
+export default SpeakersContainer;
