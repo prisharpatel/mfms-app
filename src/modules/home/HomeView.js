@@ -338,12 +338,13 @@ const styles = StyleSheet.create({
   },
   slidingText: {
     fontSize: 20,
-    fontFamily: "Times New Roman",
+    fontFamily: "Inter",
     fontWeight: "bold",
     color: colors.black,
+    lineHeight: 21
   },
   header:{
-    fontFamily: "Arial",
+    fontFamily: "Inter",
     fontSize: 25,
     fontWeight: "bold",
     fontStyle: "italic",
