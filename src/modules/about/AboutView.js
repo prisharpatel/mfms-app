@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     fontSize: 40,
     fontWeight: 'bold',
-    color: colors.blue, // Outline color
+    color: colors.black, // Outline color
     textAlign: 'center',
     textTransform: 'lowercase',
   },
