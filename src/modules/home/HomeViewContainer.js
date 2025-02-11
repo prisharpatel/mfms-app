@@ -1,7 +1,10 @@
-import { compose, withState } from 'recompose';
-
+import React, { useState } from 'react';
 import HomeScreen from './HomeView';
 
-export default compose(withState('isExtended', 'setIsExtended', false))(
-  HomeScreen,
-);
+const HomeContainer = () => {
+  const [isExtended, setIsExtended] = useState(false);
+
+  return <HomeScreen isExtended={isExtended} setIsExtended={setIsExtended} />;
+};
+
+export default HomeContainer;

@@ -1,23 +1,29 @@
-import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import GalleryScreen from './GalleryView';
 import { loadImages, refreshImages } from './GalleryState';
 
-export default compose(
-  connect(
-    state => ({
-      isLoading: state.gallery.isLoading,
-      images: state.gallery.images,
-    }),
-    dispatch => ({
-      loadImages: () => dispatch(loadImages()),
-      refreshImages: () => dispatch(refreshImages()),
-    }),
-  ),
-  lifecycle({
-    componentDidMount() {
-      this.props.loadImages();
-    },
-  }),
-)(GalleryScreen);
+const GalleryContainer = () => {
+  const dispatch = useDispatch();
+
+  // Select state from Redux store
+  const isLoading = useSelector((state) => state.gallery.isLoading);
+  const images = useSelector((state) => state.gallery.images);
+
+  // Run `loadImages()` when the component mounts
+  useEffect(() => {
+    dispatch(loadImages());
+  }, [dispatch]);
+
+  return (
+    <GalleryScreen 
+      isLoading={isLoading} 
+      images={images} 
+      loadImages={() => dispatch(loadImages())} 
+      refreshImages={() => dispatch(refreshImages())} 
+    />
+  );
+};
+
+export default GalleryContainer;

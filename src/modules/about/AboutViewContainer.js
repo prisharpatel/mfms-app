@@ -1,7 +1,10 @@
-import { compose, withState } from 'recompose';
-
+import React, { useState } from 'react';
 import AboutScreen from './AboutView';
 
-export default compose(withState('isExtended', 'setIsExtended', false))(
-  AboutScreen,
-);
+const AboutContainer = () => {
+  const [isExtended, setIsExtended] = useState(false);
+
+  return <AboutScreen isExtended={isExtended} setIsExtended={setIsExtended} />;
+};
+
+export default AboutContainer;
