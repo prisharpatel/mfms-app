@@ -16,10 +16,6 @@ export default function EventTicketsView({ onGoBack }) {
       >
          {/* Header Section with Back Button */}
          <View style={styles.headerContainer}>
-          {/* Back Button */}
-          <TouchableOpacity style={styles.backButton} onPress={onGoBack}>
-            <Text style={styles.backButtonText}>←</Text>
-          </TouchableOpacity>
 
           {/* "Tickets" Text */}
           <View style={styles.section}>
@@ -65,19 +61,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 20,
     marginTop: 20,
-  },
-  backButton: {
-    position: 'absolute',
-    left: 40, // Align to the left
-    backgroundColor: colors.white, // Blue button
-    paddingVertical: 8,
-    paddingHorizontal: 15,
-    borderRadius: 5,
-  },
-  backButtonText: {
-    color: colors.blue, // White text
-    fontSize: 16,
-    fontWeight: 'bold',
   },
   outlinedTextContainer: {
     alignItems: 'center',

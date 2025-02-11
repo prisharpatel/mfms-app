@@ -1,124 +1,115 @@
 import React from 'react';
-import { StyleSheet,View, ImageBackground, ScrollView} from 'react-native';
+import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { colors, fonts } from '../../styles';
 
-import { fonts, colors } from '../../styles';
-import { Text } from '../../components/StyledText';
+// Speaker Data Array
+const speakers = [
+  {
+    id: '1',
+    name: 'Chris Appleton',
+    image: require('../../../assets/images/speakers/default.png'),
+    description: 'Celebrity hairstylist known for his work with Kim Kardashian and JLo.',
+  },
+  {
+    id: '2',
+    name: 'Lauryn Bosstick',
+    image: require('../../../assets/images/speakers/default.png'),
+    description: 'Entrepreneur, podcast host, and creator of The Skinny Confidential.',
+  },
+  {
+    id: '3',
+    name: 'Michael Bosstick',
+    image: require('../../../assets/images/speakers/default.png'),
+    description: 'Co-founder of Dear Media and host of The Skinny Confidential Podcast.',
+  },
+  {
+    id: '4',
+    name: 'Marcus Collins',
+    image: require('../../../assets/images/speakers/default.png'),
+    description: 'Marketing professor and former head of digital strategy at Beyoncé’s company.',
+  },
+  {
+    id: '5',
+    name: 'Speaker 5',
+    image: require('../../../assets/images/speakers/default.png'),
+    description: 'Music producer and creative director for major fashion brands.',
+  },
+  {
+    id: '6',
+    name: 'Speaker 6',
+    image: require('../../../assets/images/speakers/default.png'),
+    description: 'Fashion designer known for innovative runway shows.',
+  },
+];
 
-export default function SpeakersScreen({ isExtended, setIsExtended }) {
-
-  const now = new Date();
+const SpeakersScreen = () => {
+  const navigation = useNavigation();
 
   return (
-    
-    <ScrollView style={styles.container}>
-      <ImageBackground
-        source={require('../../../assets/images/background.png')}
-        style={styles.bgImage}
-        resizeMode="cover"
-      >
-        <View style={styles.section}>
-          <Text size={25} black > </Text>
-          <View style={styles.outlinedTextContainer}>
-            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>speakers</Text>
-            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>speakers</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>speakers</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>speakers</Text>
-            <Text style={styles.outlinedText}>speakers</Text>
-          </View>
-          <Text> {'\n'} </Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>MFMS 2024 SPEAKERS</Text>
+      <Text style={styles.subtitle}>Click on our speakers to learn more.</Text>
 
-        </View>
-      </ImageBackground>
-    </ScrollView>
+      {/* Speaker Grid */}
+      <FlatList
+        data={speakers}
+        keyExtractor={(item) => item.id}
+        numColumns={2} 
+        contentContainerStyle={styles.flatListContent}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={styles.speakerContainer}
+            onPress={() => navigation.navigate('SpeakerDetails', { speaker: item })}
+          >
+            <Image source={item.image} style={styles.image} />
+            <Text style={styles.name}>{item.name}</Text>
+          </TouchableOpacity>
+        )}
+      />
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: colors.white
-    },
-    bgImage: {
-      flex: 1,
-      marginHorizontal: -20,
-    },
-    section: {
-      flex: 1,
-      paddingHorizontal: 20,
-      alignItems: 'center',
-      fontFamily: fonts.primaryBoldItalic,
-    },
-    sectionLarge: {
-      height: 100
-    },
-    title: {
-      fontFamily: "Times New Roman",
-      fontWeight: "bold",
-      fontStyle: "italic",
-      color: colors.blue,
-      textAlign: 'center'
-  
-    },
-    divider: {
-      width: '80%',       // Use less than '100%' to prevent it from reaching the edges
-      height: 1,
-      backgroundColor: '#000',
-      marginVertical: 8,
-      alignSelf: 'center' // Centers the divider within its parent container
-    },
-    outlinedTextContainer: {
-      position: 'relative',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    outlinedText: {
-      fontSize: 40,
-      fontWeight: 'bold',
-      color: colors.white, // Transparent fill
-      textAlign: 'center',
-      textTransform: 'lowercase',
-    },
-    outlinedTextShadow: {
-      position: 'absolute',
-      fontSize: 40,
-      fontWeight: 'bold',
-      color: colors.blue, // Outline color
-      textAlign: 'center',
-      textTransform: 'lowercase',
-    },
-    header: {
-      fontFamily: "Arial",
-      fontWeight: "bold",
-      fontStyle: "italic",
-      color: colors.blue,
-      textAlign: 'center'
-    },
-    header2: {
-      fontFamily: "Times New Roman",
-      fontWeight: "bold",
-    }, 
-    time: {
-      fontFamily: "Times New Roman",
-      fontStyle: "italic",
-      fontSize: 18, 
-    },
-    panel: {
-      width: '80%',    
-      fontFamily: "Times New Roman",
-      textAlign: 'center',
-      fontWeight: "bold",
-      color: colors.blue,
-      fontSize: 25
-    }, 
-    speaker: {
-      fontFamily: "Times New Roman",
-      fontStyle: "italic",
-      fontWeight: "bold", 
-      fontSize: 20,
-    }, 
-    font: {
-      fontFamily: "Times New Roman",
-    }
-  
-  });
-  
+  container: {
+    flex: 1,
+    backgroundColor: colors.white,
+    paddingTop: 40,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10,
+    fontFamily: fonts.primaryBold
+  },
+  subtitle: {
+    fontSize: 16,
+    color: colors.gray,
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  flatListContent: {
+    paddingHorizontal: 10,
+    paddingBottom: 20,
+  },
+  speakerContainer: {
+    flex: 1,
+    alignItems: 'center',
+    margin: 10,
+  },
+  image: {
+    width: 150,
+    height: 150,
+    borderRadius: 10,
+    marginBottom: 5,
+  },
+  name: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: colors.gray
+  },
+});
+
+export default SpeakersScreen;
