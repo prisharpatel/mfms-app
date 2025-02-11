@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, ImageBackground, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ImageBackground, Dimensions, TouchableOpacity } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { fonts, colors } from '../../styles';
 
 const { width: screenWidth } = Dimensions.get('window');
 const widgetWidth = Math.min(screenWidth - 40, 600); // Dynamically calculate widget width
 
-export default function EventTicketsView() {
+export default function EventTicketsView({ onGoBack }) {
   return (
     <ScrollView style={styles.container}>
       <ImageBackground
@@ -14,9 +14,15 @@ export default function EventTicketsView() {
         style={styles.bgImage}
         resizeMode="cover"
       >
-        {/* Header Section */}
-        <View style={styles.section}>
-          <Text> {'\n'} </Text>
+         {/* Header Section with Back Button */}
+         <View style={styles.headerContainer}>
+          {/* Back Button */}
+          <TouchableOpacity style={styles.backButton} onPress={onGoBack}>
+            <Text style={styles.backButtonText}>←</Text>
+          </TouchableOpacity>
+
+          {/* "Tickets" Text */}
+          <View style={styles.section}>
           <View style={styles.outlinedTextContainer}>
             <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>tickets</Text>
             <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>tickets</Text>
@@ -24,6 +30,7 @@ export default function EventTicketsView() {
             <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>tickets</Text>
             <Text style={styles.outlinedText}>tickets</Text>
           </View>
+        </View>
         </View>
 
         {/* Centered Eventbrite Widget */}
@@ -46,23 +53,36 @@ export default function EventTicketsView() {
 
 const styles = StyleSheet.create({
   container: {
-    
     backgroundColor: colors.white,
   },
   bgImage: {
     flex: 1,
     marginHorizontal: -20,
   },
-  section: {
-    flex: 1,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-    fontFamily: fonts.primaryBoldItalic,
-  },
-  outlinedTextContainer: {
-    position: 'relative',
+  headerContainer: {
+    flexDirection: 'row', // Align back button & text in a row
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 20,
+    marginTop: 20,
+  },
+  backButton: {
+    position: 'absolute',
+    left: 40, // Align to the left
+    backgroundColor: colors.white, // Blue button
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderRadius: 5,
+  },
+  backButtonText: {
+    color: colors.blue, // White text
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  outlinedTextContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1, // Ensures text is centered
   },
   outlinedText: {
     fontSize: 40,
