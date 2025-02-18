@@ -7,7 +7,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
-  const now = new Date("2025-03-28T09:00:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
+  const now = new Date("2025-03-28T08:30:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
   const summitStart = new Date("2025-03-28T08:00:00"); 
   const summitEnd = new Date("2025-03-28T17:00:00"); 
 
@@ -16,16 +16,16 @@ export default function HomeScreen({ navigation }) {
       title: "Designing Success: Women Shaping the Future of Fashion",
       speakers: ["Jennifer Fisher", "Lisa Greenwald"],
       location: "Robertson Auditorium",
-      startTime: new Date("2025-01-05T13:00:00"),
-      endTime: new Date("2025-01-05T15:30:00"),
+      startTime: new Date("2025-03-28T08:00:00"),
+      endTime: new Date("2025-03-28T09:30:00"),
       description: "A panel discussing the pivotal role of women in shaping the future of fashion."
     },
     {
       title: "The Thing About Change",
       speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
       location: "Kresge Suites",
-      startTime: new Date("2025-09-03T23:59:59"),
-      endTime: new Date("2025-09-04T23:59:59"),
+      startTime: new Date("2025-03-28T10:00:00"),
+      endTime: new Date("2025-03-28T11:00:00"),
       description: "A discussion on the dynamics of change in fashion and media."
     }
   ];
@@ -136,19 +136,65 @@ export default function HomeScreen({ navigation }) {
           <Text size={30}> {'\n'} </Text>
 
           {/* before the day of the summit - countdown */}
+          { (now < summitStart &&
+            (<>
+              <View style={styles.countdownContainer}>
+                  <Text style={styles.countdown}>COUNTDOWN</Text>
+              </View>
+              
+              <Text style={styles.countdownTime}>
+                {countdown[0]} days
+              </Text>
+
+              <Text style={styles.countdownTime}>
+                {countdown[1]} hours
+              </Text>
+
+              <Text style={styles.countdownTime}>
+                {countdown[2]} minutes
+              </Text>
+            </>
+            ))
+          }
+
           
           {/* if there is an event in progress */}
           {currentEvent && (
-            <View style={styles.panelContainer}>
-              <Text style={styles.panel}>Currently</Text>
-              <Text style={styles.panel}>{currentEvent.title}</Text>
-              <Text style={styles.panel}>{currentEvent.location}</Text>
-              <Text style={styles.panel}>{currentEvent.startTime.toLocaleTimeString()} - {currentEvent.endTime.toLocaleTimeString()}</Text>
-              <Text style={styles.panel}>{currentEvent.description}</Text>
-              <Text size={30}> {'\n'} </Text>
-            </View>
+            <>
+              <Text style={styles.currently}>Event In Progress:</Text>
+              <View style={styles.panelContainer}>
+                <Text style={styles.panel}>{currentEvent.title}</Text>
+              </View>
+
+              <View style={styles.progressBar}>
+                <View
+                  style={[
+                    styles.progressIndicator,
+                    { width: `${calculateProgress(currentEvent.startTime, currentEvent.endTime)}%` }
+                  ]}
+                />
+              </View>
+              
+              <View style={styles.locationContainer}>
+                <Text style={styles.location}>@ {currentEvent.location} | {currentEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {currentEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </Text>
+              </View>
+
+            </>
           )}
-          <Text style={styles.currently}>Event In Progress:</Text>
+
+          {/* if there is an upcoming event */}
+          {upcomingEvent && (
+
+            <>
+              <Text size={15}> {'\n'} </Text>
+
+              
+            </>
+          )}
+
+          
+          
 
           
 
@@ -176,7 +222,7 @@ const styles = StyleSheet.create({
     fontWeight: '600', //semi-bold
     textAlign: 'left',
     color: colors.blue,
-    marginLeft: 20,
+    marginHorizontal: 20,
   },
   titleContainer: {
     flexDirection: "row", // Puts items in a row (horizontally)
@@ -189,7 +235,7 @@ const styles = StyleSheet.create({
     fontWeight: '400', //regular
     textAlign: 'left',
     color: colors.blue,
-    marginLeft: 20,
+    marginHorizontal: 20,
   },
   titleLocation: {
     fontFamily: "NeueHaasDisplayRoman",
@@ -199,18 +245,18 @@ const styles = StyleSheet.create({
     color: colors.blue,
     marginRight: 20,
   },
-  currently: {
-    fontFamily: "NeueHaasDisplayRoman",
-    fontSize: 20,
-    fontWeight: '600', //semi-bold
-    textAlign: 'left',
-    marginLeft: 20,
-    color: colors.black,
-  },
   section: {
     flex: 1,
     paddingHorizontal: 20,
-    fontFamily: fonts.primaryBoldItalic,
+    fontFamily: "NeueHaasDisplayRoman",
+  },
+  divider: {
+    width: '90%', 
+    height: 1, 
+    backgroundColor: colors.blue,  
+    marginTop: 8,  
+    marginBottom: 8,
+    marginHorizontal: 20,
   },
   slidingContainer: {
     width: SCREEN_WIDTH*2,
@@ -229,68 +275,73 @@ const styles = StyleSheet.create({
     color: colors.blue,
     fontStyle: "italic",
   },
-  header:{
-    fontFamily: "Arial",
-    fontSize: 20,
-    fontWeight: "bold",
-    fontStyle: "italic",
-  },
-  header2: {
-    fontFamily: "Times New Roman",
-    fontWeight: "bold",
-  },
-  divider: {
-    width: '90%', 
-    height: 1, 
-    backgroundColor: colors.blue,  
-    // alignSelf: 'center',
-    marginTop: 8,  
-    marginBottom: 8,
-    marginHorizontal: 20,
-  },
-  outlinedTextContainer: {
-    position: 'relative',
+  countdownContainer: {
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  outlinedText: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: colors.white,
-    textAlign: 'center',
-    textTransform: 'lowercase',
+  countdown: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 36,
+    fontWeight: '600', //semi-bold
+    textAlign: 'left',
+    color: colors.black,
   },
-  outlinedTextShadow: {
-    position: 'absolute',
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: colors.blue,
-    textAlign: 'center',
-    textTransform: 'lowercase',
+  countdownTime: {
+    fontFamily: "NeueHaasDisplayRoman",
+    textAlign: "center",
+    fontWeight: "600",
+    marginTop: 30,
+    fontSize: 25,
+    color: colors.black,
+  },
+  currently: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 25,
+    fontWeight: '600', //semi-bold
+    textAlign: 'left',
+    marginHorizontal: 20,
+    color: colors.black,
+  },
+  panelContainer:{
+    marginTop: 8,
+    alignItems: 'flex-start',
+    width: '100%'
+  },
+  panel: {
+    maxWidth: '90%',
+    flexShrink: 1,
+    marginHorizontal: 20,
+    fontFamily: "Arial", 
+    fontStyle: "italic",
+    color: colors.black,
+    fontSize: 20,
   },
   progressBar: {
     height: 5,
     width: '80%',
     backgroundColor: '#ddd',
     borderRadius: 5,
-    marginVertical: 8
+    marginVertical: 20,
+    alignSelf: 'center', // Add this to center the progress bar
+    marginHorizontal: 20 // Add this to match other elements' margins
   },
   progressIndicator: {
     height: '100%',
     backgroundColor: colors.blue,
-    borderRadius: 5
+    borderRadius: 5,
   },
-  panelContainer:{
-    alignItems: 'center',
-    width: '95%'
+  locationContainer: {
+    alignItems: 'flex-start',
+    marginLeft: 20,
+    flexDirection: 'row'
   },
-  panel: {
-    width: '80%',
-    fontFamily: "Times New Roman",
+  location:{
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 17,
+    fontWeight: '400', 
     textAlign: 'center',
-    fontWeight: "bold",
-    color: colors.blue,
-    fontSize: 22
+    flexShrink: 1,
+    maxWidth: '100%',
+    color: colors.black
   },
   speaker: {
     fontFamily: "Times New Roman",
