@@ -37,7 +37,7 @@ export default function HomeScreen({ navigation }) {
   }
 ;
 
-  const REPEATING_TEXT_1 = Array(1000).fill('WELCOME TO MFMS 2025    -    ');
+  const REPEATING_TEXT_1 = Array(1000).fill('Welcome To The MFMS 2025        ');
 
   useEffect(() => {
     const animateStream = (animation) => {
@@ -79,142 +79,42 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.titleLocation}>Ross School of Business</Text>
           </View>
 
+          <Text size={30}> {'\n'} </Text>
+
+          <View style={styles.slidingContainer}>
+                <Animated.View 
+                  style={[
+                    styles.slidingStream, 
+                    { transform: [{ translateX: slideAnim1 }] }
+                  ]}
+                >
+                  <Text style={styles.slidingText}>{REPEATING_TEXT_1}</Text>
+                  <Text style={styles.slidingText}>{REPEATING_TEXT_1}</Text>
+                </Animated.View>
+          </View>
+
+          <Text size={30}> {'\n'} </Text>
+
+          {/* before the day of the summit - countdown */}
+          
+          {/* if there is an event in progress */}
+          {currentEvent && (
+            <View style={styles.panelContainer}>
+              <Text style={styles.panel}>Currently</Text>
+              <Text style={styles.panel}>{currentEvent.title}</Text>
+              <Text style={styles.panel}>{currentEvent.location}</Text>
+              <Text style={styles.panel}>{currentEvent.startTime.toLocaleTimeString()} - {currentEvent.endTime.toLocaleTimeString()}</Text>
+              <Text style={styles.panel}>{currentEvent.description}</Text>
+              <Text size={30}> {'\n'} </Text>
+            </View>
+          )}
+          <Text style={styles.currently}>Event In Progress:</Text>
+
           
 
-          {currentEvent && (
-            <>
-              
-              <Text size={2}> {'\n'} </Text>
-              <Text size={20}> {'•••'} </Text>
+          
 
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('EventDetails', { event: currentEvent })
-                }
-                style = {styles.panelContainer}
-              >
-                <Text style={styles.panel}>{currentEvent.title}</Text>
-              </TouchableOpacity>
-              <Text size={5}> {'\n'} </Text>
-              <Text black style={styles.time}>
-                {currentEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {currentEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </Text>
-              <View style={styles.progressBar}>
-                <View
-                  style={[
-                    styles.progressIndicator,
-                    { width: `${calculateProgress(currentEvent.startTime, currentEvent.endTime)}%` }
-                  ]}
-                />
-              </View>
-              {/* {currentEvent.speakers.map((speaker, index) => (
-                <Text key={index} style={styles.speaker}>
-                  {speaker}
-                </Text>
-              ))} */}
-              <Text size={5}> {'\n'} </Text>
-              <Text black size={18} style={styles.font}>@ {currentEvent.location}</Text>
-            </>
-          )}
-
-          {/* "COMING UP" */}
-          {currentEvent && upcomingEvent && (
-            <>
-              <Text> {'\n'} </Text>
-
-              <View style={styles.divider} />
-
-              <Text black size={20} style={styles.header2}>
-                COMING UP
-              </Text>
-
-              <View style={styles.divider} />
-
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('EventDetails', { event: upcomingEvent })
-                }
-              >
-                <Text style={styles.panel}>{upcomingEvent.title}</Text>
-              </TouchableOpacity>
-              <Text size={5}> {'\n'} </Text>
-              <Text black style={styles.time}>
-                {upcomingEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {upcomingEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </Text>
-              <Text size={5}> {'\n'} </Text>
-
-              
-              {/* {upcomingEvent.speakers.map((speaker, index) => (
-                <Text key={index} style={styles.speaker}>
-                  {speaker}
-                </Text>
-              ))} */}
-              <Text black size={18} style={styles.font}>@ {upcomingEvent.location}</Text>
-            </>
-          )}
-
-          {currentEvent && !upcomingEvent && (
-            <>
-              <Text> {'\n'} </Text>
-
-              <View style={styles.divider} />
-
-              <Text black size={20} style={styles.header2}>
-                COMING UP
-              </Text>
-
-              <View style={styles.divider} />
-
-              
-              <Text size={5}> {'\n'} </Text>
-              
-              <Text> {'\n'} </Text>
-              <Text size = {22} style={styles.panel}>Stay Tuned...</Text>
-            </>
-          )}
-
-
-          {!currentEvent && upcomingEvent && (
-            <>
-            <View style={styles.divider} />
-            <View style={styles.divider} />
-            <Text size={5}> {'\n'} </Text>
-
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate('EventDetails', { event: upcomingEvent })
-              }
-            >
-              <Text style={styles.panel}>{upcomingEvent.title}</Text>
-            </TouchableOpacity>
-
-            <Text size={5}> {'\n'} </Text>
-
-            <Text black style={styles.time}>
-              {upcomingEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {upcomingEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-            </Text>
-
-            <Text size={5}> {'\n'} </Text>
-            {/* {upcomingEvent.speakers.map((speaker, index) => (
-              <Text key={index} style={styles.speaker}>
-                {speaker}
-              </Text>
-            ))} */}
-            <Text black size={18} style={styles.font}>@ {upcomingEvent.location}</Text>
-          </>
-
-          )}
-
-          { (!currentEvent && !upcomingEvent &&
-            (<>
-              <View style={styles.divider} />
-
-              <View style={styles.divider} />
-              <Text> {'\n'} </Text>
-              <Text size = {22} style={styles.panel}>Stay Tuned...</Text>
-            </>
-          ))
-        }
+          
         </View>
       </ImageBackground>
     </ScrollView>
@@ -259,11 +159,13 @@ const styles = StyleSheet.create({
     color: colors.blue,
     marginRight: 20,
   },
-  subtitle: {
-    fontSize: 25,
+  currently: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 20,
+    fontWeight: '600', //semi-bold
     textAlign: 'left',
-    color: colors.blue,
-    marginBottom: 20,
+    marginLeft: 20,
+    color: colors.black,
   },
   section: {
     flex: 1,
@@ -283,8 +185,9 @@ const styles = StyleSheet.create({
   slidingText: {
     fontSize: 20,
     fontFamily: "Times New Roman",
-    fontWeight: "bold",
-    color: colors.black,
+    fontWeight: "400",
+    color: colors.blue,
+    fontStyle: "italic",
   },
   header:{
     fontFamily: "Arial",
