@@ -56,11 +56,15 @@ export default function HomeScreen({ navigation }) {
     animateStream(slideAnim1);
   }, [slideAnim1]);
 
+
+  
   const calculateProgress = (start, end) => {
     const totalDuration = end - start;
     const elapsed = now - start;
     return Math.min((elapsed / totalDuration) * 100, 100);
   };
+
+
   return (
     <ScrollView style={styles.container}>
       <ImageBackground
