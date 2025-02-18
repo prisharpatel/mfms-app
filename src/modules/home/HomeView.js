@@ -57,6 +57,40 @@ export default function HomeScreen({ navigation }) {
   }, [slideAnim1]);
 
 
+
+  const [countdown, setCountdown] = useState([]);
+
+  useEffect(() => {
+    const targetDate = summitStart;
+  
+    const updateCountdown = () => {
+      const now = new Date();
+      const timeDifference = targetDate - now;
+  
+      if (timeDifference > 0) {
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+  
+        setCountdown([
+          days,
+          hours,
+           minutes,
+        ]);
+      } else {
+        setCountdown([
+          0,
+          0,
+          0,
+        ]);
+      }
+    };
+  
+
+    const interval = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, []);
   
   const calculateProgress = (start, end) => {
     const totalDuration = end - start;
