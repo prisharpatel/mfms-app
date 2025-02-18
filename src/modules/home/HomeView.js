@@ -7,7 +7,6 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
-  const [slideAnim2] = useState(new Animated.Value(-300)); // Animation for "COMING UP"
   const now = new Date();
 
   const events = [
@@ -38,8 +37,7 @@ export default function HomeScreen({ navigation }) {
   }
 ;
 
-  const REPEATING_TEXT_1 = Array(1000).fill('CURRENTLY    -    ');
-  const REPEATING_TEXT_2 = Array(1000).fill('COMING UP    -    ');
+  const REPEATING_TEXT_1 = Array(1000).fill('WELCOME TO MFMS 2025    -    ');
 
   useEffect(() => {
     const animateStream = (animation) => {
@@ -56,8 +54,7 @@ export default function HomeScreen({ navigation }) {
     };
   
     animateStream(slideAnim1);
-    animateStream(slideAnim2);
-  }, [slideAnim1, slideAnim2]);
+  }, [slideAnim1]);
 
   const calculateProgress = (start, end) => {
     const totalDuration = end - start;
@@ -71,36 +68,22 @@ export default function HomeScreen({ navigation }) {
         style={styles.bgImage}
         resizeMode="cover"
       >
+        <Text size={10}> {'\n'} </Text>
         <View style={styles.section}>
-          {/* Outlined Text */}
-          <Text size={10}> {'\n'} </Text>
-          <View style={styles.outlinedTextContainer}>
-            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
-            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>Michigan Fashion Media Summit</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>Michigan Fashion Media Summit</Text>
-            <Text style={styles.outlinedText}>Michigan Fashion Media Summit</Text>
+          <Text style={styles.title}>Michigan Fashion</Text>
+          <Text style={styles.title}>Media Summit</Text>
+
+          <View style={styles.divider} />
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleDate}>03/28/25</Text>
+            <Text style={styles.titleLocation}>Ross School of Business</Text>
           </View>
 
-          <Text size={10}> {'\n'} </Text>
-          <Text style={styles.header}> WELCOME TO MFMS 2025 </Text>
-          <Text size={10}> {'\n'} </Text>
+          
 
-          {/* Sliding "CURRENTLY" */}
           {currentEvent && (
             <>
               
-              <View style={styles.slidingContainer}>
-                <Animated.View 
-                  style={[
-                    styles.slidingStream, 
-                    { transform: [{ translateX: slideAnim2 }] }
-                  ]}
-                >
-                  <Text style={styles.slidingText}>{REPEATING_TEXT_1}</Text>
-                  <Text style={styles.slidingText}>{REPEATING_TEXT_1}</Text>
-                </Animated.View>
-              </View>
               <Text size={2}> {'\n'} </Text>
               <Text size={20}> {'•••'} </Text>
 
@@ -194,17 +177,6 @@ export default function HomeScreen({ navigation }) {
           {!currentEvent && upcomingEvent && (
             <>
             <View style={styles.divider} />
-            <View style={styles.slidingContainer}>
-              <Animated.View 
-                style={[
-                  styles.slidingStream, 
-                  { transform: [{ translateX: slideAnim2 }] }
-                ]}
-              >
-                <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
-                <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
-              </Animated.View>
-            </View>
             <View style={styles.divider} />
             <Text size={5}> {'\n'} </Text>
 
@@ -236,17 +208,6 @@ export default function HomeScreen({ navigation }) {
           { (!currentEvent && !upcomingEvent &&
             (<>
               <View style={styles.divider} />
-              <View style={styles.slidingContainer}>
-                <Animated.View 
-                  style={[
-                    styles.slidingStream, 
-                    { transform: [{ translateX: slideAnim2 }] }
-                  ]}
-                >
-                  <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
-                  <Text style={styles.slidingText}>{REPEATING_TEXT_2}</Text>
-                </Animated.View>
-              </View>
 
               <View style={styles.divider} />
               <Text> {'\n'} </Text>
@@ -269,10 +230,44 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: -20,
   },
+  title: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 36,
+    fontWeight: '600', //semi-bold
+    textAlign: 'left',
+    color: colors.blue,
+    marginLeft: 20,
+  },
+  titleContainer: {
+    flexDirection: "row", // Puts items in a row (horizontally)
+    justifyContent: "space-between", // Adjusts spacing between texts
+    alignItems: "center", // Aligns text vertically
+  },
+  titleDate: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 14,
+    fontWeight: '400', //regular
+    textAlign: 'left',
+    color: colors.blue,
+    marginLeft: 20,
+  },
+  titleLocation: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 14,
+    fontWeight: '400', //regular
+    textAlign: 'right',
+    color: colors.blue,
+    marginRight: 20,
+  },
+  subtitle: {
+    fontSize: 25,
+    textAlign: 'left',
+    color: colors.blue,
+    marginBottom: 20,
+  },
   section: {
     flex: 1,
     paddingHorizontal: 20,
-    alignItems: 'center',
     fontFamily: fonts.primaryBoldItalic,
   },
   slidingContainer: {
@@ -302,11 +297,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   divider: {
-    width: '100%',
-    height: 1,
-    backgroundColor: '#000',
-    marginVertical: 8,
-    alignSelf: 'center'
+    width: '90%', 
+    height: 1, 
+    backgroundColor: colors.blue,  
+    // alignSelf: 'center',
+    marginTop: 8,  
+    marginBottom: 8,
+    marginHorizontal: 20,
   },
   outlinedTextContainer: {
     position: 'relative',
