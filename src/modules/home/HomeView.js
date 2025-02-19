@@ -7,7 +7,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
-  const now = new Date("2025-03-28T08:30:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
+  const now = new Date("2025-03-28T10:30:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
   const summitStart = new Date("2025-03-28T08:00:00"); 
   const summitEnd = new Date("2025-03-28T17:00:00"); 
 
@@ -27,6 +27,22 @@ export default function HomeScreen({ navigation }) {
       startTime: new Date("2025-03-28T10:00:00"),
       endTime: new Date("2025-03-28T11:00:00"),
       description: "A discussion on the dynamics of change in fashion and media."
+    },
+    {
+      title: "Panel 3 Making This Long To See What It Will Look Like",
+      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
+      location: "Kresge Suites",
+      startTime: new Date("2025-03-28T11:00:00"),
+      endTime: new Date("2025-03-28T12:00:00"),
+      description: "A discussion on the dynamics of change in fashion and media."
+    },
+    {
+      title: "Panel 4 Making This Short",
+      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
+      location: "Kresge Suites",
+      startTime: new Date("2025-03-28T12:00:00"),
+      endTime: new Date("2025-03-28T14:00:00"),
+      description: "A discussion on the dynamics of change in fashion and media."
     }
   ];
   let currentEvent = null;
@@ -35,7 +51,8 @@ export default function HomeScreen({ navigation }) {
     currentEvent = events.find(event => now >= event.startTime && now <= event.endTime);
     upcomingEvent = events
       .filter(event => event.startTime > now)
-      .sort((a, b) => a.startTime - b.startTime)[0]
+      .sort((a, b) => a.startTime - b.startTime)
+      .slice(0, 2);
   }
 ;
 
@@ -119,7 +136,7 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.titleLocation}>Ross School of Business</Text>
           </View>
 
-          <Text size={30}> {'\n'} </Text>
+          <Text size={35}> {'\n'} </Text>
 
           <View style={styles.slidingContainer}>
                 <Animated.View 
@@ -133,7 +150,7 @@ export default function HomeScreen({ navigation }) {
                 </Animated.View>
           </View>
 
-          <Text size={30}> {'\n'} </Text>
+          <Text size={35}> {'\n'} </Text>
 
           {/* before the day of the summit - countdown */}
           { (now < summitStart &&
@@ -161,7 +178,7 @@ export default function HomeScreen({ navigation }) {
           {/* if there is an event in progress */}
           {currentEvent && (
             <>
-              <Text style={styles.currently}>Event In Progress:</Text>
+              <Text style={styles.subtitle}>In Progress:</Text>
               <View style={styles.panelContainer}>
                 <Text style={styles.panel}>{currentEvent.title}</Text>
               </View>
@@ -184,12 +201,28 @@ export default function HomeScreen({ navigation }) {
           )}
 
           {/* if there is an upcoming event */}
-          {upcomingEvent && (
+          {upcomingEvent.length > 0 && now > summitStart && (
 
             <>
-              <Text size={15}> {'\n'} </Text>
+              <Text size={25}> {'\n'} </Text>
+              <Text style={styles.subtitleRight}>Coming Up:</Text>
 
-              
+              {upcomingEvent.map((event, index) => (
+                <View key={index}>
+                  {/* <Text style={styles.comingUpPanelName}>{event.title}</Text> */}
+                  <View style={styles.upcomingEventContainer}>
+                    <Text style={styles.comingUpPanelName}>
+                    {event.title} @ {event.location}
+                    </Text>
+
+                    <Text style={styles.comingUpLocation}>
+                    {event.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {event.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </Text>
+
+                  </View>
+                  {index < 1 && <View style={styles.dividerBlack} />}
+                </View>
+              ))}
             </>
           )}
 
@@ -254,8 +287,14 @@ const styles = StyleSheet.create({
     width: '90%', 
     height: 1, 
     backgroundColor: colors.blue,  
-    marginTop: 8,  
-    marginBottom: 8,
+    marginVertical: 8,
+    marginHorizontal: 20,
+  },
+  dividerBlack: {
+    width: '90%', 
+    height: 1, 
+    backgroundColor: colors.black,  
+    marginVertical: 8,  
     marginHorizontal: 20,
   },
   slidingContainer: {
@@ -281,21 +320,21 @@ const styles = StyleSheet.create({
   countdown: {
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 36,
-    fontWeight: '600', //semi-bold
+    fontWeight: '800', //semi-bold
     textAlign: 'left',
     color: colors.black,
   },
   countdownTime: {
     fontFamily: "NeueHaasDisplayRoman",
     textAlign: "center",
-    fontWeight: "600",
+    fontWeight: "800",
     marginTop: 30,
     fontSize: 25,
     color: colors.black,
   },
-  currently: {
+  subtitle: {
     fontFamily: "NeueHaasDisplayRoman",
-    fontSize: 25,
+    fontSize: 28,
     fontWeight: '600', //semi-bold
     textAlign: 'left',
     marginHorizontal: 20,
@@ -313,11 +352,11 @@ const styles = StyleSheet.create({
     fontFamily: "Arial", 
     fontStyle: "italic",
     color: colors.black,
-    fontSize: 20,
+    fontSize: 18,
   },
   progressBar: {
     height: 5,
-    width: '80%',
+    width: '90%',
     backgroundColor: '#ddd',
     borderRadius: 5,
     marginVertical: 20,
@@ -331,8 +370,10 @@ const styles = StyleSheet.create({
   },
   locationContainer: {
     alignItems: 'flex-start',
-    marginLeft: 20,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginHorizontal: 20,
+    justifyContent: 'space-between',
+    width: '95%',
   },
   location:{
     fontFamily: "NeueHaasDisplayRoman",
@@ -343,13 +384,38 @@ const styles = StyleSheet.create({
     maxWidth: '100%',
     color: colors.black
   },
-  speaker: {
-    fontFamily: "Times New Roman",
-    fontStyle: "italic",
-    fontSize: 20,
+  subtitleRight: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 28,
+    fontWeight: '600', //semi-bold
+    textAlign: 'right',
+    marginHorizontal: 20,
+    color: colors.black,
   },
-  font: {
-    fontFamily: "Times New Roman",
+  upcomingEventContainer: {
+    marginTop: 8,
+    alignItems: 'flex-start',
+    marginHorizontal: 20, 
+  },
+  comingUpPanelName: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 15,
+    fontWeight: '400', 
+    flexShrink: 1,
+    maxWidth: '100%',
+    color: colors.black,
+    alignSelf: 'flex-end', // Align to right
+    textAlign: 'right', 
+  },
+  comingUpLocation:{
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 15,
+    fontWeight: '400', 
+    flexShrink: 1,
+    maxWidth: '100%',
+    color: colors.black,
+    alignSelf: 'flex-end', // Align to right
+    textAlign: 'right', 
   },
   time: {
     fontFamily: "Times New Roman",
