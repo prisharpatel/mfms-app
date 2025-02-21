@@ -17,22 +17,12 @@ export default function EventTicketsView({ onGoBack }) {
          {/* Header Section with Back Button */}
          <View style={styles.headerContainer}>
 
-          {/* "Tickets" Text */}
-          <View style={styles.section}>
-          <View style={styles.outlinedTextContainer}>
-            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>tickets</Text>
-            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>tickets</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>tickets</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>tickets</Text>
-            <Text style={styles.outlinedText}>tickets</Text>
-          </View>
-        </View>
         </View>
 
         {/* Centered Eventbrite Widget */}
         <View style={styles.widgetContainer}>
           <WebView
-            source={{ uri: 'https://www.eventbrite.com/e/michigan-fashion-media-summit-2024-tickets-837805878937' }}
+            source={{ uri: 'https://www.eventbrite.com/e/michigan-fashion-media-summit-2025-tickets-1245544139049?aff=oddtdtcreator' }}
             javaScriptEnabled={true}
             domStorageEnabled={true}
             startInLoadingState={true}
@@ -62,30 +52,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 20,
   },
-  outlinedTextContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1, // Ensures text is centered
-  },
-  outlinedText: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: colors.white,
-    textAlign: 'center',
-    textTransform: 'lowercase',
-  },
-  outlinedTextShadow: {
-    position: 'absolute',
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: colors.blue,
-    textAlign: 'center',
-    textTransform: 'lowercase',
-  },
   widgetContainer: {
-    height: 570,
+    height: 700,
     width: '100%',
-    marginVertical: 20,
+    marginVertical: 0,
     alignItems: 'center', // Centers the WebView horizontally
     justifyContent: 'center', // Optional: centers vertically
   },

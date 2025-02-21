@@ -4,6 +4,7 @@ import ScheduleScreen from '../schedule/ScheduleViewContainer';
 import AboutScreen from '../about/AboutViewContainer';
 import SpeakersScreen from '../speakers/SpeakersViewContainer';
 import TicketsScreen from '../tickets/TicketsViewContainer';
+import SpeakerDetails from '../speakers/SpeakerDetails'
 
 const iconHome = require('../../../assets/images/home.png');
 const iconMFMS = require('../../../assets/images/transparent_black.png');
