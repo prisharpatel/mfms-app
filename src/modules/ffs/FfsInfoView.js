@@ -30,7 +30,7 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
   const [showAbout, setShowAbout] = useState(false);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: colors.white }}>
       <Text style={styles.title} >The 2025 MFMS Fashion Forward Showcase Presented by Steve Madden</Text>
 
       <View style={styles.aboutcontainer}>
@@ -56,6 +56,7 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
         </View>
       )}
     </View>
+    
     <FlatList
       nestedScrollEnabled={true}
       scrollEnabled={false}
@@ -78,7 +79,7 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  flexGrow: {
     flex: 1,
     backgroundColor: colors.white
   },
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     marginRight: 7
   },
   bottomtext:{
-    marginTop: 50,
+    marginTop: 70,
     textAlign: 'center',
     marginLeft: 20,
     marginRight: 20,
