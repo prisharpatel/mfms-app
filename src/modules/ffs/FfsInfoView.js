@@ -107,6 +107,10 @@ const styles = StyleSheet.create({
   textContainer:{
     marginTop: 40
   },
+  buttonText:{
+    color: colors.black,
+    fontSize: 17,
+  },
   aboutText:{
     alignSelf: 'center',
     marginTop: 20,
