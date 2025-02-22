@@ -32,7 +32,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 export default function FFSScreen({ isExtended, setIsExtended }) {
   const [showAbout, setShowAbout] = useState(false);
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
-  const REPEATING_TEXT_1 = Array(1000).fill('Leaders. Creators. Visionaries. Designers. Pioneers.                     ');
+  const REPEATING_TEXT_1 = Array(1000).fill('Leaders • Creators • Visionaries • Designers • Pioneers • ');
 
 
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
       </Animated.View>
     </View>
 
-    <Text style={styles.bottomtext2}>Five finalists will present their work at the Michigan Fashion Media Summit before top industry leaders. One winner will receive an exclusive 
+    <Text style={styles.bottomtext}>Five finalists will present their work at the Michigan Fashion Media Summit before top industry leaders. One winner will receive an exclusive 
     professional development opportunity. The FFS is a career-defining platform for student creatives to gain exposure and connections.</Text>
     </ScrollView>
 
@@ -122,14 +122,15 @@ const styles = StyleSheet.create({
   title:{
     color: colors.black,
     fontWeight: 'bold', 
-    marginLeft: 25,
-    marginRight: 25,
+    marginHorizontal: SCREEN_WIDTH*.05,
     alignSelf: 'center',
-    fontSize: 17,
-    marginTop: 20
+    fontSize: 19,
+    marginTop: 20,
+    fontFamily: "NeueHaasDisplayRoman",
   },
   logoContainer:{
-    marginTop: 40
+    marginTop: 40,
+    marginHorizontal: SCREEN_WIDTH * 0.001,
   },
   logo :{
     width: 227,
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
   button:{
-    marginLeft: 45
+    marginLeft: SCREEN_WIDTH * 0.06,
   },
   textContainer:{
     marginTop: 40
@@ -147,11 +148,16 @@ const styles = StyleSheet.create({
     color: colors.black,
     fontSize: 17,
   },
+  aboutContainer:{
+    marginHorizontal: SCREEN_WIDTH * 0.01,
+  },
   aboutText:{
     alignSelf: 'center',
     marginTop: 20,
     marginLeft: 50,
     marginRight: 30,
+    fontSize: 15,
+    fontFamily: "NeueHaasDisplayRoman",
   },
   gallery:{
     alignSelf: 'center',
@@ -163,22 +169,17 @@ const styles = StyleSheet.create({
     marginRight: 7
   },
   bottomtext:{
-    fontFamily: "Inter",
-    textAlign: 'center',
-    marginHorizontal: SCREEN_WIDTH * 0.06,
-  },
-  bottomtext2:{
-    marginTop: 20,
-    fontFamily: "Inter",
+    fontFamily: "NeueHaasDisplayRoman",
     textAlign: 'center',
     marginHorizontal: SCREEN_WIDTH * 0.06,
     marginBottom: 130,
+    fontSize: 18
   },
   slidingContainer: {
     width: SCREEN_WIDTH*2,
     overflow: 'hidden',
-    height: 19,
-    marginVertical: 20,
+    height: 26,
+    marginVertical: 30,
   },
   slidingStream: {
     flexDirection: 'row',
@@ -188,7 +189,6 @@ const styles = StyleSheet.create({
   slidingText: {
     fontSize: 20,
     fontFamily: "Times New Roman",
-    fontWeight: "bold",
     color: colors.blue,
     fontStyle: 'italic',
   },
