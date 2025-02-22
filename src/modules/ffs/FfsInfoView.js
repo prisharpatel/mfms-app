@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';;
+import React, { useState, useEffect, useRef } from 'react';
 import {
   StyleSheet,
   View,
@@ -7,7 +7,8 @@ import {
   Image,
   FlatList,
   Animated,
-  Dimensions
+  Dimensions,
+  Easing,
 } from 'react-native';
 
 import { fonts, colors } from '../../styles';
@@ -23,11 +24,34 @@ const images = [
   { id: '6', source: require('../../../assets/images/ffs/ffs6.png') },
 ];
 
-const { width } = Dimensions.get("window");
+const SCREEN_WIDTH = Dimensions.get('window').width;
+
+
 
 
 export default function FFSScreen({ isExtended, setIsExtended }) {
   const [showAbout, setShowAbout] = useState(false);
+  const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
+  const REPEATING_TEXT_1 = Array(1000).fill('Leaders. Creators. Visionaries. Designers. Pioneers.                     ');
+
+
+  useEffect(() => {
+    const animateStream = (animation) => {
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(animation, {
+            toValue: -SCREEN_WIDTH * 50,
+            duration: 999999,
+            easing: Easing.linear,
+            useNativeDriver: true,
+          })
+        ])
+      ).start();
+    };
+  
+    animateStream(slideAnim1);
+  }, [slideAnim1]);
+
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: colors.white }}>
@@ -71,10 +95,22 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
       contentContainerStyle={styles.gallery}
     />
 
-    <Text style={styles.bottomtext}> Whether you're building a brand, growing a media presence, or creating content, this showcase is for you. </Text>
+    <View style={styles.slidingContainer}>
+      <Animated.View 
+        style={[
+          styles.slidingStream, 
+          { transform: [{ translateX: slideAnim1 }] }
+        ]}
+      >
+        <Text style={styles.slidingText}>{REPEATING_TEXT_1}</Text>
+        <Text style={styles.slidingText}>{REPEATING_TEXT_1}</Text>
+      </Animated.View>
+    </View>
+
     <Text style={styles.bottomtext2}>Five finalists will present their work at the Michigan Fashion Media Summit before top industry leaders. One winner will receive an exclusive 
     professional development opportunity. The FFS is a career-defining platform for student creatives to gain exposure and connections.</Text>
     </ScrollView>
+
   );
 }
 
@@ -127,16 +163,34 @@ const styles = StyleSheet.create({
     marginRight: 7
   },
   bottomtext:{
-    marginTop: 70,
+    fontFamily: "Inter",
     textAlign: 'center',
-    marginLeft: 20,
-    marginRight: 20,
+    marginHorizontal: SCREEN_WIDTH * 0.06,
   },
   bottomtext2:{
     marginTop: 20,
+    fontFamily: "Inter",
     textAlign: 'center',
-    marginLeft: 20,
-    marginRight: 20,
-  }
+    marginHorizontal: SCREEN_WIDTH * 0.06,
+    marginBottom: 130,
+  },
+  slidingContainer: {
+    width: SCREEN_WIDTH*2,
+    overflow: 'hidden',
+    height: 19,
+    marginVertical: 20,
+  },
+  slidingStream: {
+    flexDirection: 'row',
+    position: 'absolute',
+    width: SCREEN_WIDTH * 100,
+  },
+  slidingText: {
+    fontSize: 20,
+    fontFamily: "Times New Roman",
+    fontWeight: "bold",
+    color: colors.blue,
+    fontStyle: 'italic',
+  },
 
 });
