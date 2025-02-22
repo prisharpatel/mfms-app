@@ -127,18 +127,8 @@ export default function HomeScreen({ navigation }) {
       >
         <Text size={10}> {'\n'} </Text>
         <View style={styles.section}>
-          <Text style={styles.title}>Michigan Fashion</Text>
-          <Text style={styles.title}>Media Summit</Text>
 
-          <View style={styles.divider} />
-          <View style={styles.titleContainer}>
-            <Text style={styles.titleDate}>03/28/25</Text>
-            <Text style={styles.titleLocation}>Ross School of Business</Text>
-          </View>
-
-          <Text size={35}> {'\n'} </Text>
-
-          <View style={styles.slidingContainer}>
+        <View style={styles.slidingContainer}>
                 <Animated.View 
                   style={[
                     styles.slidingStream, 
@@ -150,7 +140,19 @@ export default function HomeScreen({ navigation }) {
                 </Animated.View>
           </View>
 
-          <Text size={35}> {'\n'} </Text>
+          <Text size={10}> {'\n'} </Text>
+          <Text style={styles.title}>Michigan Fashion</Text>
+          <Text style={styles.title}>Media Summit</Text>
+
+          <View style={styles.divider} />
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleDate}>03/28/25</Text>
+            <Text style={styles.titleLocation}>Ross School of Business</Text>
+          </View>
+
+          <Text size={32}> {'\n'} </Text>
+
+          
 
           {/* before the day of the summit - countdown */}
           { (now < summitStart &&
@@ -300,7 +302,7 @@ const styles = StyleSheet.create({
   slidingContainer: {
     width: SCREEN_WIDTH*2,
     overflow: 'hidden',
-    height: 19,
+    height: 27,
   },
   slidingStream: {
     flexDirection: 'row',
@@ -308,7 +310,7 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH * 100,
   },
   slidingText: {
-    fontSize: 20,
+    fontSize: 25,
     fontFamily: "Times New Roman",
     fontWeight: "400",
     color: colors.blue,
