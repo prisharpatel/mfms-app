@@ -1,93 +1,138 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';;
 import {
   StyleSheet,
   View,
   TouchableOpacity,
   ImageBackground,
   Image,
+  FlatList,
+  Animated,
+  Dimensions
 } from 'react-native';
 
 import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
+import { ScrollView } from 'react-native-gesture-handler';
+
+const images = [
+  { id: '1', source: require('../../../assets/images/ffs/ffs1.png')},
+  { id: '2', source: require('../../../assets/images/ffs/ffs2.png') },
+  { id: '3', source: require('../../../assets/images/ffs/ffs3.png') },
+  { id: '4', source: require('../../../assets/images/ffs/ffs4.png') },
+  { id: '5', source: require('../../../assets/images/ffs/ffs5.png') },
+  { id: '6', source: require('../../../assets/images/ffs/ffs6.png') },
+];
+
+const { width } = Dimensions.get("window");
+
 
 export default function FFSScreen({ isExtended, setIsExtended }) {
-  // const rnsUrl = 'https://reactnativestarter.com';
-  // const handleClick = () => {
-  //   Linking.canOpenURL(rnsUrl).then(supported => {
-  //     if (supported) {
-  //       Linking.openURL(rnsUrl);
-  //     } else {
-  //       console.log(`Don't know how to open URI: ${rnsUrl}`);
-  //     }
-  //   });
-  // };
-
+  const [showAbout, setShowAbout] = useState(false);
 
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../../../assets/images/background.png')}
-        style={styles.bgImage}
-        resizeMode="cover"
-      >
+    <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: colors.white }}>
+      <Text style={styles.title} >The 2025 MFMS Fashion Forward Showcase Presented by Steve Madden</Text>
 
+      <View style={styles.aboutcontainer}>
+      {!showAbout ? (
         <View style={styles.logoContainer}>
-          <Image
-            source={require('../../../assets/images/transparent_black.png')}
-            style={styles.logo}
-            resizeMode="contain"
-          />
+          <TouchableOpacity onPress={() => setShowAbout(true)} style={styles.button}>
+            <Text style={styles.buttonText}>About →</Text>
+          </TouchableOpacity>
+          <Image source={require('../../../assets/images/ffs_logo.png')} style={styles.logo} />
         </View>
-        <View style={styles.section}>
-          <Text size={10} black style={styles.header}> </Text>
-          <Text size={20} black style={styles.header}>
-            2025 Fashion Forward Showcase
+      ) : (
+        <View style={styles.textContainer}>
+          <TouchableOpacity onPress={() => setShowAbout(false)} style={styles.button}>
+            <Text style={styles.buttonText}>About ↓</Text>
+          </TouchableOpacity>
+          <Text style={styles.aboutText}>
+            The MFMS Fashion Forward Showcase recognizes college students at U of M and 
+            across the country who are innovators and entrepreneurs in the fashion and media 
+            worlds. From those who are fashion-forward in their thinking and their pursuits 
+            to those who are already making strides to be members of the next generation of 
+            fashion industry leaders.
           </Text>
         </View>
-      </ImageBackground>
+      )}
     </View>
+    
+    <FlatList
+      nestedScrollEnabled={true}
+      scrollEnabled={false}
+      data={images}
+      keyExtractor={(item) => item.id}
+      numColumns={3}
+      renderItem={({ item }) => (
+        <View style={styles.imageContainer}>
+          <Image source={item.source} style={styles.image} />
+        </View>
+      )}
+      contentContainerStyle={styles.gallery}
+    />
+
+    <Text style={styles.bottomtext}> Whether you're building a brand, growing a media presence, or creating content, this showcase is for you. </Text>
+    <Text style={styles.bottomtext2}>Five finalists will present their work at the Michigan Fashion Media Summit before top industry leaders. One winner will receive an exclusive 
+    professional development opportunity. The FFS is a career-defining platform for student creatives to gain exposure and connections.</Text>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  flexGrow: {
     flex: 1,
+    backgroundColor: colors.white
   },
-  logoContainer: {
-    alignItems: 'center',
+  title:{
+    color: colors.black,
+    fontWeight: 'bold', 
+    marginLeft: 25,
+    marginRight: 25,
+    alignSelf: 'center',
+    fontSize: 17,
+    marginTop: 20
+  },
+  logoContainer:{
+    marginTop: 40
   },
   logo :{
-    width: 50,
-    height: 50,
+    width: 227,
+    height: 124,
+    alignSelf: 'center',
+    marginTop: 20
   },
-  bgImage: {
-    flex: 1,
-    marginHorizontal: -20,
+  button:{
+    marginLeft: 45
   },
-  section: {
-    flex: 1,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-    fontFamily: fonts.primaryBoldItalic,
+  textContainer:{
+    marginTop: 40
   },
-  sectionLarge: {
-    flex: 2,
-    justifyContent: 'space-around',
+  aboutText:{
+    alignSelf: 'center',
+    marginTop: 20,
+    marginLeft: 50,
+    marginRight: 30,
   },
-  divider: {
-    width: '50%',       // Use less than '100%' to prevent it from reaching the edges
-    height: 1,
-    backgroundColor: '#000',
-    marginVertical: 8,
-    alignSelf: 'center' // Centers the divider within its parent container
+  gallery:{
+    alignSelf: 'center',
+    marginTop: 40
   },
-  header: {
-    fontFamily: "Arial",
-    fontWeight: "bold",
-    fontStyle: "italic"
+  imageContainer:{
+    alignContent:'center',
+    marginLeft: 7,
+    marginRight: 7
   },
-  header2: {
-    fontFamily: "Times New Roman",
-    fontWeight: "bold",
-  }, 
+  bottomtext:{
+    marginTop: 70,
+    textAlign: 'center',
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  bottomtext2:{
+    marginTop: 20,
+    textAlign: 'center',
+    marginLeft: 20,
+    marginRight: 20,
+  }
+
 });
