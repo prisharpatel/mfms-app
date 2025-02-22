@@ -37,7 +37,7 @@ export default function HomeScreen({ navigation }) {
       description: "A discussion on the dynamics of change in fashion and media."
     },
     {
-      title: "Panel 4 Making This Short",
+      title: "Panel 4 Making This Super Long Again To See What It Will Look Like",
       speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
       location: "Kresge Suites",
       startTime: new Date("2025-03-28T12:00:00"),
@@ -206,7 +206,7 @@ export default function HomeScreen({ navigation }) {
           {upcomingEvent.length > 0 && now > summitStart && (
 
             <>
-              <Text size={25}> {'\n'} </Text>
+              <Text size={40}> {'\n'} </Text>
               <Text style={styles.subtitleRight}>Coming Up:</Text>
 
               {upcomingEvent.map((event, index) => (
