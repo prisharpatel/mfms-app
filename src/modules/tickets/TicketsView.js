@@ -3,8 +3,9 @@ import { View, Text, StyleSheet, ScrollView, ImageBackground, Dimensions, Toucha
 import { WebView } from 'react-native-webview';
 import { fonts, colors } from '../../styles';
 
-const { width: screenWidth } = Dimensions.get('window');
+const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 const widgetWidth = Math.min(screenWidth - 40, 600); // Dynamically calculate widget width
+const widgetHeight = screenHeight * 0.8; // Use 80% of screen height
 
 export default function EventTicketsView({ onGoBack }) {
   return (
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     flex: 1,
-    marginHorizontal: -20,
+    marginHorizontal: 0,
   },
   headerContainer: {
     flexDirection: 'row', // Align back button & text in a row
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   widgetContainer: {
-    height: 700,
+    height: widgetHeight,
     width: '100%',
     marginVertical: 0,
     alignItems: 'center', // Centers the WebView horizontally

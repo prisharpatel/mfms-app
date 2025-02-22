@@ -1279,7 +1279,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  boost: 26fad476bfa736552bbfa698a06cc530475c1505
+  boost: 90764e649b3a6530488ae5073001a133a5cab7b8
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
   FBLazyVector: 2296bacb2fa157a43991048b0a9d71c1c8b65083
