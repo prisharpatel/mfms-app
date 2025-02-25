@@ -96,9 +96,7 @@ const AboutScreen = () => {
           <View style={styles.videoContainer}>
             <Video
               ref={videoRef}
-              source={{
-                uri: 'https://media-hosting.imagekit.io//3da6c0a7ed1a463d/MOV_2646.mov'
-              }}
+              source={require('../../../assets/videos/mfms_about_us.mov')}
               style={styles.video}
               resizeMode="cover"
               repeat={true}
