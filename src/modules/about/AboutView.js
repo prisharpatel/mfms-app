@@ -54,13 +54,14 @@ const AboutScreen = () => {
         {/* Header Section */}
         <View style={styles.section}>
           <Text> {'\n'} </Text>
-          <View style={styles.outlinedTextContainer}>
+          {/* <View style={styles.outlinedTextContainer}>
             <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>about us</Text>
             <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>about us</Text>
             <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>about us</Text>
             <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>about us</Text>
             <Text style={styles.outlinedText}>about us</Text>
-          </View>
+          </View> */}
+          <Text style={styles.title}>who we are</Text>
         </View>
 
         <Animated.View style={[styles.container, { opacity: contentFade }]}>
@@ -119,6 +120,15 @@ const AboutScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  title:{
+    fontFamily: "Arial",
+    fontSize: 36,
+    fontWeight: '600', //semi-bold
+    textAlign: 'left',
+    fontStyle: "italic",
+    color: colors.blue,
+    marginHorizontal: 20,
+  },
   safeArea: {
     flex: 1,
     backgroundColor: colors.white || '#FFFFFF',

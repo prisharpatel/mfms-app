@@ -55,9 +55,11 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1, backgroundColor: colors.white }}>
-      <Text style={styles.title} >The 2025 MFMS Fashion Forward Showcase Presented by Steve Madden</Text>
+      <Text style={styles.title} >Fashion Forward Showcase</Text>
+      <Text size={10}></Text>
+      <Text style={styles.title2}>Presented by Steve Madden</Text>
 
-      <View style={styles.aboutcontainer}>
+      <View style={styles.aboutContainer}>
       {!showAbout ? (
         <View style={styles.logoContainer}>
           <TouchableOpacity onPress={() => setShowAbout(true)} style={styles.button}>
@@ -73,9 +75,9 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
           <Text style={styles.aboutText}>
             The MFMS Fashion Forward Showcase recognizes college students at U of M and 
             across the country who are innovators and entrepreneurs in the fashion and media 
-            worlds. From those who are fashion-forward in their thinking and their pursuits 
+            worlds. From those who are fashion-forward in their pursuits 
             to those who are already making strides to be members of the next generation of 
-            fashion industry leaders.
+            fashion industry leaders, MFMS provides a platform to recognize all.
           </Text>
         </View>
       )}
@@ -128,6 +130,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontFamily: "NeueHaasDisplayRoman",
   },
+  title2:{
+    color: colors.black,
+    fontStyle: 'italic', 
+    marginHorizontal: SCREEN_WIDTH*.05,
+    alignSelf: 'center',
+    fontSize: 16,
+    fontFamily: "Arial",
+  },
   logoContainer:{
     marginTop: 40,
     marginHorizontal: SCREEN_WIDTH * 0.001,
@@ -149,13 +159,13 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   aboutContainer:{
+    marginVertical: 2,
     marginHorizontal: SCREEN_WIDTH * 0.01,
   },
   aboutText:{
     alignSelf: 'center',
     marginTop: 20,
-    marginLeft: 50,
-    marginRight: 30,
+    marginHorizontal: SCREEN_WIDTH * 0.06,
     fontSize: 15,
     fontFamily: "NeueHaasDisplayRoman",
   },
