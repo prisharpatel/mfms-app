@@ -18,7 +18,7 @@ const initialFaqData = [
   { id: '5', question: 'What is the dress code for the TNLP and the Summit?', answer: 'TNLP is cocktail and Summit day is business professional. No matter what you wear, dress to impress!', expanded: false },
   { id: '6', question: 'Is there parking nearby?', answer: 'Yes! There is paid parking in Ross on the Hill Street side of the building as well as metered parking on the streets surrounding the building. There are also side streets with free parking, but those spots are very limited.', expanded: false },
   { id: '7', question: 'What should I bring with me to the Summit?', answer: 'You should bring an updated resume and something to write with. Your credentials will be given to you upon your arrival at the event, so do not worry about having that before Friday!', expanded: false },
-  { id: '8', question: 'How do I sign up for coffee chats or the Lunch and Learn', answer: 'You can register for a coffee chat with one of our networking partners as well as the lunch and learn at the check in table.', expanded: false },
+  { id: '8', question: 'How do I sign up for coffee chats or the Lunch and Learn?', answer: 'You can register for a coffee chat with one of our networking partners as well as the lunch and learn at the check in table.', expanded: false },
 ];
 
 const FAQPage = ({ navigation }) => {
