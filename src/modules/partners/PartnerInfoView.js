@@ -13,7 +13,7 @@ import { Text } from '../../components/StyledText';
 
 export default function PartnerScreen({ isExtended, setIsExtended }) {
   const partners = [
-    { id: '1', name: 'LVMH', logo: require('../../../assets/images/partners/LVMH.png') },
+    { id: '1', name: 'LVMH', logo: require('../../../assets/images/partners/lvmh.png') },
     { id: '2', name: 'Steve Madden', logo: require('../../../assets/images/partners/Steve-Madden.png') },
     { id: '3', name: 'Louis Vuitton', logo: require('../../../assets/images/partners/Louis-Vuitton.png') },
     { id: '4', name: 'Dior', logo: require('../../../assets/images/partners/dior.png') },
@@ -39,7 +39,16 @@ export default function PartnerScreen({ isExtended, setIsExtended }) {
     { id: '24', name: 'SPARC', logo: require('../../../assets/images/partners/sparc.png') },
     { id: '25', name: 'Gracious MFG', logo: require('../../../assets/images/partners/gracious-mfg.png') },
     { id: '26', name: 'Intelligent Change', logo: require('../../../assets/images/partners/intelligent-change.png') },
+    { id: '27', name: 'Shopify', logo: require('../../../assets/images/partners/shopify.png') },
+    { id: '28', name: 'Heaven Mayhem', logo: require('../../../assets/images/partners/hm.png') },
+    { id: '29', name: 'Malk', logo: require('../../../assets/images/partners/malk.png') },
+    { id: '30', name: 'Parlux', logo: require('../../../assets/images/partners/ltd.png') },
+    { id: '31', name: 'Realsy', logo: require('../../../assets/images/partners/realsy.png') },
+    { id: '32', name: 'Wildflower', logo: require('../../../assets/images/partners/wildflower.png') },
+    { id: '33', name: 'Vivrelle', logo: require('../../../assets/images/partners/vivrelle.png') },
+
   ]
+ 
 
   console.log('Partners:', partners);
 
