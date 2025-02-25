@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,  useEffect} from 'react';
 import {
   View,
   Text,
@@ -7,23 +7,29 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  SafeAreaView,
 } from 'react-native';
-import { fonts, colors } from '../../styles';
+import { colors, fonts } from '../../styles';
+
+const initialFaqData = [
+  { id: '1', question: 'What does a Summit Day ticket give me access to?', answer: 'The Summit Day ticket gives you access to all the speaking engagements, networking with industry professionals, and corporate activation booths. Sign-ups for our one-on-one coffee chat series and Lunch and Learn will be given out on a first come first serve basis, so make sure to get there early!', expanded: false },
+  { id: '2', question: 'What does the VIP ticket give me access to?', answer: 'The VIP ticket gives you all the perks of the Summit Day ticket, plus access to our exclusive Thursday Night Launch Party (TNLP) in Tauber Colloquium. Only 100 tickets are available, so purchase while you can!', expanded: false },
+  { id: '3', question: 'What is the TNLP?', answer: 'The annual Thursday Night Launch Party marks the official kickoff of our summit, bringing together the MFMS student planning team, partners, speakers, and VIP guests for a memorable evening featuring unique activations, cocktails by 818 and more!', expanded: false },
+  { id: '4', question: 'Do I have to stay for the entire event or can I leave if I have a prior commitment?', answer: 'We would love it if you could stay, but you can leave as needed during the day as long as you bring your credentials when you return.', expanded: false },
+  { id: '5', question: 'What is the dress code for the TNLP and the Summit?', answer: 'TNLP is cocktail and Summit day is business professional. No matter what you wear, dress to impress!', expanded: false },
+  { id: '6', question: 'Is there parking nearby?', answer: 'Yes! There is paid parking in Ross on the Hill Street side of the building as well as metered parking on the streets surrounding the building. There are also side streets with free parking, but those spots are very limited.', expanded: false },
+  { id: '7', question: 'What should I bring with me to the Summit?', answer: 'You should bring an updated resume and something to write with. Your credentials will be given to you upon your arrival at the event, so do not worry about having that before Friday!', expanded: false },
+  { id: '8', question: 'How do I sign up for coffee chats or the Lunch and Learn', answer: 'You can register for a coffee chat with one of our networking partners as well as the lunch and learn at the check in table.', expanded: false },
+];
 
 const FAQPage = ({ navigation }) => {
-  const initialFaqData = [
-    { id: '1', question: 'Question 1?', answer: 'Here is the answer to question 1.', expanded: false },
-    { id: '2', question: 'Question 2?', answer: 'Here is the answer to question 2.', expanded: false },
-    { id: '3', question: 'Question 3?', answer: 'Here is the answer to question 3.', expanded: false },
-    { id: '4', question: 'Question 4?', answer: 'Here is the answer to question 4.', expanded: false },
-    { id: '5', question: 'Question 5?', answer: 'Here is the answer to question 5.', expanded: false },
-    { id: '6', question: 'Question 6?', answer: 'Here is the answer to question 6.', expanded: false },
-    { id: '7', question: 'Question 7?', answer: 'Here is the answer to question 7.', expanded: false },
-  ];
+  
 
   const [faqData, setFaqData] = useState(initialFaqData);
   const [searchQuery, setSearchQuery] = useState('');
+  
+  useEffect(() => {
+    setFaqData(initialFaqData);
+  }, []);
 
   // Toggle expanded state
   const toggleExpand = (id) => {
@@ -41,25 +47,13 @@ const FAQPage = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* Header
-      <SafeAreaView style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Image
-            source={require('../../../assets/images/back-arrow.png')} // Replace with your back arrow icon path
-            style={styles.backArrow}
-          />
-        </TouchableOpacity>
-        <Image
-          source={require('../../../assets/images/transparent_black.png')} // Replace with your logo path
-          style={styles.logo}
-        />
-      </SafeAreaView> */}
-
       {/* FAQ Title */}
       <Text style={styles.headerTitle}>Frequently Asked Questions</Text>
+      <Text size = {2}></Text>
       <Text style={styles.headerSubtitle}>
         Can't find your question? We are happy to help you at the check-in table.
       </Text>
+      <Text size = {2}></Text>
 
       {/* Search Bar */}
       <TextInput
@@ -97,54 +91,22 @@ const FAQPage = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
-    padding: 16,
-    width: '90%',
-    alignSelf: 'center',
-  },
-  header: {
-    flexDirection: 'row', // Align items horizontally
-    alignItems: 'center', // Center items vertically
-    //justifyContent: 'space-between', // Space out the back button and logo
-    backgroundColor: '#1010110F', // Set the header background color
-    paddingHorizontal: 0,
-    width: 400, // Full width to cover the screen
-    height: 120, // Adjust height to ensure full coverage
-    borderBottomWidth: 1, // Optional: Add a bottom border
-    borderBottomColor: '#DDD',
-    alignSelf: 'center',
-    marginTop: -15,
-  },
-  backButton: {
-    padding: 10, // Ensure a tappable area for the back button
-    
-  },
-  backArrow: {
-    width: 40, // Adjust back arrow dimensions
-    height: 40,
-    resizeMode: 'contain',
-  },
-  logo: {
-    alignSelf: 'center', // Center the logo horizontally
-    width: 150, // Adjust logo width
-    height: 60, // Adjust logo height
-    resizeMode: 'contain',
-    paddingLeft: 280,
+    backgroundColor: colors.white,
+    paddingHorizontal: 20,
+    paddingVertical: 16,
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 8,
-    paddingBottom: 15,
-    color: '#101011',
+    color: colors.black,
   },
   headerSubtitle: {
     fontSize: 14,
     textAlign: 'center',
-    color: '#888',
+    color: colors.gray,
     marginBottom: 16,
-    paddingBottom: 15,
   },
   searchInput: {
     height: 40,
@@ -156,8 +118,8 @@ const styles = StyleSheet.create({
   },
   faqItem: {
     borderBottomWidth: 1,
-    borderBottomColor: '#eee',
-    paddingVertical: 25,
+    borderBottomColor: '#ddd',
+    paddingVertical: 16,
   },
   questionContainer: {
     flexDirection: 'row',
@@ -165,19 +127,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   questionText: {
+    flex: 1, // Allow text to take available space
     fontSize: 16,
     fontWeight: '500',
-    color: '#101011',
+    color: colors.black,
+    marginRight: 10, // Space between text and icon
   },
   toggleIcon: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#101011',
+    color: colors.black,
   },
   answerText: {
     marginTop: 8,
     fontSize: 14,
-    color: '#555',
+    color: colors.gray,
+    lineHeight: 20,
   },
 });
 
