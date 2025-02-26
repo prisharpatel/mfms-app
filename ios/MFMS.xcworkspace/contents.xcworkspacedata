@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:MFMS"
+      name = "MFMS">
+      <FileRef
+         location = "group:LaunchScreen.storyboard">
+      </FileRef>
+      <FileRef
+         location = "group:AppDelegate.h">
+      </FileRef>
+      <Group
+         location = "group:Base.lproj"
+         name = "Base.lproj">
+         <FileRef
+            location = "group:LaunchScreen.xib">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:main.m">
+      </FileRef>
+      <FileRef
+         location = "group:Images.xcassets">
+      </FileRef>
+      <FileRef
+         location = "group:AppDelegate.mm">
+      </FileRef>
+      <FileRef
+         location = "group:Info.plist">
+      </FileRef>
+   </Group>
+</Workspace>

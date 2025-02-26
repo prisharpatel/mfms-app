@@ -27,7 +27,7 @@ if linkage != nil
 end
 pod 'boost', :podspec => '../node_modules/react-native/third-party-podspecs/boost.podspec'
 
-target 'ReactNativeStarter' do
+target 'MFMS' do
   config = use_native_modules!
 
   use_react_native!(
@@ -41,7 +41,7 @@ target 'ReactNativeStarter' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'ReactNativeStarterTests' do
+  target 'MFMSTests' do
     inherit! :complete
     # Pods for testing
   end
