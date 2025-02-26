@@ -31,7 +31,7 @@ const drawerData = [
   {
     name: 'Resume Drop',
     icon: iconResumeDrop,
-    onPress: () => Linking.openURL('https://www.google.com/'),
+    onPress: () => Linking.openURL('https://forms.gle/1YXDsY7ktsLKc2GR7'),
   },
   {
     name: 'FAQ',

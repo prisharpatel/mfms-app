@@ -105,7 +105,6 @@ const AboutScreen = () => {
               playInBackground={false}
               playWhenInactive={true}
               onError={(error) => console.log('Video Error:', error)}
-              posterResizeMode="cover"
               onLoad={() => console.log('Video loaded successfully')}
               onReadyForDisplay={() => console.log('Video ready for display')}
             />
@@ -192,7 +191,7 @@ const styles = StyleSheet.create({
   },
   video: {
     width: '100%',
-    height: 200, // More rectangular aspect ratio
+    height: 250, // More rectangular aspect ratio
     backgroundColor: '#000',
   },
 });
