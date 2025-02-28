@@ -1,107 +1,146 @@
-import React from 'react';
-import { StyleSheet,View, ImageBackground, ScrollView} from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import {
+  ScrollView,
+  Text,
+  StyleSheet,
+  StatusBar,
+  Platform,
+  SafeAreaView,
+  View,
+  Animated,
+} from 'react-native';
+import Video from 'react-native-video'; // Add back the Video import
 
-import { fonts, colors } from '../../styles';
-import { Text } from '../../components/StyledText';
+import { colors, fonts } from '../../styles';
 
-export default function AboutScreen({ isExtended, setIsExtended }) {
-  // const rnsUrl = 'https://reactnativestarter.com';
-  // const handleClick = () => {
-  //   Linking.canOpenURL(rnsUrl).then(supported => {
-  //     if (supported) {
-  //       Linking.openURL(rnsUrl);
-  //     } else {
-  //       console.log(`Don't know how to open URI: ${rnsUrl}`);
-  //     }
-  //   });
-  // };
+const AboutScreen = () => {
+  // Animation values
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const slideAnim = useRef(new Animated.Value(-50)).current;
+  const contentFade = useRef(new Animated.Value(0)).current;
+  const videoRef = useRef(null);
 
-  const now = new Date();
-
-  const events = [ 
-    {
-      title: "Designing Success: Women Shaping the Future of Fashion",
-      speakers: ["Jennifer Fisher", "Lisa Greenwald"],
-      location: "Robertson Auditorium",
-      startTime: now, // starts now
-      endTime: new Date("2025-03-03T23:59:59") // ends on March 3, 2025
-    },
-
-    {
-      title: "The Thing About Change",
-      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "hannah Bronfman"],
-      location: "Robertson Auditorium",
-      startTime: new Date("2025-09-03T23:59:59"), 
-      endTime: new Date("2025-03-03T23:59:59") 
-    }
-  ];
-
-  const currentEvent = events.find(event =>
-    now >= event.startTime && now <= event.endTime
-  );
-
-  const upcomingEvent = events
-  .filter(event => event.startTime > now)
-  .sort((a, b) => a.startTime - b.startTime)[0]; // The soonest upcoming event
-
+  useEffect(() => {
+    // Sequence of animations
+    Animated.sequence([
+      Animated.parallel([
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+        Animated.spring(slideAnim, {
+          toValue: 0,
+          tension: 20,
+          friction: 7,
+          useNativeDriver: true,
+        })
+      ]),
+      Animated.timing(contentFade, {
+        toValue: 1,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, []);
 
   return (
-    
-    <ScrollView style={styles.container}>
-      <ImageBackground
-        source={require('../../../assets/images/background.png')}
-        style={styles.bgImage}
-        resizeMode="cover"
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView 
+        contentContainerStyle={styles.scrollView}
+        showsVerticalScrollIndicator={false}
       >
+        
+        {/* Header Section */}
         <View style={styles.section}>
-          <Text size={25} black > </Text>
-          <View style={styles.outlinedTextContainer}>
-            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>about</Text>
-            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>about</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>about</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>about</Text>
-            <Text style={styles.outlinedText}>about</Text>
-          </View>
           <Text> {'\n'} </Text>
-
+          {/* <View style={styles.outlinedTextContainer}>
+            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>about us</Text>
+            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>about us</Text>
+            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>about us</Text>
+            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>about us</Text>
+            <Text style={styles.outlinedText}>about us</Text>
+          </View> */}
+          <Text style={styles.title}>who we are</Text>
         </View>
-      </ImageBackground>
-    </ScrollView>
+
+        <Animated.View style={[styles.container, { opacity: contentFade }]}>
+          {/* About Us Content */}
+          <Text style={styles.heading}>Our Story</Text>
+          <Text style={styles.description}>
+            We are a student-led organization established in 2018 to provide opportunities 
+            for students aspiring to careers in fashion and media. The MFMS was founded to 
+            connect the "leaders and best" to a multitude of career options in these fields. 
+            Our objective remains to help shape the future fabric of fashion through greater 
+            exposure to the experiences and opportunities available.
+          </Text>
+
+          <Text style={styles.heading}>Our Summit</Text>
+          <Text style={styles.description}>
+            The Michigan Fashion Media Summit is an annual day-long event in the Ross 
+            School of Business that connects students with industry leaders. Our conference 
+            comprises keynote conversations, collaborative panel discussions, exclusive 
+            networking events, and skill-building workshops. The event concludes with the 
+            Fashion Forward Showcase, our initiative to highlight emerging, nationwide 
+            student designers.
+          </Text>
+
+          <Text style={styles.heading}>Our Mission</Text>
+          <Text style={styles.description}>
+            To inspire and educate the next generation of industry leaders, while forging 
+            valuable connections between the University of Michigan's top talent and 
+            premier fashion and media companies.
+          </Text>
+
+          {/* Video Section - Rectangular shape */}
+          <View style={styles.videoContainer}>
+            <Video
+              ref={videoRef}
+              source={require('../../../assets/videos/mfms_about_us.mov')}
+              style={styles.video}
+              resizeMode="cover"
+              repeat={true}
+              paused={false}
+              muted={true}
+              playInBackground={false}
+              playWhenInactive={true}
+              onError={(error) => console.log('Video Error:', error)}
+              onLoad={() => console.log('Video loaded successfully')}
+              onReadyForDisplay={() => console.log('Video ready for display')}
+            />
+          </View>
+        </Animated.View>
+
+      </ScrollView>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.white
+  title:{
+    fontFamily: "Arial",
+    fontSize: 36,
+    fontWeight: '600', //semi-bold
+    textAlign: 'left',
+    fontStyle: "italic",
+    color: colors.blue,
+    marginHorizontal: 20,
   },
-  bgImage: {
+  safeArea: {
     flex: 1,
-    marginHorizontal: -20,
+    backgroundColor: colors.white || '#FFFFFF',
+    paddingTop: Platform.select({ ios: 0, android: StatusBar.currentHeight }),
   },
+  scrollView: {
+    flexGrow: 1,
+    paddingBottom: 40,
+  },
+  // Header styles
   section: {
     flex: 1,
     paddingHorizontal: 20,
     alignItems: 'center',
     fontFamily: fonts.primaryBoldItalic,
-  },
-  sectionLarge: {
-    height: 100
-  },
-  title: {
-    fontFamily: "Times New Roman",
-    fontWeight: "bold",
-    fontStyle: "italic",
-    color: colors.blue,
-    textAlign: 'center'
-
-  },
-  divider: {
-    width: '80%',       // Use less than '100%' to prevent it from reaching the edges
-    height: 1,
-    backgroundColor: '#000',
-    marginVertical: 8,
-    alignSelf: 'center' // Centers the divider within its parent container
   },
   outlinedTextContainer: {
     position: 'relative',
@@ -111,7 +150,7 @@ const styles = StyleSheet.create({
   outlinedText: {
     fontSize: 40,
     fontWeight: 'bold',
-    color: colors.white, // Transparent fill
+    color: colors.white,
     textAlign: 'center',
     textTransform: 'lowercase',
   },
@@ -119,42 +158,42 @@ const styles = StyleSheet.create({
     position: 'absolute',
     fontSize: 40,
     fontWeight: 'bold',
-    color: colors.blue, // Outline color
+    color: colors.blue,
     textAlign: 'center',
     textTransform: 'lowercase',
   },
-  header: {
-    fontFamily: "Arial",
-    fontWeight: "bold",
-    fontStyle: "italic",
-    color: colors.blue,
-    textAlign: 'center'
+  container: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
   },
-  header2: {
-    fontFamily: "Times New Roman",
-    fontWeight: "bold",
-  }, 
-  time: {
-    fontFamily: "Times New Roman",
-    fontStyle: "italic",
-    fontSize: 18, 
+  heading: {
+    fontSize: 22,
+    fontFamily: "Arial Black",
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: colors.black || '#000',
   },
-  panel: {
-    width: '80%',    
-    fontFamily: "Times New Roman",
-    textAlign: 'center',
-    fontWeight: "bold",
-    color: colors.blue,
-    fontSize: 25
-  }, 
-  speaker: {
-    fontFamily: "Times New Roman",
-    fontStyle: "italic",
-    fontWeight: "bold", 
-    fontSize: 20,
-  }, 
-  font: {
-    fontFamily: "Times New Roman",
-  }
-
+  description: {
+    fontSize: 16,
+    fontFamily: fonts.primaryRegular,
+    lineHeight: 22,
+    color: colors.gray || '#555',
+    marginBottom: 20,
+  },
+  // Rectangular video styles
+  videoContainer: {
+    width: '115%',
+    alignSelf: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+    borderRadius: 0,
+    overflow: 'hidden',
+  },
+  video: {
+    width: '100%',
+    height: 250, // More rectangular aspect ratio
+    backgroundColor: '#000',
+  },
 });
+
+export default AboutScreen;

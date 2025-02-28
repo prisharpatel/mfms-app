@@ -23,15 +23,15 @@ const drawerData = [
     icon: iconHome,
     onPress: (navigation) => navigation.navigate('Home'),
   },
-  {
-    name: 'Buy Your Ticket',
-    icon: iconTicket,
-    onPress: () => Linking.openURL('https://www.eventbrite.com/'),
-  },
+  // {
+  //   name: 'Buy Your Ticket',
+  //   icon: iconTicket,
+  //   onPress: () => Linking.openURL('https://www.eventbrite.com/'),
+  // },
   {
     name: 'Resume Drop',
     icon: iconResumeDrop,
-    onPress: () => Linking.openURL('https://www.google.com/'),
+    onPress: () => Linking.openURL('https://forms.gle/1YXDsY7ktsLKc2GR7'),
   },
   {
     name: 'FAQ',
