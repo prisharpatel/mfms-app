@@ -133,12 +133,12 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.title}>Media Summit</Text>
 
           <View style={styles.divider} />
-          <View style={styles.titleContainer}>
+          {/* <View style={styles.titleContainer}>
             <Text style={styles.titleDate}>03/28/25</Text>
             <Text style={styles.titleLocation}>Ross School of Business</Text>
-          </View>
+          </View> */}
 
-          <Text size={15}> {'\n'} </Text>
+          <Text size={18}> {'\n'} </Text>
 
           <View style={styles.slidingContainer}>
                 <Animated.View 
@@ -152,7 +152,7 @@ export default function HomeScreen({ navigation }) {
                 </Animated.View>
           </View>
 
-          <Text size={15}> {'\n'} </Text>
+          <Text size={18}> {'\n'} </Text>
 
 
           {/* before the day of the summit - countdown */}
@@ -209,7 +209,7 @@ export default function HomeScreen({ navigation }) {
           {upcomingEvent.length > 0 && now > summitStart && (
 
             <>
-              <Text size={20}> {'\n'} </Text>
+              <Text size={28}> {'\n'} </Text>
               <Text style={styles.subtitleRight}>Coming Up:</Text>
 
               {upcomingEvent.map((event, index) => (
@@ -230,15 +230,6 @@ export default function HomeScreen({ navigation }) {
               ))}
             </>
           )}
-
-          
-          
-
-          
-
-          
-
-          
         </View>
       </ImageBackground>
     </ScrollView>
