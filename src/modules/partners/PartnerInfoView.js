@@ -60,8 +60,6 @@ export default function PartnerScreen({ isExtended, setIsExtended }) {
     { id: '46', name: 'SPARC', logo: require('../../../assets/images/partners/sparc.png') },
   ]
 
-  console.log('Partners:', partners);
-
   return (
     
     <View style={styles.container}>
