@@ -116,16 +116,17 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: colors.white, // White background
-    padding: 15,
+    padding: 10,
     borderRadius: 5,
     alignItems: 'center',
     marginVertical: 20,
+    marginHorizontal: '20%',
     borderWidth: 2, // Black border
     borderColor: colors.gray, // Black border color
     marginTop: 50
   },
   buttonText: {
-    color: colors.gray,
+    color: colors.black,
     fontSize: 16,
     fontWeight: 'bold',
   },

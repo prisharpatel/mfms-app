@@ -14,7 +14,7 @@ export default function HomeScreen({ navigation }) {
   const events = [
     {
       title: "Designing Success: Women Shaping the Future of Fashion",
-      speakers: ["Jennifer Fisher", "Lisa Greenwald"],
+      speaker: ["Jennifer Fisher", "Lisa Greenwald"],
       location: "Robertson Auditorium",
       startTime: new Date("2025-03-28T08:00:00"),
       endTime: new Date("2025-03-28T09:30:00"),

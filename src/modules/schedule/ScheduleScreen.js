@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import { colors, fonts } from '../../styles';
 
 export default function ScheduleScreen({ schedule, selectedSessions, loadSchedule }) {
@@ -8,6 +8,7 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
   }, []);
 
   const renderSession = (session) => (
+
     <View
       key={session.id}
       style={[
@@ -17,14 +18,20 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
     >
       <Text style={styles.time}>{session.startTime} - {session.endTime}</Text>
       <Text style={styles.title}>{session.title}</Text>
-      <Text style={styles.speaker}>{session.speaker}</Text>
+      <Text style={styles.speakers}>{session.speakers}</Text>
       <Text style={styles.location}>{session.location}</Text>
     </View>
   );
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container}>  
       <ScrollView>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => Linking.openURL('https://www.michiganfashionmediasummit.com/mfms-2025-schedule') } 
+        >
+          <Text style={styles.buttonText}>See Latest Schedule</Text>
+        </TouchableOpacity>
         {schedule.map(renderSession)}
       </ScrollView>
     </View>
@@ -42,11 +49,11 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderRadius: 8,
     padding: 16,
-    shadowColor: colors.blue,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: .2,
-    shadowRadius: 4,
-    elevation: 4,
+    shadowColor: colors.gray,
+    shadowOffset: { width: 3, height: 5 },
+    shadowOpacity: .1,
+    shadowRadius: 2,
+    elevation: 2,
   },
   selectedCard: {
     backgroundColor: colors.primaryLight,
@@ -66,7 +73,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     color: colors.blue
   },
-  speaker: {
+  speakers: {
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 17,
     color: colors.gray,
@@ -77,4 +84,22 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: colors.black,
   },
+button: {
+  backgroundColor: "#E5E5E5",
+  paddingVertical: 12,
+  paddingHorizontal: 16,
+  borderRadius: 10,
+  shadowColor: colors.black,
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.5,
+  shadowRadius: 4,
+  alignSelf: 'center',
+  marginVertical: 20,
+},
+buttonText: {
+  color: colors.black,
+  fontWeight: 'bold',
+  textAlign: 'center',
+  fontSize: 16,
+},
 }); 
