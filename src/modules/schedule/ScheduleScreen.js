@@ -1,8 +1,10 @@
-import React from 'react';
+import React,  { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import { colors, fonts } from '../../styles';
 
 export default function ScheduleScreen({ schedule, selectedSessions, loadSchedule }) {
+  const [isPressed, setIsPressed] = useState(false);
+
   React.useEffect(() => {
     loadSchedule();
   }, []);
@@ -28,10 +30,12 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
       <ScrollView>
         <Text style={styles.header}>Schedule</Text>
         <TouchableOpacity
-          style={styles.button}
-          onPress={() => Linking.openURL('https://www.michiganfashionmediasummit.com/mfms-2025-schedule') } 
+          activeOpacity={1} // Prevents automatic opacity change
+          style={[isPressed ? styles.buttonPressed : styles.button]}          onPress={() => Linking.openURL('https://www.michiganfashionmediasummit.com/mfms-2025-schedule')}
+          onPressIn={() => setIsPressed(true)}
+          onPressOut={() => setIsPressed(false)}
         >
-          <Text style={styles.buttonText}>See Latest Schedule</Text>
+          <Text style={styles.buttonText}>Updated Schedule</Text>
         </TouchableOpacity>
         {schedule.map(renderSession)}
       </ScrollView>
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingTop: 40,
+    paddingTop: 25,
   },
   header:{
     fontSize: 28,
@@ -88,37 +92,67 @@ const styles = StyleSheet.create({
     fontSize: 19.5,
     fontWeight: 'bold',
     marginBottom: 4,
-    color: colors.blue
+    color: colors.black
   },
   speakers: {
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 17,
-    color: colors.gray,
+    color: colors.black,
   },
   location: {
     marginTop: 7,
     fontFamily: "NeueHaasDisplayRoman",
-    fontSize: 15,
-    color: colors.black,
+    fontSize: 16,
+    color: colors.darkGray,
   },
-button: {
-  backgroundColor: "#F4F4F2",
-  paddingVertical: 12,
-  paddingHorizontal: 16,
-  borderRadius: 10,
-  shadowColor: colors.gray,
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.5,
-  shadowRadius: 4,
-  alignSelf: 'center',
-  marginVertical: 20,
-  marginHorizontal: 20,
-},
-buttonText: {
-  color: colors.black,
-  fontWeight: 'bold',
-  textAlign: 'center',
-  fontSize: 16,
-  fontFamily: "NeueHaasDisplayRoman",
-},
+  // button: {
+  //   backgroundColor: "#F4F4F2",
+  //   paddingVertical: 12,
+  //   paddingHorizontal: 16,
+  //   borderRadius: 10,
+  //   shadowColor: colors.gray,
+  //   shadowOffset: { width: 0, height: 2 },
+  //   shadowOpacity: 0.5,
+  //   shadowRadius: 4,
+  //   alignSelf: 'center',
+  //   marginVertical: 20,
+  //   marginHorizontal: 20,
+  // },
+  // buttonText: {
+  //   color: colors.black,
+  //   fontWeight: 'bold',
+  //   textAlign: 'center',
+  //   fontSize: 16,
+  //   fontFamily: "NeueHaasDisplayRoman",
+  // },
+
+  button: {
+    backgroundColor: colors.white,  
+    borderColor: colors.gray,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginVertical: 10,
+    marginHorizontal: '20%',
+    borderWidth: 1.5,
+  },
+  buttonPressed: {
+    backgroundColor: colors.black, 
+    borderColor: colors.white, 
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginVertical: 10,
+    marginHorizontal: '20%',
+    borderWidth: 1.5,
+  },
+  buttonText: {
+    color: colors.black, 
+    fontSize: 16,
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+    fontFamily: "NeueHaasDisplayRoman",
+  },
 }); 

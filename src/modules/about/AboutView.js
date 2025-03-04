@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     color: colors.black,
     marginHorizontal: 20,
-    marginTop: 40,
-    marginBottom: 10,
+    marginTop: 25,
+    marginBottom: 8
   },
   safeArea: {
     flex: 1,
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   videoContainer: {
     width: '115%',
     alignSelf: 'center',
-    marginTop: 70,
+    marginTop: 50,
     marginBottom: 20,
     borderRadius: 0,
     overflow: 'hidden',

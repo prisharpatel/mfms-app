@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { fonts, colors } from '../../styles';
 
 const TicketsScreen = () => {
   const navigation = useNavigation();
-
+  const [isPressed, setIsPressed] = useState(false);
+  
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.sectionTitle}>About Tickets</Text>
@@ -55,24 +56,27 @@ const TicketsScreen = () => {
       </Text>
 
       <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('TicketsView')} // Use navigation instead of state
-      >
-        <Text style={styles.buttonText}>Purchase Tickets</Text>
-      </TouchableOpacity>
+                activeOpacity={1} // Prevents automatic opacity change
+                style={[isPressed ? styles.buttonPressed : styles.button]}          
+                onPress={() => navigation.navigate('TicketsView')}
+                onPressIn={() => setIsPressed(true)}
+                onPressOut={() => setIsPressed(false)}
+              >
+                <Text style={styles.buttonText}>Purchase Tickets</Text>
+              </TouchableOpacity>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    paddingHorizontal: 20,
     flexGrow: 1,
     backgroundColor: colors.white
   },
   sectionTitle: {
     marginBottom: 10,
-    marginTop: 20,
+    marginTop: 25,
     fontFamily: "Arial",
     fontSize: 28,
     fontWeight: '600', //semi-bold
@@ -116,13 +120,24 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: colors.white, // White background
+    borderColor: colors.gray, // Black border color
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
     marginVertical: 20,
     marginHorizontal: '20%',
     borderWidth: 2, // Black border
-    borderColor: colors.gray, // Black border color
+    marginTop: 50
+  },
+  buttonPressed: {
+    backgroundColor: colors.black, 
+    borderColor: colors.white, 
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginVertical: 20,
+    marginHorizontal: '20%',
+    borderWidth: 2, // Black border
     marginTop: 50
   },
   buttonText: {
