@@ -85,11 +85,11 @@ const styles = StyleSheet.create({
     color: colors.black,
   },
 button: {
-  backgroundColor: "#E5E5E5",
+  backgroundColor: colors.white,
   paddingVertical: 12,
   paddingHorizontal: 16,
   borderRadius: 10,
-  shadowColor: colors.black,
+  shadowColor: colors.blue,
   shadowOffset: { width: 0, height: 2 },
   shadowOpacity: 0.5,
   shadowRadius: 4,
@@ -97,7 +97,7 @@ button: {
   marginVertical: 20,
 },
 buttonText: {
-  color: colors.black,
+  color: colors.blue,
   fontWeight: 'bold',
   textAlign: 'center',
   fontSize: 16,
