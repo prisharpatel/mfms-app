@@ -69,13 +69,11 @@ const styles = StyleSheet.create({
     fontFamily: "Arial"
   },
   description: {
-    fontSize: 18,
-    textAlign: 'center',
-    // marginTop: 10,
-    // marginBottom: 100,
-    color: colors.darkGray,
-    marginHorizontal: '3%',
-    fontFamily: "Arial"
+    fontSize: 17,
+    fontFamily: "NeueHaasDisplayRoman",
+    lineHeight: 22,
+    color: colors.gray || '#555',
+    // marginBottom: 20,
   },
 });
 
