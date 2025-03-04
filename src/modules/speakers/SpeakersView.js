@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontStyle: 'italic',
     marginBottom: 10,
-    fontFamily: "NeueHaasDisplayRoman"
+    fontFamily: "Arial"
   },
   subtitle: {
     fontSize: 16,

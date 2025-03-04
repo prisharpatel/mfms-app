@@ -117,7 +117,7 @@ const schedule = [
     id: 14,
     startTime: new Date('2024-03-28T16:50:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
     endTime: new Date('2024-03-28T17:00:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
-    speakers: '',
+    speakers: 'Kylie Stenzler | MFMS COO',
     title: 'Closing Remarks',
     location: 'Robertson Auditorium',
   },

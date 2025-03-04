@@ -89,7 +89,7 @@ button: {
   paddingVertical: 12,
   paddingHorizontal: 16,
   borderRadius: 10,
-  shadowColor: colors.blue,
+  shadowColor: colors.darkGray,
   shadowOffset: { width: 0, height: 2 },
   shadowOpacity: 0.5,
   shadowRadius: 4,
