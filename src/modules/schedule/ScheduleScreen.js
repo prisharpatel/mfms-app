@@ -49,11 +49,18 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderRadius: 8,
     padding: 16,
-    shadowColor: colors.gray,
-    shadowOffset: { width: 3, height: 5 },
-    shadowOpacity: .1,
-    shadowRadius: 2,
-    elevation: 2,
+    shadowColor: colors.darkGraygray,
+    shadowOffset: { 
+      width: 0,   // Centered horizontally
+      height: 0   // Centered vertically
+    },
+    shadowOpacity: 0.2,  // Slightly increased opacity
+    shadowRadius: 4,     // Increased blur radius
+    elevation: 4,        // Increased elevation for Android
+    // Add these properties to ensure shadow on all sides
+    shadowSpread: 1,     // Spread the shadow slightly
+    borderWidth: 0.5,    // Extremely thin border can help define edges
+    borderColor: colors.darkGray + '20', 
   },
   selectedCard: {
     backgroundColor: colors.primaryLight,
