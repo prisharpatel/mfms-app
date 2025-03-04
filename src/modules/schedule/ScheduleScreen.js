@@ -18,7 +18,7 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
       <Text style={styles.time}>{session.startTime} - {session.endTime}</Text>
       <Text style={styles.title}>{session.title}</Text>
       <Text style={styles.speaker}>{session.speaker}</Text>
-      <Text style={styles.room}>{session.room}</Text>
+      <Text style={styles.location}>{session.location}</Text>
     </View>
   );
 
@@ -42,11 +42,11 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderRadius: 8,
     padding: 16,
-    shadowColor: colors.gray,
+    shadowColor: colors.blue,
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    shadowOpacity: .2,
     shadowRadius: 4,
-    elevation: 2,
+    elevation: 4,
   },
   selectedCard: {
     backgroundColor: colors.primaryLight,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: colors.gray,
   },
-  room: {
+  location: {
     marginTop: 7,
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 15,

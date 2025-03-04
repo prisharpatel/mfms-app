@@ -18,7 +18,6 @@ export default function HomeScreen({ navigation }) {
       location: "Robertson Auditorium",
       startTime: new Date("2025-03-28T08:00:00"),
       endTime: new Date("2025-03-28T09:30:00"),
-      description: "A panel discussing the pivotal role of women in shaping the future of fashion."
     },
     {
       title: "The Thing About Change",
@@ -26,7 +25,6 @@ export default function HomeScreen({ navigation }) {
       location: "Kresge Suites",
       startTime: new Date("2025-03-28T10:00:00"),
       endTime: new Date("2025-03-28T11:00:00"),
-      description: "A discussion on the dynamics of change in fashion and media."
     },
     {
       title: "Panel 3 Making This Long To See What It Will Look Like",
@@ -34,7 +32,6 @@ export default function HomeScreen({ navigation }) {
       location: "Kresge Suites",
       startTime: new Date("2025-03-28T11:00:00"),
       endTime: new Date("2025-03-28T12:00:00"),
-      description: "A discussion on the dynamics of change in fashion and media."
     },
     {
       title: "Panel 4 Making This Super Long Again To See What It Will Look Like",
@@ -42,7 +39,6 @@ export default function HomeScreen({ navigation }) {
       location: "Kresge Suites",
       startTime: new Date("2025-03-28T12:00:00"),
       endTime: new Date("2025-03-28T14:00:00"),
-      description: "A discussion on the dynamics of change in fashion and media."
     }
   ];
   let currentEvent = null;
