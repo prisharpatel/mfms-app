@@ -19,8 +19,12 @@ const SpeakerDetails = ({ route }) => {
       </View>
       <Text style={styles.name}>{speaker.name}</Text>
       <Text style={styles.title}>{speaker.title}</Text>
-      <Text style={styles.description}>{speaker.description}</Text>
-    </ScrollView>
+      <Text style={styles.title}></Text>      
+      {speaker.description.split("\n").map((line, index) => (
+        <Text style={styles.description} key={index}>{line}{"\n"}</Text>
+      ))}
+      <Text style={styles.title}>{"\n"}</Text>      
+      </ScrollView>
   );
 };
 
@@ -31,38 +35,43 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   imageContainer: {
-    width: 250,
-    height: 250,
+    width: '85%',
+    height: undefined,
+    aspectRatio: 3 / 4,
     overflow: 'hidden', // Crop the bottom of the image
     marginBottom: 20,
-    borderRadius: 10,
     alignItems: 'center', // Horizontally center the image
     justifyContent: 'center', // Vertically center the image
-    //marginLeft: 55,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
   },
   image: {
     width: '100%',
-    height: '100%', // Increase the height to crop from the bottom
-    //position: 'relative', // Allow positioning adjustments
-    //top: '15%', // Shift the image up so the bottom gets cropped
+    height: '100%', 
   },
   name: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   title: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontStyle: 'italic',
+    marginTop: 8,
+    color: colors.blue,
   },
   description: {
-    fontSize: 16,
-    textAlign: 'left',
-    marginTop: 10,
-    marginBottom: 100,
+    fontSize: 18,
+    textAlign: 'center',
+    // marginTop: 10,
+    // marginBottom: 100,
     color: '#444',
+    marginHorizontal: '1%'
   },
 });
 
