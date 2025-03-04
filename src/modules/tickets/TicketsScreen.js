@@ -71,12 +71,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white
   },
   sectionTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
     marginBottom: 10,
-    fontFamily: fonts.primaryBold,
-    textAlign: "center",
-    marginTop: 30
+    marginTop: 30,
+    fontFamily: "Arial",
+    fontSize: 28,
+    fontWeight: '600', //semi-bold
+    textAlign: 'center',
+    fontStyle: "italic",
+    color: colors.black,
+    marginHorizontal: 20,
   },
   description: {
     fontSize: 14,

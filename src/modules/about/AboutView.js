@@ -46,24 +46,16 @@ const AboutScreen = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView 
-        contentContainerStyle={styles.scrollView}
-        showsVerticalScrollIndicator={false}
-      >
-        
         {/* Header Section */}
         <View style={styles.section}>
           <Text> {'\n'} </Text>
-          {/* <View style={styles.outlinedTextContainer}>
-            <Text style={[styles.outlinedTextShadow, { top: -1, left: -1 }]}>about us</Text>
-            <Text style={[styles.outlinedTextShadow, { top: -1, right: -1 }]}>about us</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, left: -1 }]}>about us</Text>
-            <Text style={[styles.outlinedTextShadow, { bottom: -1, right: -1 }]}>about us</Text>
-            <Text style={styles.outlinedText}>about us</Text>
-          </View> */}
-          <Text style={styles.title}>who we are</Text>
+          <Text style={styles.title}>Who We Are</Text>
         </View>
 
+        <ScrollView 
+        contentContainerStyle={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+      >
         <Animated.View style={[styles.container, { opacity: contentFade }]}>
           {/* Video Section - Rectangular shape */}
           <View style={styles.videoContainer}>
@@ -122,7 +114,7 @@ const AboutScreen = () => {
 const styles = StyleSheet.create({
   title:{
     fontFamily: "Arial",
-    fontSize: 36,
+    fontSize: 28,
     fontWeight: '600', //semi-bold
     textAlign: 'left',
     fontStyle: "italic",
@@ -140,10 +132,14 @@ const styles = StyleSheet.create({
   },
   // Header styles
   section: {
-    flex: 1,
-    paddingHorizontal: 20,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: colors.white,
+    // paddingVertical: 10,
     alignItems: 'center',
-    fontFamily: "NeueHaasDisplayRoman",
+    zIndex: 1000,
   },
   outlinedTextContainer: {
     position: 'relative',
@@ -187,7 +183,7 @@ const styles = StyleSheet.create({
   videoContainer: {
     width: '115%',
     alignSelf: 'center',
-    marginTop: 20,
+    marginTop: 70,
     marginBottom: 20,
     borderRadius: 0,
     overflow: 'hidden',
