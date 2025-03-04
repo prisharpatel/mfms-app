@@ -8,7 +8,7 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
   }, []);
 
   const renderSession = (session) => (
-    <TouchableOpacity
+    <View
       key={session.id}
       style={[
         styles.sessionCard,
@@ -19,7 +19,7 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
       <Text style={styles.title}>{session.title}</Text>
       <Text style={styles.speaker}>{session.speaker}</Text>
       <Text style={styles.room}>{session.room}</Text>
-    </TouchableOpacity>
+    </View>
   );
 
   return (
@@ -54,26 +54,27 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   time: {
-    fontFamily: fonts.primary,
-    color: colors.primary,
-    fontSize: 14,
+    fontFamily: "NeueHaasDisplayRoman",
+    color: colors.blue,
+    fontSize: 16,
     marginBottom: 4,
   },
   title: {
-    fontFamily: fonts.primary,
-    fontSize: 16,
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 19.5,
     fontWeight: 'bold',
     marginBottom: 4,
+    color: colors.blue
   },
   speaker: {
-    fontFamily: fonts.primary,
-    fontSize: 14,
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 17,
     color: colors.gray,
-    marginBottom: 2,
   },
   room: {
-    fontFamily: fonts.primary,
-    fontSize: 12,
-    color: colors.primary,
+    marginTop: 7,
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 15,
+    color: colors.black,
   },
 }); 
