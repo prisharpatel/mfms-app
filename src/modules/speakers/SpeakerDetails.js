@@ -56,6 +56,8 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: "NeueHaasDisplayRoman",
+    textTransform: 'uppercase',
   },
   title: {
     fontSize: 22,
@@ -64,14 +66,16 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     marginTop: 8,
     color: colors.blue,
+    fontFamily: "Arial"
   },
   description: {
     fontSize: 18,
     textAlign: 'center',
     // marginTop: 10,
     // marginBottom: 100,
-    color: '#444',
-    marginHorizontal: '1%'
+    color: colors.darkGray,
+    marginHorizontal: '3%',
+    fontFamily: "Arial"
   },
 });
 
