@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     marginBottom: 10,
-    marginTop: 30,
+    marginTop: 20,
     fontFamily: "Arial",
     fontSize: 28,
     fontWeight: '600', //semi-bold

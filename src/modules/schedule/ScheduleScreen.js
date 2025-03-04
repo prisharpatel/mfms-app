@@ -26,6 +26,7 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
   return (
     <View style={styles.container}>  
       <ScrollView>
+        <Text style={styles.header}>Schedule</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() => Linking.openURL('https://www.michiganfashionmediasummit.com/mfms-2025-schedule') } 
@@ -42,6 +43,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+    paddingTop: 40,
+  },
+  header:{
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontStyle: 'italic',
+    marginBottom: 10,
+    fontFamily: "Arial"
   },
   sessionCard: {
     backgroundColor: colors.white,
@@ -49,17 +59,17 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderRadius: 8,
     padding: 16,
-    shadowColor: colors.darkGraygray,
+    shadowColor: colors.darkGray,
     shadowOffset: { 
       width: 0,   // Centered horizontally
       height: 0   // Centered vertically
     },
-    shadowOpacity: 0.2,  // Slightly increased opacity
+    shadowOpacity: 0.3,  // Slightly increased opacity
     shadowRadius: 4,     // Increased blur radius
-    elevation: 4,        // Increased elevation for Android
+    elevation: 6,        
     // Add these properties to ensure shadow on all sides
-    shadowSpread: 1,     // Spread the shadow slightly
-    borderWidth: 0.5,    // Extremely thin border can help define edges
+    shadowSpread: 10,     // Spread the shadow slightly
+    borderWidth: 0.1,    // Extremely thin border can help define edges
     borderColor: colors.darkGray + '20', 
   },
   selectedCard: {
@@ -92,7 +102,7 @@ const styles = StyleSheet.create({
     color: colors.black,
   },
 button: {
-  backgroundColor: colors.white,
+  backgroundColor: "#F4F4F2",
   paddingVertical: 12,
   paddingHorizontal: 16,
   borderRadius: 10,
@@ -102,11 +112,13 @@ button: {
   shadowRadius: 4,
   alignSelf: 'center',
   marginVertical: 20,
+  marginHorizontal: 20,
 },
 buttonText: {
-  color: colors.blue,
+  color: colors.black,
   fontWeight: 'bold',
   textAlign: 'center',
   fontSize: 16,
+  fontFamily: "NeueHaasDisplayRoman",
 },
 }); 

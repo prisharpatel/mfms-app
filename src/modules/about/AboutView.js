@@ -48,7 +48,7 @@ const AboutScreen = () => {
     <SafeAreaView style={styles.safeArea}>
         {/* Header Section */}
         <View style={styles.section}>
-          <Text> {'\n'} </Text>
+          {/* <Text> {'\n'} </Text> */}
           <Text style={styles.title}>Who We Are</Text>
         </View>
 
@@ -120,10 +120,12 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     color: colors.black,
     marginHorizontal: 20,
+    marginTop: 40,
+    marginBottom: 10,
   },
   safeArea: {
     flex: 1,
-    backgroundColor: colors.white || '#FFFFFF',
+    backgroundColor: colors.white,
     paddingTop: Platform.select({ ios: 0, android: StatusBar.currentHeight }),
   },
   scrollView: {
@@ -133,11 +135,9 @@ const styles = StyleSheet.create({
   // Header styles
   section: {
     position: 'absolute',
-    top: 0,
     left: 0,
     right: 0,
     backgroundColor: colors.white,
-    // paddingVertical: 10,
     alignItems: 'center',
     zIndex: 1000,
   },
