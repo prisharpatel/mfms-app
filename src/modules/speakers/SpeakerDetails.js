@@ -59,8 +59,9 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
-    textAlign: 'center',
+    textAlign: 'left',
     marginTop: 10,
+    marginBottom: 100,
     color: '#444',
   },
 });

@@ -96,11 +96,12 @@ const styles = StyleSheet.create({
     paddingTop: 40,
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontStyle: 'italic',
     marginBottom: 10,
-    fontFamily: fonts.primaryBold
+    fontFamily: "Arial"
   },
   subtitle: {
     fontSize: 16,
