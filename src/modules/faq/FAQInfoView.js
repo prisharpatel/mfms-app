@@ -34,9 +34,10 @@ const FAQPage = ({ navigation }) => {
   // Toggle expanded state
   const toggleExpand = (id) => {
     setFaqData((prevData) =>
-      prevData.map((item) =>
-        item.id === id ? { ...item, expanded: !item.expanded } : item
-      )
+      prevData.map((item) => ({
+        ...item,
+        expanded: item.id === id ? !item.expanded : false, // Close all others
+      }))
     );
   };
 
@@ -96,17 +97,19 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
   },
   headerTitle: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 8,
     color: colors.black,
+    fontFamily: "NeueHaasDisplayRoman",
   },
   headerSubtitle: {
-    fontSize: 14,
+    fontSize: 15,
     textAlign: 'center',
     color: colors.gray,
     marginBottom: 16,
+    fontFamily: "NeueHaasDisplayRoman",
   },
   searchInput: {
     height: 40,
@@ -115,11 +118,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 12,
     marginBottom: 16,
+    fontSize: 15
   },
   faqItem: {
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
     paddingVertical: 16,
+    paddingHorizontal: 10,
   },
   questionContainer: {
     flexDirection: 'row',
@@ -128,21 +133,23 @@ const styles = StyleSheet.create({
   },
   questionText: {
     flex: 1, // Allow text to take available space
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: '500',
     color: colors.black,
     marginRight: 10, // Space between text and icon
+    fontFamily: "NeueHaasDisplayRoman",
   },
   toggleIcon: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: 'bold',
     color: colors.black,
   },
   answerText: {
     marginTop: 8,
-    fontSize: 14,
+    fontSize: 15,
     color: colors.gray,
     lineHeight: 20,
+    fontFamily: "NeueHaasDisplayRoman",
   },
 });
 

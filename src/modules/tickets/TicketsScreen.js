@@ -86,9 +86,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   description: {
-    fontSize: 14,
+    fontSize: 16,
     color: colors.gray,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: "NeueHaasDisplayRoman",
+    width: "100%"
   },
   ticketContainer: {
     flexDirection: 'row',
@@ -98,17 +100,17 @@ const styles = StyleSheet.create({
     marginRight: 20
   },
   ticketType: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     fontFamily: fonts.primaryRegular
   },
   ticketPrice: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     marginRight: 5
   },
   ticketDescription: {
-    fontSize: 14,
+    fontSize: 16,
     color: colors.gray,
     marginLeft: 20,
     marginRight: 20
