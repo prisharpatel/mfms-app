@@ -118,13 +118,15 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 12,
     marginBottom: 16,
-    fontSize: 17
+    fontSize: 17,
+    fontFamily: "NeueHaasDisplayRoman",
   },
   faqItem: {
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
     paddingVertical: 16,
     paddingHorizontal: 10,
+    fontFamily: "NeueHaasDisplayRoman",
   },
   questionContainer: {
     flexDirection: 'row',
