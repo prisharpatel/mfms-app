@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     fontFamily: "NeueHaasDisplayRoman",
     textAlign: 'center',
     marginHorizontal: SCREEN_WIDTH * 0.06,
-    marginBottom: 130,
+    marginBottom: 60,
     color: colors.black,
     fontSize: 16.5
   },
