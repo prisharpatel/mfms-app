@@ -105,10 +105,10 @@ const styles = StyleSheet.create({
     fontFamily: "NeueHaasDisplayRoman",
   },
   headerSubtitle: {
-    fontSize: 15,
+    fontSize: 16,
     textAlign: 'center',
     color: colors.gray,
-    marginBottom: 16,
+    marginBottom: 17,
     fontFamily: "NeueHaasDisplayRoman",
   },
   searchInput: {
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 12,
     marginBottom: 16,
-    fontSize: 15
+    fontSize: 17
   },
   faqItem: {
     borderBottomWidth: 1,
