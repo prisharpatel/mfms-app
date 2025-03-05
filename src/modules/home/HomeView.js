@@ -338,7 +338,7 @@ export default function HomeScreen({ navigation }) {
               activeOpacity={0.7}
             >
               <Text style={[styles.endDescription, styles.linkText]}>
-                @the_mfms
+                Instagram
               </Text>
             </TouchableOpacity>
 
@@ -347,11 +347,18 @@ export default function HomeScreen({ navigation }) {
               activeOpacity={0.7}
             >
               <Text style={[styles.endDescription, styles.linkText]}>
-                @the_mfms
+                TikTok 
               </Text>
             </TouchableOpacity>
 
-
+            <TouchableOpacity style={styles.button}
+              onPress={() => Linking.openURL('https://open.spotify.com/show/665Wz5hi6qUmcqJxits75m?si=d7451dda455e43d9')}
+              activeOpacity={0.7}
+            >
+              <Text style={[styles.endDescription, styles.linkText]}>
+                Spotify 
+              </Text>
+            </TouchableOpacity>
           </View>
         )}
       </ImageBackground>
@@ -563,24 +570,34 @@ const styles = StyleSheet.create({
     fontWeight: '600', //semi-bold
     textAlign: 'center',
     color: colors.blue,
-
   },
   endDescription: {
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 19,
-    fontWeight: '500', //semi-bold
+    fontStyle: "italic",
+    fontWeight: '400', //semi-bold
+    textAlign: 'center',
+    color: colors.black,
+    marginHorizontal: 20,
+    textTransform: 'lowercase'
+  },
+  linkText: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 19,
+    fontStyle: "italic",
+    fontWeight: '400', //semi-bold
     textAlign: 'center',
     color: colors.black,
     marginHorizontal: 20,
   },
   button: {
     backgroundColor: colors.white,  
-    borderColor: colors.gray,
+    borderColor: colors.darkGray,
     paddingVertical: 8,
     borderRadius: 8,
     alignItems: 'center',
     marginVertical: 10,
     marginHorizontal: '5%',
-    borderWidth: 1.5,
+    borderWidth: 1.2,
   },
 });
