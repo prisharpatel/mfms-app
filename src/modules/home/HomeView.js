@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, ImageBackground, ScrollView, Animated, TouchableOpacity, Dimensions, Easing } from 'react-native';
+import { StyleSheet, View, ImageBackground, ScrollView, Animated, TouchableOpacity, Linking, Dimensions, Easing } from 'react-native';
 import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
 
@@ -7,7 +7,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
-  const now = new Date("2025-03-28T10:30:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
+  const now = new Date("2025-04-28T10:30:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
   const summitStart = new Date("2025-03-28T08:00:00"); 
   const summitEnd = new Date("2025-03-28T17:00:00"); 
 
@@ -316,6 +316,44 @@ export default function HomeScreen({ navigation }) {
             </>
           )}
         </View>
+
+        {now > summitEnd && (
+          <View style={styles.section}>
+            <Text style={styles.endTitle}>thanks for attending,</Text>
+            <Text style={styles.endTitle}>see you next year.</Text>
+            <Text size={18}> {'\n'} </Text>
+            <Text style={styles.touch}>let's stay in touch.</Text>
+            <Text size={5}> {'\n'} </Text>
+
+            <TouchableOpacity style={styles.button}
+              onPress={() => Linking.openURL('https://www.michiganfashionmediasummit.com')}
+              activeOpacity={0.7}
+            >
+              <Text style={[styles.endDescription, styles.linkText]}>
+                michiganfashionmediasummit.com
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}
+              onPress={() => Linking.openURL('https://www.instagram.com/the_mfms/?hl=en')}
+              activeOpacity={0.7}
+            >
+              <Text style={[styles.endDescription, styles.linkText]}>
+                @the_mfms
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.button}
+              onPress={() => Linking.openURL('https://www.tiktok.com/@the_mfms')}
+              activeOpacity={0.7}
+            >
+              <Text style={[styles.endDescription, styles.linkText]}>
+                @the_mfms
+              </Text>
+            </TouchableOpacity>
+
+
+          </View>
+        )}
       </ImageBackground>
     </ScrollView>
   );
@@ -511,5 +549,38 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     fontSize: 18,
     color: colors.black
+  },
+  endTitle: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 36,
+    fontWeight: '600', //semi-bold
+    textAlign: 'center',
+    color: colors.black,
+  },
+  touch:{
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 25,
+    fontWeight: '600', //semi-bold
+    textAlign: 'center',
+    color: colors.blue,
+
+  },
+  endDescription: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 19,
+    fontWeight: '500', //semi-bold
+    textAlign: 'center',
+    color: colors.black,
+    marginHorizontal: 20,
+  },
+  button: {
+    backgroundColor: colors.white,  
+    borderColor: colors.gray,
+    paddingVertical: 8,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginVertical: 10,
+    marginHorizontal: '5%',
+    borderWidth: 1.5,
   },
 });
