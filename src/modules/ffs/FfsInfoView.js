@@ -166,8 +166,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 20,
     marginHorizontal: SCREEN_WIDTH * 0.06,
-    fontSize: 15,
+    fontSize: 16,
     fontFamily: "NeueHaasDisplayRoman",
+    color: colors.black,
   },
   gallery:{
     alignSelf: 'center',
@@ -183,7 +184,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginHorizontal: SCREEN_WIDTH * 0.06,
     marginBottom: 130,
-    fontSize: 18
+    color: colors.black,
+    fontSize: 16.5
   },
   slidingContainer: {
     width: SCREEN_WIDTH*2,

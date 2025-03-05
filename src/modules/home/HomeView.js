@@ -401,7 +401,7 @@ const styles = StyleSheet.create({
   },
   comingUpPanelName: {
     fontFamily: "NeueHaasDisplayRoman",
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '400', 
     flexShrink: 1,
     maxWidth: '100%',
@@ -411,7 +411,7 @@ const styles = StyleSheet.create({
   },
   comingUpLocation:{
     fontFamily: "NeueHaasDisplayRoman",
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '400', 
     flexShrink: 1,
     maxWidth: '100%',
