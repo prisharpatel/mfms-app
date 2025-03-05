@@ -13,33 +13,117 @@ export default function HomeScreen({ navigation }) {
 
   const events = [
     {
-      title: "Designing Success: Women Shaping the Future of Fashion",
-      speaker: ["Jennifer Fisher", "Lisa Greenwald"],
-      location: "Robertson Auditorium",
-      startTime: new Date("2025-03-28T08:00:00"),
-      endTime: new Date("2025-03-28T09:30:00"),
+      id: 1,
+      startTime: new Date('2025-03-28T09:30:00'),
+      endTime: new Date('2025-03-28T09:40:00'),
+      speakers: 'Izzy Saunders | MFMS Co-President and Lila Grayson | MFMS Co-President',
+      title: 'Opening Remarks',
+      location: 'Robertson Auditorium',
     },
     {
-      title: "The Thing About Change",
-      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
-      location: "Kresge Suites",
-      startTime: new Date("2025-03-28T10:00:00"),
-      endTime: new Date("2025-03-28T11:00:00"),
+      id: 2,
+      startTime: new Date('2025-03-28T09:40:00'),
+      endTime: new Date('2025-03-28T10:15:00'),
+      speakers: '',
+      title: 'Panel #1',
+      location: 'Robertson Auditorium',
     },
     {
-      title: "Panel 3 Making This Long To See What It Will Look Like",
-      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
-      location: "Kresge Suites",
-      startTime: new Date("2025-03-28T11:00:00"),
-      endTime: new Date("2025-03-28T12:00:00"),
+      id: 3,
+      startTime: new Date('2025-03-28T10:20:00'),
+      endTime: new Date('2025-03-28T10:55:00'),
+      speakers: '',
+      title: 'Panel #2',
+      location: 'Robertson Auditorium',
     },
     {
-      title: "Panel 4 Making This Super Long Again To See What It Will Look Like",
-      speakers: ["Jonathon Newhouse", "Marcus Collins", "Katie Couric", "Hannah Bronfman"],
-      location: "Kresge Suites",
-      startTime: new Date("2025-03-28T12:00:00"),
-      endTime: new Date("2025-03-28T14:00:00"),
-    }
+      id: 4,
+      startTime: new Date('2025-03-28T10:55:00'),
+      endTime: new Date('2025-03-28T11:00:00'),
+      speakers: '',
+      title: 'Fashion Forward Showcase Video',
+      location: 'Robertson Auditorium',
+    },
+    {
+      id: 5,
+      startTime: new Date('2025-03-28T11:00:00'),
+      endTime: new Date('2025-03-28T11:30:00'),
+      speakers: '',
+      title: 'Panel #3',
+      location: 'Robertson Auditorium',
+    },
+    {
+      id: 6,
+      startTime: new Date('2025-03-28T11:35:00'),
+      endTime: new Date('2025-03-28T12:10:00'),
+      speakers: '',
+      title: 'Panel #4',
+      location: 'Robertson Auditorium',
+    },
+    {
+      id: 7,
+      startTime: new Date('2025-03-28T12:10:00'),
+      endTime: new Date('2025-03-28T13:15:00'),
+      speakers: 'Wolverine Worldwide',
+      title: 'Lunch & Learn',
+      location: 'To Be Announced',
+    },
+    {
+      id: 8,
+      startTime: new Date('2025-03-28T13:15:00'),
+      endTime: new Date('2025-03-28T13:45:00'),
+      speakers: '',
+      title: 'Conversation #1',
+      location: 'Robertson Auditorium',
+    },
+    {
+      id: 9,
+      startTime: new Date('2025-03-28T13:50:00'),
+      endTime: new Date('2025-03-28T14:20:00'),
+      speakers: '',
+      title: 'To Be Announced',
+      location: 'To Be Announced',
+    },
+    {
+      id: 10,
+      startTime: new Date('2025-03-28T14:20:00'),
+      endTime: new Date('2025-03-28T15:25:00'),
+      speakers: '',
+      title: 'Networking & Corporate Coffee Chats',
+      location: 'Kresge Suites',
+    },
+    {
+      id: 11,
+      startTime: new Date('2025-03-28T15:25:00'),
+      endTime: new Date('2025-03-28T16:00:00'),
+      speakers: '',
+      title: 'Keynote #1',
+      location: 'Robertson Auditorium',
+    },
+    {
+      id: 12,
+      startTime: new Date('2025-03-28T16:05:00'),
+      endTime: new Date('2025-03-28T16:40:00'),
+      speakers: '',
+      title: 'Conversation #2',
+      location: 'Robertson Auditorium',
+    },
+    {
+      id: 13,
+      startTime: new Date('2025-03-28T16:40:00'),
+      endTime: new Date('2025-03-28T16:50:00'),
+      speakers: '',
+      title: 'Fashion Forward Showcase Winner Announcement',
+      location: 'Robertson Auditorium',
+    },
+    {
+      id: 14,
+      startTime: new Date('2025-03-28T16:50:00'),
+      endTime: new Date('2025-03-28T17:00:00'),
+      speakers: 'Kylie Stenzler | MFMS COO',
+      title: 'Closing Remarks',
+      location: 'Robertson Auditorium',
+    },
   ];
   let currentEvent = null;
   let upcomingEvent = null;
@@ -192,10 +276,15 @@ export default function HomeScreen({ navigation }) {
                   />
                 </View>
                 
-                <View style={styles.locationContainer}>
-                  <Text style={styles.location}>
-                    @ {currentEvent.location} | {currentEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {currentEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                <View style={styles.descriptionContainer}>
+                  <Text style={styles.description}>
+                    @ {currentEvent.location} 
                   </Text>
+                  <Text size={5}> </Text>
+                  <Text style={styles.description}>
+                    {currentEvent.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {currentEvent.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </Text>
+                   
                 </View>
               </View>
             </>
@@ -234,7 +323,6 @@ export default function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.white
   },
   bgImage: {
@@ -243,10 +331,10 @@ const styles = StyleSheet.create({
   },
   currentEventContainer: {
     borderWidth: 1,
-    borderColor: colors.black,
-    borderRadius: 10,
+    borderColor: colors.darkGray,
+    borderRadius: 20,
     padding: 15,
-    marginHorizontal: 20,
+    marginHorizontal: "5%",
     marginTop: 10,
     backgroundColor: colors.white,  // Optional: adds slight transparency
   },
@@ -343,18 +431,19 @@ const styles = StyleSheet.create({
   },
   panelContainer:{
     marginTop: 8,
-    alignItems: 'flex-start',
+    alignItems: 'center',
     width: '100%'
   },
   panel: {
     maxWidth: '90%',
     alignSelf: 'center',
     flexShrink: 1,
+    fontWeight: '600', 
     marginHorizontal: 20,
-    fontFamily: "Arial", 
-    fontStyle: "italic",
-    color: colors.black,
-    fontSize: 18,
+    fontFamily: "NeueHaasDisplayRoman", 
+    color: colors.blue,
+    fontSize: 22,
+    textTransform: 'uppercase',
   },
   progressBar: {
     height: 5,
@@ -362,25 +451,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#ddd',
     borderRadius: 5,
     marginVertical: 20,
-    alignSelf: 'center', // Add this to center the progress bar
-    marginHorizontal: 20 // Add this to match other elements' margins
+    alignSelf: 'center', 
+    marginHorizontal: 20 
   },
   progressIndicator: {
     height: '100%',
     backgroundColor: colors.blue,
     borderRadius: 5,
   },
-  locationContainer: {
-    alignItems: 'flex-start',
-    flexDirection: 'row',
-    marginHorizontal: 20,
-    justifyContent: 'space-between',
-    width: '95%',
+  descriptionContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
   },
-  location:{
+  description:{
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 17,
-    fontWeight: '400', 
+    fontWeight: '500', 
     textAlign: 'center',
     flexShrink: 1,
     maxWidth: '100%',
@@ -423,5 +510,6 @@ const styles = StyleSheet.create({
     fontFamily: "Times New Roman",
     fontStyle: "italic",
     fontSize: 18,
+    color: colors.black
   },
 });
