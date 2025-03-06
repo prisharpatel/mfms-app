@@ -110,7 +110,7 @@ const schedule = [
     startTime: new Date('2025-03-28T16:40:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
     endTime: new Date('2025-03-28T16:50:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
     speakers: '',
-    title: 'Fashion Forward Showcase Winner Announcement',
+    title: 'Fashion Forward Showcase Award Ceremony',
     location: 'Robertson Auditorium',
   },
   {

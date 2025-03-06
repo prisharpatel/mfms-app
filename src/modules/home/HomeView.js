@@ -9,7 +9,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
-  const now = new Date("2025-04-28T10:30:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
+  const now = new Date("2025-03-28T19:01:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
   const summitStart = new Date("2025-03-28T08:00:00"); 
   const summitEnd = new Date("2025-03-28T17:00:00"); 
 
@@ -115,7 +115,7 @@ export default function HomeScreen({ navigation }) {
       startTime: new Date('2025-03-28T16:40:00'),
       endTime: new Date('2025-03-28T16:50:00'),
       speakers: '',
-      title: 'Fashion Forward Showcase Winner Announcement',
+      title: 'Fashion Forward Showcase Award Ceremony',
       location: 'Robertson Auditorium',
     },
     {
@@ -130,7 +130,7 @@ export default function HomeScreen({ navigation }) {
   let currentEvent = null;
   let upcomingEvent = null;
   if (events.length != 0) {
-    currentEvent = events.find(event => now >= event.startTime && now <= event.endTime);
+    currentEvent = events.find(event => now >= event.startTime && now < event.endTime);
     upcomingEvent = events
       .filter(event => event.startTime > now)
       .sort((a, b) => a.startTime - b.startTime)
@@ -296,7 +296,7 @@ export default function HomeScreen({ navigation }) {
           {upcomingEvent.length > 0 && now > summitStart && (
 
             <>
-              <Text size={28}> {'\n'} </Text>
+              {currentEvent && <Text size={20}> {'\n'} </Text>}
               <Text style={styles.subtitleRight}>Coming Up:</Text>
 
               {upcomingEvent.map((event, index) => (
@@ -319,9 +319,9 @@ export default function HomeScreen({ navigation }) {
           )}
         </View>
 
-        {now > summitEnd && (
+        {now >= summitEnd && (
           <View style={styles.section}>
-            <Text style={styles.endTitle}>thanks for attending,</Text>
+            <Text style={styles.endTitle}>thank you for attending,</Text>
             <Text style={styles.endTitle}>see you next year.</Text>
             <Text size={18}> {'\n'} </Text>
             <Text style={styles.touch}>let's stay in touch.</Text>
@@ -467,14 +467,16 @@ const styles = StyleSheet.create({
   panelContainer:{
     marginTop: 8,
     alignItems: 'center',
+    justifyContent: 'center', 
     width: '100%'
   },
   panel: {
-    maxWidth: '90%',
+    maxWidth: '100%',
     alignSelf: 'center',
+    textAlign: 'center', 
     flexShrink: 1,
     fontWeight: '600', 
-    marginHorizontal: 20,
+    marginHorizontal: 10,
     fontFamily: "NeueHaasDisplayRoman", 
     color: colors.blue,
     fontSize: 22,
@@ -549,10 +551,11 @@ const styles = StyleSheet.create({
   },
   endTitle: {
     fontFamily: "NeueHaasDisplayRoman",
-    fontSize: 36,
+    fontSize: 32,
     fontWeight: '500', //semi-bold
     textAlign: 'center',
     color: colors.black,
+    marginHorizontal: "5%",
   },
   touch:{
     fontFamily: "NeueHaasDisplayRoman",
