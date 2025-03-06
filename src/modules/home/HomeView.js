@@ -560,21 +560,21 @@ const styles = StyleSheet.create({
   endTitle: {
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 36,
-    fontWeight: '600', //semi-bold
+    fontWeight: '500', //semi-bold
     textAlign: 'center',
     color: colors.black,
   },
   touch:{
     fontFamily: "NeueHaasDisplayRoman",
+    // fontStyle: "italic",
     fontSize: 25,
-    fontWeight: '600', //semi-bold
+    fontWeight: '400', //semi-bold
     textAlign: 'center',
     color: colors.blue,
   },
   endDescription: {
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 19,
-    fontStyle: "italic",
     fontWeight: '400', //semi-bold
     textAlign: 'center',
     color: colors.black,
@@ -584,7 +584,6 @@ const styles = StyleSheet.create({
   linkText: {
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 19,
-    fontStyle: "italic",
     fontWeight: '400', //semi-bold
     textAlign: 'center',
     color: colors.black,
@@ -598,6 +597,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
     marginHorizontal: '5%',
-    borderWidth: 1.2,
+    borderWidth: 1.1,
   },
 });
