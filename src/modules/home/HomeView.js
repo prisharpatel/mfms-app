@@ -9,7 +9,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
-  const now = new Date("2025-03-28T19:01:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
+  const now = new Date("2025-03-27T08:00:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
   const summitStart = new Date("2025-03-28T08:00:00"); 
   const summitEnd = new Date("2025-03-28T17:00:00"); 
 
@@ -165,7 +165,6 @@ export default function HomeScreen({ navigation }) {
     const targetDate = summitStart;
   
     const updateCountdown = () => {
-      const now = new Date();
       const timeDifference = targetDate - now;
   
       if (timeDifference > 0) {
@@ -215,10 +214,10 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.title}>Media Summit</Text>
 
           <View style={styles.divider} />
-          {/* <View style={styles.titleContainer}>
+          {(now < summitStart || !currentEvent) && <View style={styles.titleContainer}>
             <Text style={styles.titleDate}>03/28/25</Text>
             <Text style={styles.titleLocation}>Ross School of Business</Text>
-          </View> */}
+          </View>}
 
           <Text size={18}> {'\n'} </Text>
 
@@ -245,15 +244,15 @@ export default function HomeScreen({ navigation }) {
               </View>
               
               <Text style={styles.countdownTime}>
-                {countdown[0]} days
+                {countdown[0]} {countdown[0] === 1 ? 'day' : 'days'}
               </Text>
 
               <Text style={styles.countdownTime}>
-                {countdown[1]} hours
+                {countdown[1]} {countdown[1] === 1 ? 'hour' : 'hours'}
               </Text>
 
               <Text style={styles.countdownTime}>
-                {countdown[2]} minutes
+                {countdown[2]} {countdown[2] === 1 ? 'minute' : 'minutes'}
               </Text>
             </>
             ))
