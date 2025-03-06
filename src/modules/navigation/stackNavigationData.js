@@ -6,7 +6,8 @@ import PartnerInfoView from '../partners/PartnerInfoView';
 import FAQInfoView from '../faq/FAQInfoView';
 import FFSInfoView from '../ffs/FfsInfoView';
 import SpeakerDetailsView from '../speakers/SpeakerDetails'
-import TicketsView from '../tickets/TicketsView'
+import TicketsView from '../tickets/TicketsView';
+import ContactView from '../contact/ContactView';
 
 import { colors, fonts } from '../../styles';
 
@@ -104,7 +105,20 @@ const StackNavigationData = [
       color: colors.white,
       fontSize: 18,
     },
-  }
+  },
+  {
+    name: 'Contact',
+    component: ContactView,
+    headerLeft: headerLeftComponent,
+    headerBackground: { source: headerBackground },
+    headerTitleStyle: {
+      fontFamily: fonts.primaryRegular,
+      color: colors.white,
+      fontSize: 18,
+    },
+  },
+  
+
   
 ]
 

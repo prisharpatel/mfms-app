@@ -15,6 +15,8 @@ const iconPartners = require('../../../assets/images/handshake.png');
 const iconFFS = require('../../../assets/images/ffs_icon.png');
 const iconFAQ = require('../../../assets/images/faq.png');
 const logoImage = require('../../../assets/images/secondary_white.png')
+const iconMFMS = require('../../../assets/images/primarylogo.png');
+
 
 const drawerData = [
   {
@@ -46,6 +48,11 @@ const drawerData = [
     name: 'Fashion Forward Showcase',
     icon: iconFFS,
     onPress: (navigation) => navigation.navigate('FFS'),
+  },
+  {
+    name: 'Stay In Touch',
+    icon: iconMFMS,
+    onPress: (navigation) => navigation.navigate('Contact'),
   }
 ];
 
