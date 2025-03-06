@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import GalleryScreen from './GalleryView';
 import { loadImages, refreshImages } from './GalleryState';
 
 const GalleryContainer = () => {

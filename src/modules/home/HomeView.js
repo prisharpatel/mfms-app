@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, ImageBackground, ScrollView, Animated, TouchableOpacity, Linking, Dimensions, Easing } from 'react-native';
 import { fonts, colors } from '../../styles';
+import { Image } from 'react-native';
 import { Text } from '../../components/StyledText';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -325,7 +327,7 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.touch}>let's stay in touch.</Text>
             <Text size={5}> {'\n'} </Text>
 
-            <TouchableOpacity style={styles.button}
+            <TouchableOpacity style={styles.website}
               onPress={() => Linking.openURL('https://www.michiganfashionmediasummit.com')}
               activeOpacity={0.7}
             >
@@ -333,32 +335,20 @@ export default function HomeScreen({ navigation }) {
                 michiganfashionmediasummit.com
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}
-              onPress={() => Linking.openURL('https://www.instagram.com/the_mfms/?hl=en')}
-              activeOpacity={0.7}
-            >
-              <Text style={[styles.endDescription, styles.linkText]}>
-                Instagram
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.button}
-              onPress={() => Linking.openURL('https://www.tiktok.com/@the_mfms')}
-              activeOpacity={0.7}
-            >
-              <Text style={[styles.endDescription, styles.linkText]}>
-                TikTok 
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.button}
-              onPress={() => Linking.openURL('https://open.spotify.com/show/665Wz5hi6qUmcqJxits75m?si=d7451dda455e43d9')}
-              activeOpacity={0.7}
-            >
-              <Text style={[styles.endDescription, styles.linkText]}>
-                Spotify 
-              </Text>
-            </TouchableOpacity>
+            <View style={styles.socialIconsContainer}>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/the_mfms/?hl=en')}>
+                <Icon name="instagram" size={30} color={colors.black} style={styles.socialIcon} />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.tiktok.com/@the_mfms')}>
+                <Image 
+                  source={require('../../../assets/images/tik-tok.png')} 
+                  style={{ width: 30, height: 30 }} 
+                />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => Linking.openURL('https://open.spotify.com/show/665Wz5hi6qUmcqJxits75m?si=d7451dda455e43d9')}>
+                <Icon name="spotify" size={30} color={colors.black} style={styles.socialIcon} />
+              </TouchableOpacity>
+            </View>
           </View>
         )}
       </ImageBackground>
@@ -579,7 +569,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: colors.black,
     marginHorizontal: 20,
-    textTransform: 'lowercase'
+    textTransform: 'lowercase',
+    textDecorationLine: 'underline', // Change this from fontStyle: 'underline'
   },
   linkText: {
     fontFamily: "NeueHaasDisplayRoman",
@@ -588,15 +579,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: colors.black,
     marginHorizontal: 20,
+    textDecorationLine: 'underline', // Change this from fontStyle: 'underline'
   },
-  button: {
-    backgroundColor: colors.white,  
-    borderColor: colors.darkGray,
-    paddingVertical: 8,
-    borderRadius: 8,
+  website:{
     alignItems: 'center',
-    marginVertical: 10,
-    marginHorizontal: '5%',
-    borderWidth: 1.1,
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  socialIconsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 30,
+  },
+  socialIcon: {
+    marginHorizontal: 15, // Space between icons
   },
 });

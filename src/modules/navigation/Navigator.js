@@ -7,7 +7,6 @@ import {
 } from '@react-navigation/drawer';
 import NavigatorView from './RootNavigation';
 
-import AvailableInFullVersion from '../../modules/availableInFullVersion/AvailableInFullVersionViewContainer';
 import { colors } from '../../styles';
 const iconHome = require('../../../assets/images/home.png');
 const iconTicket = require('../../../assets/images/tickets.png');
