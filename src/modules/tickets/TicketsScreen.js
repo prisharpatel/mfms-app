@@ -23,7 +23,7 @@ const TicketsScreen = () => {
       <Text size="2"></Text>
 
       <Text style={styles.ticketDescription}>
-        This is an all-inclusive ticket to the summit from 8am-5pm
+        This is an all-inclusive ticket to the summit from 8am-5pm.
       </Text>
 
       <View style={styles.ticketContainer}>
@@ -34,7 +34,7 @@ const TicketsScreen = () => {
       <Text size="2"></Text>
 
       <Text style={styles.ticketDescription}>
-        This ticket includes the summit and the Thursday Night Launch Party
+        This ticket includes the summit and the Thursday Night Launch Party.
       </Text>
 
       <View style={styles.ticketContainer}>
