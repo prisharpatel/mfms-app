@@ -9,7 +9,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
-  const now =  new Date("2025-03-28T16:58:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
+  const now =  new Date("2025-03-28T11:58:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
   const summitStart = new Date("2025-03-28T08:00:00"); 
   const summitEnd = new Date("2025-03-28T17:00:00"); 
 
@@ -295,7 +295,7 @@ export default function HomeScreen({ navigation }) {
           {upcomingEvent.length > 0 && now > summitStart && (
 
             <>
-              {currentEvent && <Text size={20}> {'\n'} </Text>}
+              {currentEvent && <Text size={14}> {'\n'} </Text>}
               <Text style={styles.subtitleRight}>Coming Up:</Text>
 
               {upcomingEvent.map((event, index) => (
@@ -320,10 +320,10 @@ export default function HomeScreen({ navigation }) {
 
         {now >= summitEnd && (
           <View style={styles.section}>
-            <Text style={styles.endTitle}>thank you for attending,</Text>
+            <Text style={styles.endTitle}>Thank you for attending,</Text>
             <Text style={styles.endTitle}>see you next year.</Text>
             <Text size={18}> {'\n'} </Text>
-            <Text style={styles.touch}>let's stay in touch.</Text>
+            <Text style={styles.touch}>Let's stay in touch.</Text>
             <Text size={5}> {'\n'} </Text>
 
             <TouchableOpacity style={styles.website}
