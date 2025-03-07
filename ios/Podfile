@@ -30,6 +30,9 @@ pod 'boost', :podspec => '../node_modules/react-native/third-party-podspecs/boos
 target 'ReactNativeStarter' do
   config = use_native_modules!
 
+    # Set modular headers for GoogleUtilities
+    pod 'GoogleUtilities', :modular_headers => true
+
   use_react_native!(
     :path => config[:reactNativePath],
     # Enables Flipper.
@@ -40,6 +43,10 @@ target 'ReactNativeStarter' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+
+  # Add Firebase pods
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
 
   target 'ReactNativeStarterTests' do
     inherit! :complete
@@ -53,5 +60,11 @@ target 'ReactNativeStarter' do
       config[:reactNativePath],
       :mac_catalyst_enabled => false
     )
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        # Exclude arm64 for iOS simulators
+        config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+      end
+    end
   end
 end
