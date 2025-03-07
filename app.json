@@ -1,4 +1,12 @@
 {
   "name": "ReactNativeStarter",
-  "displayName": "ReactNativeStarter"
+  "displayName": "ReactNativeStarter",
+  "expo": {
+    "ios": {
+      "infoPlist": {
+        "UIBackgroundModes": ["remote-notification"]
+      }
+    }
+  }
+  
 }

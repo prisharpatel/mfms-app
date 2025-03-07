@@ -20,10 +20,13 @@
     "postinstall": "node scripts/patch-boost.js"
   },
   "dependencies": {
+    "@notifee/react-native": "^9.1.8",
     "@react-native-async-storage/async-storage": "^1.19.0",
     "@react-native-community/cli": "^4.10.1",
     "@react-native-community/masked-view": "^0.1.9",
     "@react-native-community/toolbar-android": "^0.2.1",
+    "@react-native-firebase/app": "^21.12.0",
+    "@react-native-firebase/messaging": "^21.12.0",
     "@react-navigation/bottom-tabs": "^5.2.6",
     "@react-navigation/drawer": "^5.4.1",
     "@react-navigation/native": "^5.1.5",
@@ -44,6 +47,7 @@
     "react-native-modal-datetime-picker": "^6.0.0",
     "react-native-modal-dropdown": "1.0.2",
     "react-native-paper": "^3.1.1",
+    "react-native-permissions": "^5.2.6",
     "react-native-reanimated": "^1.13.4",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.5.0",
