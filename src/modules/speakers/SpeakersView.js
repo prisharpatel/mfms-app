@@ -48,6 +48,35 @@ const speakers = [
     title: 'Founder & CEO, Parke',
     description: "Chelsea Parke, born in 1997 in New Jersey, is the visionary founder of Parke, a brand established out of her love for fashion and the quest for beautiful, classic pieces to elevate wardrobes. From a young age, Chelsea exhibited an ambitious drive, always knowing she would run her own business. Her journey in fashion began with her admiration for the perfect pair of jeans and a favorite white tee, leading her to create her namesake brand, Parke, in 2022. \nChelsea's mission is to help individuals build their closets with high-quality, comfortable, stylish, and versatile items designed to live with them for years. Parke’s first collection introduced the now signature Crossover Shorts, which exceeded expectations and led Chelsea to focus on creating elevated basics to replace the fast fashion items that were not meeting her standards. In 2023, Parke expanded from denim to everyday basics, offering pieces designed to be worn daily, paired with both high-end and casual items. \nChelsea's commitment to quality and style continued to drive the brand’s success. By 2024, Parke took denim manufacturing in-house, launching The Baggy Straight and other styles, showcasing the brand's dedication to excellence and innovation in denim design. Chelsea’s vision is to create clothing that transitions seamlessly from workouts to coffee dates and from the beach to nights out, ensuring that customers live in their Parke pieces. \nChelsea's passion for fashion was evident from a young age, with memories of her shopping sprees at Short Hills Mall and her mother’s obsession with True Religion jeans. Her love for denim is deeply rooted in her childhood experiences and continued through her college years at Dickinson College in Pennsylvania, where she studied Art History, the closest subject to fashion. In addition to her fashion endeavors, Chelsea was a college athlete, playing field hockey and lacrosse, and serving as the captain of both teams. Her leadership skills and determination on the field translate into her business acumen and dedication to her brand.",
   },
+  {
+    id: '7',
+    name: 'Rebecca Goodman',
+    image: require('../../../assets/images/speakers/Rebecca_Goodman.jpg'),
+    title: 'Vice President, Marketing and Communications, The Americas at Manola Blahnik',
+    description: "Rebecca Goodman Krantz is the Vice President of Marketing and Communications for Manolo Blahnik where she oversees all brand and retail marketing initiatives, VIP and influencer relations, events, media, and press for the Americas. Rebecca has been with the company for 5 years and has played an instrumental role in scaling the Manolo Blahnik business and elevating brand positioning. She is a passionate brand storyteller with over two decades of experience in luxury fashion.\n Prior to Manolo Blahnik, Rebecca held senior positions at Oscar de la Renta, Kering Group and EQUINOX, and held roles at Salvatore Ferragamo and Hermes. She is a proud graduate of the University of Michigan where she majored in Communications."
+  },
+  {
+    id: '8',
+    name: 'Ella Rose McFadin',
+    title: 'Creator & Founder of Skin by Ella',
+    image: require('../../../assets/images/speakers/ella_rose.jpeg'),
+    description: "Ella Rose McFadin is a 27-year-old fashion and lifestyle digital creator based in New York City, as well as the founder of the clean beauty brand Skin by Ella. With a passion for embracing natural beauty, Ella discovered a newfound confidence in enhancing rather than masking her features. \nDriven by the desire to share this empowering approach, she launched Skin by Ella—a collection of clean, everyday makeup essentials and accessories, including liquid blushes, lip oil, and brow gel. The brand reflects Ella’s belief in the power of simplicity, catering to a community that values the philosophy of 'less is more.' \nA highly influential voice across fashion, beauty, and wellness, Ella has become a top source of inspiration for her dedicated audience. Her ability to authentically connect with her followers has made her a key tastemaker in the industry."
+  },
+  {
+    id: '9',
+    name: 'Lori Singer',
+    title: 'President at Parlux Fragrances', 
+    image: require('../../../assets/images/speakers/Lori_Singer.jpg'),
+    description: "A proud University of Michigan alum, Lori Singer has been a transformative force at Parlux Ltd. since assuming the role of President in 2019. A visionary leader with a unique ability to merge cultural influence with prestige fragrance, she has redefined how brands engage with modern consumers while preserving their luxury heritage. Under Lori's leadership, Parlux delivered one of beauty's biggest success stories - the launch of Billie Eilish's debut fragrance and her subsequent collection as one of the fastest-growing artist fragrance lines in history. She also revitalized legacy fragrance house Vince Camuto, is launching Paris Hilton's 30th fragrance and introduced The Shop Men's Grooming Line in collaboration with LeBron James and Maverick Carter.\nBefore joining Parlux, Lori built an impressive career at Coty as Group Vice President of Global Marketing, driving growth for some of the most iconic names in luxury fragrance, including Marc Jacobs, Balenciaga, Calvin Klein, and Vera Wang. Her expertise in crafting compelling brand narratives and consumer-first strategies laid the foundation for her success at Parlux.\nLori’s impact on the beauty industry has been widely celebrated, with honors including the 2024 WWD x Beauty Inc. Top 50 Women in Power and the prestigious Cosmetic Executive Women (CEW) Achiever Award. She also plays a key role in shaping the industry’s future as a board member of both CEW and The Fragrance Foundation, further solidifying her leadership and influence.\nThrough strategic partnerships, cultural foresight, and digital innovation, Lori Singer is not just shaping the future of fragrance—she is redefining the future of beauty."
+  },
+  {
+    id: '10',
+    name: 'Bonnie Abraham',
+    title: 'Senior Vice President of Retail at Balenciaga Americas',
+    image: require('../../../assets/images/speakers/Bonnie_Abraham.jpg'),
+    description: "Bonnie Abraham is the Senior Vice President of Retail at Balenciaga Americas, overseeing Balenciaga’s 60 stores across the United States, Canada, Brazil, and Mexico. With a strategic focus on business growth and luxury, she plays a pivotal role in developing and executing strategies that enhance retail performance, elevate the client experience, and strengthen Balenciaga’s regional impact. \nAfter graduating from the University of North Texas with a bachelor’s degree in Fashion and Business, Bonnie began her career in the Neiman Marcus Executive Development Program. Before joining Balenciaga, she held executive roles in Merchandising and Retail at leading luxury fashion houses, including Gucci, Burberry, Valentino, and Chanel."
+  }
+
 ];
 // sort speakers by name
 speakers.sort((a, b) => {
@@ -75,7 +104,7 @@ const SpeakersScreen = () => {
             style={styles.speakerContainer}
             onPress={() => navigation.navigate('SpeakerDetails', { speaker: item })}
           >
-            <View style={{ width: 150, height: 150, overflow: 'hidden' }}>
+            <View style={{ width: 150, height: 200, overflow: 'hidden' }}>
         <Image 
           source={item.image} 
           style={{ 
@@ -83,7 +112,9 @@ const SpeakersScreen = () => {
             height: 200,  // Make it taller to crop the bottom
             alignSelf: 'center',  // Centers image horizontally
             position: 'relative', // Ensure the image is positioned normally
-            //top: '20%' // Moves the image upwards, cropping the bottom
+            resizeMode: 'cover',
+            alignSelf: 'center',
+            // //top: '20%' // Moves the image upwards, cropping the bottom
           }} 
           resizeMode="cover" // Crops from the bottom
         />
