@@ -487,6 +487,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ReactNativeStarter/ReactNativeStarter.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MZ664WSN47;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ReactNativeStarter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MFMS;
@@ -516,6 +517,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ReactNativeStarter/ReactNativeStarter.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MZ664WSN47;
 				INFOPLIST_FILE = ReactNativeStarter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MFMS;
 				LD_RUNPATH_SEARCH_PATHS = (
