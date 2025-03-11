@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { fonts, colors } from '../../styles';
 
@@ -9,61 +9,63 @@ const TicketsScreen = () => {
   
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.sectionTitle}>About Tickets</Text>
-      {/* <Text size="2"></Text>
-      <Text style={styles.description}>
-        Attendees can purchase two types of tickets to the MFMS
-      </Text> */}
+      <ImageBackground
+              source={require('../../../assets/images/background.png')}
+              style={styles.bgImage}
+              resizeMode="cover"
+      >
+        <Text style={styles.sectionTitle}>About Tickets</Text>
 
-      <View style={styles.ticketContainer}>
-        <Text style={styles.ticketType}>General Admission</Text>
-        <Text style={styles.ticketPrice}>$35</Text>
-      </View>
+        <View style={styles.ticketContainer}>
+          <Text style={styles.ticketType}>General Admission</Text>
+          <Text style={styles.ticketPrice}>$35</Text>
+        </View>
 
-      <Text size="2"></Text>
+        <Text size="2"></Text>
 
-      <Text style={styles.ticketDescription}>
-        This is an all-inclusive ticket to the summit from 8am-5pm.
-      </Text>
+        <Text style={styles.ticketDescription}>
+          This is an all-inclusive ticket to the summit from 8am-5pm.
+        </Text>
 
-      <View style={styles.ticketContainer}>
-        <Text style={styles.ticketType}>VIP Ticket</Text>
-        <Text style={styles.ticketPrice}>$45</Text>
-      </View>
+        <View style={styles.ticketContainer}>
+          <Text style={styles.ticketType}>VIP Ticket</Text>
+          <Text style={styles.ticketPrice}>$45</Text>
+        </View>
 
-      <Text size="2"></Text>
+        <Text size="2"></Text>
 
-      <Text style={styles.ticketDescription}>
-        This ticket includes the summit and the Thursday Night Launch Party.
-      </Text>
+        <Text style={styles.ticketDescription}>
+          This ticket includes the summit and the Thursday Night Launch Party.
+        </Text>
 
-      <View style={styles.ticketContainer}>
-        <Text style={styles.ticketType}>Virtual Ticket</Text>
-        <Text style={styles.ticketPrice}>$15</Text>
-      </View>
+        <View style={styles.ticketContainer}>
+          <Text style={styles.ticketType}>Virtual Ticket</Text>
+          <Text style={styles.ticketPrice}>$15</Text>
+        </View>
 
-      <Text size="2"></Text>
+        <Text size="2"></Text>
 
-      <Text style={styles.ticketDescription}>
-        This ticket allows you to watch the summit virtually.
-      </Text>
+        <Text style={styles.ticketDescription}>
+          This ticket allows you to watch the summit virtually.
+        </Text>
 
-      <View style={styles.divider} />
+        <View style={styles.divider} />
 
-      <Text style={styles.sectionTitle}>Your MFMS Ticket</Text>
-      <Text style={styles.description}>
-        The MFMS handles all ticket transactions through Eventbrite. Click the button below to purchase your ticket.
-      </Text>
+        <Text style={styles.sectionTitle}>Your MFMS Ticket</Text>
+        <Text style={styles.description}>
+          The MFMS handles all ticket transactions through Eventbrite. Click the button below to purchase your ticket.
+        </Text>
 
-      <TouchableOpacity
-                activeOpacity={1} // Prevents automatic opacity change
-                style={[isPressed ? styles.buttonPressed : styles.button]}          
-                onPress={() => navigation.navigate('TicketsView')}
-                onPressIn={() => setIsPressed(true)}
-                onPressOut={() => setIsPressed(false)}
-              >
-                <Text style={styles.buttonText}>Purchase Tickets</Text>
-              </TouchableOpacity>
+        <TouchableOpacity
+                  activeOpacity={1} // Prevents automatic opacity change
+                  style={[isPressed ? styles.buttonPressed : styles.button]}          
+                  onPress={() => navigation.navigate('TicketsView')}
+                  onPressIn={() => setIsPressed(true)}
+                  onPressOut={() => setIsPressed(false)}
+                >
+                  <Text style={styles.buttonText}>Purchase Tickets</Text>
+                </TouchableOpacity>
+        </ImageBackground>
     </ScrollView>
   );
 };
@@ -72,7 +74,10 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
     flexGrow: 1,
-    backgroundColor: colors.white
+    backgroundColor: colors.white,
+  },
+  bgImage: {
+    flex: 1,
   },
   sectionTitle: {
     marginBottom: 10,

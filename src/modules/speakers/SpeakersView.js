@@ -59,7 +59,7 @@ const speakers = [
     id: '8',
     name: 'Ella Rose McFadin',
     title: 'Creator & Founder of Skin by Ella',
-    image: require('../../../assets/images/speakers/ella_rose.jpeg'),
+    image: require('../../../assets/images/speakers/Ella_Rose.jpg'),
     description: "Ella Rose McFadin is a 27-year-old fashion and lifestyle digital creator based in New York City, as well as the founder of the clean beauty brand Skin by Ella. With a passion for embracing natural beauty, Ella discovered a newfound confidence in enhancing rather than masking her features. \nDriven by the desire to share this empowering approach, she launched Skin by Ella—a collection of clean, everyday makeup essentials and accessories, including liquid blushes, lip oil, and brow gel. The brand reflects Ella’s belief in the power of simplicity, catering to a community that values the philosophy of 'less is more.' \nA highly influential voice across fashion, beauty, and wellness, Ella has become a top source of inspiration for her dedicated audience. Her ability to authentically connect with her followers has made her a key tastemaker in the industry."
   },
   {
@@ -75,8 +75,21 @@ const speakers = [
     title: 'Senior Vice President of Retail at Balenciaga Americas',
     image: require('../../../assets/images/speakers/Bonnie_Abraham.jpg'),
     description: "Bonnie Abraham is the Senior Vice President of Retail at Balenciaga Americas, overseeing Balenciaga’s 60 stores across the United States, Canada, Brazil, and Mexico. With a strategic focus on business growth and luxury, she plays a pivotal role in developing and executing strategies that enhance retail performance, elevate the client experience, and strengthen Balenciaga’s regional impact. \nAfter graduating from the University of North Texas with a bachelor’s degree in Fashion and Business, Bonnie began her career in the Neiman Marcus Executive Development Program. Before joining Balenciaga, she held executive roles in Merchandising and Retail at leading luxury fashion houses, including Gucci, Burberry, Valentino, and Chanel."
+  },
+  {
+    id: '11',
+    name: 'Jessica Williams',
+    title: '', // TODO
+    image: require('../../../assets/images/speakers/Jessica_Williams.jpg'),
+    description: '' // TODO 
+  },
+  {
+    id: '12',
+    name: 'Mike Sainristil',
+    title: '', // TODO
+    image: require('../../../assets/images/speakers/Mike_Sainristil.jpg'),
+    description: '' // TODO 
   }
-
 ];
 // sort speakers by name
 speakers.sort((a, b) => {

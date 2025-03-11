@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     flex: 1,
-    marginHorizontal: 0,
+    marginHorizontal: -20,
   },
   headerContainer: {
     flexDirection: 'row', // Align back button & text in a row
