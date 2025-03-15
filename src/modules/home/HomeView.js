@@ -15,22 +15,6 @@ export default function HomeScreen({ navigation }) {
 
   const events = [
     {
-      id: 0,
-      startTime: new Date('2025-03-15T15:30:00'),
-      endTime: new Date('2025-03-15T15:57:00'),
-      speakers: 'Izzy Saunders | MFMS Co-President and Lila Grayson | MFMS Co-President',
-      title: 'Opening Remarks',
-      location: 'Robertson Auditorium',
-    },
-    {
-      id: 100,
-      startTime: new Date('2025-03-15T15:58:00'),
-      endTime: new Date('2025-03-15T15:59:00'),
-      speakers: 'Izzy Saunders | MFMS Co-President and Lila Grayson | MFMS Co-President',
-      title: 'Opening Remarks',
-      location: 'Robertson Auditorium',
-    },
-    {
       id: 1,
       startTime: new Date('2025-03-28T09:30:00'),
       endTime: new Date('2025-03-28T09:40:00'),
