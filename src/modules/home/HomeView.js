@@ -9,7 +9,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
-  const now =  new Date("2025-03-28T10:00:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
+  const now =  new Date(); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
   const summitStart = new Date("2025-03-28T08:00:00"); 
   const summitEnd = new Date("2025-03-28T17:00:00"); 
 
@@ -127,6 +127,8 @@ export default function HomeScreen({ navigation }) {
       location: 'Robertson Auditorium',
     },
   ];
+
+  
   let currentEvent = null;
   let upcomingEvent = null;
   if (events.length != 0) {
@@ -163,9 +165,10 @@ export default function HomeScreen({ navigation }) {
 
   useEffect(() => {
     const targetDate = summitStart;
-  
+
     const updateCountdown = () => {
-      const timeDifference = targetDate - now;
+      const currentTime = new Date();
+      const timeDifference = targetDate - currentTime;
   
       if (timeDifference > 0) {
         const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
