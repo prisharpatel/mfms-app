@@ -79,17 +79,38 @@ const speakers = [
   {
     id: '11',
     name: 'Jessica Williams',
-    title: '', // TODO
+    title: 'Head of Brand & Partnerships, Shopify',
     image: require('../../../assets/images/speakers/Jessica_Williams.jpg'),
-    description: '' // TODO 
+    description: 'Jessica is the Head of Brand and Partnerships at Shopify, where she leads a team dedicated to inspiring the next generation of entrepreneurs to build with and love Shopify. They bring this mission to life through campaigns that celebrate the spirit of entrepreneurship and strategic collaborations with renowned and emerging creators and celebrities, including MrBeast, Emma Chamberlain, Charli and Dixie D’Amelio, Cassey Ho, Ashley Alexander, Kai Cenat, Nicki Minaj, and Drake. These partners share their personal business journeys, motivating their audiences to pursue their own entrepreneurial ambitions. \nBefore joining Shopify, Jessica led consumer partnerships at Coinbase, exploring the intersections of crypto with sports, music, and fashion. Prior to that, she held various roles in product marketing, brand marketing, and partnerships at Visa.'
   },
   {
     id: '12',
     name: 'Mike Sainristil',
-    title: '', // TODO
+    title: 'NFL Cornerback for the Washington Commanders and Captain of Michigan’s National Championship Team 144 ', // TODO
     image: require('../../../assets/images/speakers/Mike_Sainristil.jpg'),
-    description: '' // TODO 
-  }
+    description: 'Mike Sainristil is a Haitian-American Cornerback for the Washington Commanders. After fleeing Haiti, his family settled in Everett, Massachusetts where Mike solidified himself as one of the best players in the state. As a senior he was the Massachusetts 2018 Gatorade Player of the Year. After playing both sides of the ball in high school, he committed to Michigan as a Wide Receiver. \nIn 2022, as Captain of the Michigan football team, Sainristil moved to cornerback. He became first team All American and helped lead his team to the 2023 big ten championship game where he was named MVP. He then went on to record the game clinching interception in the 2024 college football playoff national championship intercepting Michael Penix Jr. and returning it 81 yards.' 
+  },
+  {
+    id: '13',
+    name: 'Paige Lorenze',
+    title: 'Founder, Entrepreneuer', // TODO
+    image: require('../../../assets/images/speakers/Paige_Lorenze.jpg'),
+    description: "As a content creator and entrepreneur, Paige Lorenze built her extremely loyal community through style tips and showing her trendsetting lifestyle. Paige’s unique content and love of life’s simple pleasures inspired her move to a cozy Connecticut cottage in 2022 where the Dairy Boy lifestyle began to take shape. What started as a simple catchphrase between Paige and her followers has evolved into worldwide phenomenon and propelled her community of over a million to build a space for conversations, connections, and a different kind of brand that makes her Americana lifestyle to be accessible to anyone. \nThrough her relationship with American tennis pro Tommy Paul, Paige has taken the tennis world by storm. Bringing her followers along for the ride on all the ATP tour stops, Paige’s love of tennis has garnered the attention of international media through her appearance on Netflix’s Break Point while her fashion-focused community eagerly awaits her behind-the-scenes content from each tournament. Paige continues to grow her Dairy Boy brand, opening a headquarters in Los Angeles in January. Most recently, Paige was named the Miami Open's 'Chief Lifestyle Officer' where she documented her favorite destinations on the grounds for the @miamiopen account and co-hosted promotional content alongside the tournament's host Andrew Kransy."
+  },
+  {
+    id: '14',
+    name: 'Dan Solomon',
+    title: 'Celebrity Stylist and CEO of Closet Tours', 
+    image: require('../../../assets/images/speakers/Don_Solomon.jpg'),
+    description: 'Dan discovered the opportunity to merge his two passions, fashion, and sports while selling rare garments and sneakers to the basketball team at Indiana University. As he began to grow his network further, he was able to immerse himself in the world of personal shopping and styling. This all led to Dan starting his own consulting company out of college, helping hundreds of professional athletes with everything from styling and personal shopping to merch lines and brand deals. He also tours the country creating pop up shops for specific NBA and NFL teams, as well as top college programs so they never have to leave the building to get what they need. This created a whole new way for athletes to shop the hottest brands in a private, convenient way that others now emulate. \nDan has since launched Closet Tours which is a company that allows consumers to shop directly from the closets of their favorite athletes and other talents in music and entertainment. Additionally, Closet Tours has a Youtube channel that takes you behind the scenes of celebrities closets such as Druski and Michael Rainey Jr.'
+  },
+  {
+    id: '15',
+    name: 'James Bee',
+    title: 'Fashion Photographer and Director', 
+    image: require('../../../assets/images/speakers/James_Bee.jpg'),
+    description: 'James Bee is a Brooklyn-based fashion photographer known for his sensual, intimate, and provocative style. Drawing from his background as a competitive ballroom dancer, he directs subjects to express emotion through movement, capturing it in striking, evocative imagery. \nHis clients include Calvin Klein, Rhode Beauty, Skims, Cult Gaia, MAC, Vogue, V Magazine, and PAPER Magazine. He has also collaborated with artists such as Rosalía, Muni Long, Camila Cabello, and Nicola Formichetti.'
+  },
 ];
 // sort speakers by name
 speakers.sort((a, b) => {
@@ -116,6 +137,8 @@ const SpeakersScreen = () => {
           <TouchableOpacity
             style={styles.speakerContainer}
             onPress={() => navigation.navigate('SpeakerDetails', { speaker: item })}
+            activeOpacity={1.0} // This prevents the opacity change when pressed
+
           >
             <View style={{ width: 150, height: 200, overflow: 'hidden' }}>
         <Image 

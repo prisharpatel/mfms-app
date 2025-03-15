@@ -41,7 +41,13 @@ export default function ContactViewScreen() {
           <TouchableOpacity onPress={() => Linking.openURL('https://open.spotify.com/show/665Wz5hi6qUmcqJxits75m?si=d7451dda455e43d9')}>
             <Icon name="spotify" size={50} color={colors.black} style={styles.socialIcon} />
           </TouchableOpacity>
-
+          <TouchableOpacity onPress={() => Linking.openURL('https://michiganfashionmediasummit.com/the-loop')}>
+            <Image 
+              source={require('../../../assets/images/newsletter.png')} 
+              style={{ width: 50, height: 50 }} 
+            />
+          </TouchableOpacity>
+          <Text style={styles.newsletter}>MFMS's Official Newsletter: The Loop</Text>
           
         </View>
       </View>
@@ -87,4 +93,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     marginVertical: 50,
   },
+  newsletter: {
+    fontSize: 20,
+    color: colors.black,
+    textAlign: 'center',
+    fontFamily: "NeueHaasDisplayRoman",
+    fontWeight: '600',
+    width: SCREEN_WIDTH * 0.7,
+    marginTop: 20,
+  }
 });
