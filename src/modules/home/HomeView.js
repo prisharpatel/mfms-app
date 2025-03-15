@@ -9,7 +9,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
-  const now =  new Date("2025-03-28T10:00:00"); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
+  const now =  new Date(); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
   const summitStart = new Date("2025-03-28T08:00:00"); 
   const summitEnd = new Date("2025-03-28T17:00:00"); 
 
@@ -160,6 +160,28 @@ export default function HomeScreen({ navigation }) {
 
 
   const [countdown, setCountdown] = useState([]);
+  useEffect(() => {
+    const updateCountdown = () => {
+      const now = new Date(); // Get the current time dynamically
+      const timeDifference = summitStart - now;
+  
+      if (timeDifference > 0) {
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+        const seconds = Math.floor((timeDifference / 1000) % 60);
+  
+        setCountdown([days, hours, minutes, seconds]); // Update countdown state
+      } else {
+        setCountdown([0, 0, 0, 0]); // If summit has started, reset countdown
+      }
+    };
+  
+    updateCountdown(); // Call once immediately to prevent 1s delay
+    const interval = setInterval(updateCountdown, 1000); // Update every second
+  
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, [summitStart]);
 
   useEffect(() => {
     const targetDate = summitStart;
