@@ -9,11 +9,27 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
-  const now =  new Date(); // TODO: CHANGE TO CURRENT TIME WHEN DEPLOYED new Date();
-  const summitStart = new Date("2025-03-28T08:00:00"); 
+  const [currentTime, setCurrentTime] = useState(new Date()); // Use consistent naming
+  const summitStart = new Date("2025-03-28T08:45:00"); 
   const summitEnd = new Date("2025-03-28T17:00:00"); 
 
   const events = [
+    {
+      id: 0,
+      startTime: new Date('2025-03-15T15:30:00'),
+      endTime: new Date('2025-03-15T15:57:00'),
+      speakers: 'Izzy Saunders | MFMS Co-President and Lila Grayson | MFMS Co-President',
+      title: 'Opening Remarks',
+      location: 'Robertson Auditorium',
+    },
+    {
+      id: 100,
+      startTime: new Date('2025-03-15T15:58:00'),
+      endTime: new Date('2025-03-15T15:59:00'),
+      speakers: 'Izzy Saunders | MFMS Co-President and Lila Grayson | MFMS Co-President',
+      title: 'Opening Remarks',
+      location: 'Robertson Auditorium',
+    },
     {
       id: 1,
       startTime: new Date('2025-03-28T09:30:00'),
@@ -129,16 +145,50 @@ export default function HomeScreen({ navigation }) {
   ];
 
   
-  let currentEvent = null;
-  let upcomingEvent = null;
-  if (events.length != 0) {
-    currentEvent = events.find(event => now >= event.startTime && now < event.endTime);
-    upcomingEvent = events
-      .filter(event => event.startTime > now)
-      .sort((a, b) => a.startTime - b.startTime)
-      .slice(0, 2);
-  }
-;
+  const [currentEvent, setCurrentEvent] = useState(null);
+  const [upcomingEvent, setUpcomingEvent] = useState([]);
+  const [countdown, setCountdown] = useState([]);
+
+  useEffect(() => {
+    const updateEverything = () => {
+      // 1. Update current time
+      const currentTime = new Date();
+      setCurrentTime(currentTime);
+      
+      // 2. Find current event
+      const current = events.find(
+        event => currentTime >= event.startTime && currentTime < event.endTime
+      );
+      setCurrentEvent(current);
+      
+      // 3. Find upcoming events
+      const upcoming = events
+        .filter(event => event.startTime > currentTime)
+        .sort((a, b) => a.startTime - b.startTime)
+        .slice(0, 2);
+      setUpcomingEvent(upcoming);
+      
+      // 4. Update countdown
+      const timeDifference = summitStart - currentTime;
+      if (timeDifference > 0) {
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+        setCountdown([days, hours, minutes]);
+      } else {
+        setCountdown([0, 0, 0]);
+      }
+    };
+    
+    // Update immediately on mount
+    updateEverything();
+    
+    // Then set interval for regular updates - every minute (60000ms)
+    const interval = setInterval(updateEverything, 10000); 
+    
+    // Clean up on unmount
+    return () => clearInterval(interval);
+  }, []);
 
   const REPEATING_TEXT_1 = Array(1000).fill('Welcome To The MFMS 2025        ');
 
@@ -160,44 +210,9 @@ export default function HomeScreen({ navigation }) {
   }, [slideAnim1]);
 
 
-
-  const [countdown, setCountdown] = useState([]);
-
-  useEffect(() => {
-    const targetDate = summitStart;
-
-    const updateCountdown = () => {
-      const currentTime = new Date();
-      const timeDifference = targetDate - currentTime;
-  
-      if (timeDifference > 0) {
-        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
-  
-        setCountdown([
-          days,
-          hours,
-           minutes,
-        ]);
-      } else {
-        setCountdown([
-          0,
-          0,
-          0,
-        ]);
-      }
-    };
-  
-
-    const interval = setInterval(updateCountdown, 1000);
-
-    return () => clearInterval(interval); // Clean up the interval on component unmount
-  }, []);
-  
   const calculateProgress = (start, end) => {
     const totalDuration = end - start;
-    const elapsed = now - start;
+    const elapsed = currentTime - start;
     return Math.min((elapsed / totalDuration) * 100, 100);
   };
 
@@ -217,7 +232,7 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.title}>Media Summit</Text>
 
           <View style={styles.divider} />
-          {(now < summitStart || !currentEvent) && <View style={styles.titleContainer}>
+          {(currentTime < summitStart || !currentEvent) && <View style={styles.titleContainer}>
             <Text style={styles.titleDate}>03/28/25</Text>
             <Text style={styles.titleLocation}>Ross School of Business</Text>
           </View>}
@@ -240,7 +255,7 @@ export default function HomeScreen({ navigation }) {
 
 
           {/* before the day of the summit - countdown */}
-          { (now < summitStart &&
+          { (currentTime < summitStart &&
             (<>
               <View style={styles.countdownContainer}>
                   <Text style={styles.countdown}>COUNTDOWN</Text>
@@ -295,7 +310,7 @@ export default function HomeScreen({ navigation }) {
           )}
 
           {/* if there is an upcoming event */}
-          {upcomingEvent.length > 0 && now > summitStart && (
+          {upcomingEvent.length > 0 && currentTime > summitStart && (
 
             <>
               {currentEvent && <Text size={14}> {'\n'} </Text>}
@@ -321,7 +336,7 @@ export default function HomeScreen({ navigation }) {
           )}
         </View>
 
-        {now >= summitEnd && (
+        {currentTime >= summitEnd && (
           <View style={styles.section}>
             <Text style={styles.endTitle}>Thank you for attending,</Text>
             <Text style={styles.endTitle}>see you next year.</Text>
