@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     color: colors.black,
     fontFamily: "NeueHaasDisplayRoman",
-    fontWeight: '500',
+    fontWeight: '400',
     fontSize: 15,
   },
   menuLabelFlex: {

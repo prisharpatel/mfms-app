@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, ImageBackground, ScrollView, Animated, TouchableOpacity, Linking, Dimensions, Easing } from 'react-native';
 import { fonts, colors } from '../../styles';
 import { Image } from 'react-native';
@@ -11,7 +11,9 @@ export default function HomeScreen({ navigation }) {
   const [slideAnim1] = useState(new Animated.Value(-300)); // Animation for "CURRENTLY"
   const [currentTime, setCurrentTime] = useState(new Date()); // Use consistent naming
   const summitStart = new Date("2025-03-28T08:45:00"); 
-  const summitEnd = new Date("2025-03-28T17:00:00"); 
+  const summitEnd = new Date("2025-03-28T17:00:00");
+  const intervalRef = useRef(null);
+ 
 
   const events = [
     {
@@ -162,16 +164,32 @@ export default function HomeScreen({ navigation }) {
       } else {
         setCountdown([0, 0, 0]);
       }
+
+      return currentTime;
     };
     
-    // Update immediately on mount
-    updateEverything();
+    // Initial update
+    const initialTime = updateEverything();
     
-    // Then set interval for regular updates - every minute (60000ms)
-    const interval = setInterval(updateEverything, 10000); 
+    // Calculate time until next minute change
+    const msUntilNextMinute = (60 - initialTime.getSeconds()) * 1000 - initialTime.getMilliseconds();
     
-    // Clean up on unmount
-    return () => clearInterval(interval);
+    // First set a timeout to align updates with minute changes
+    const timeout = setTimeout(() => {
+      updateEverything();
+      
+      // Then set interval for regular minute-aligned updates
+      const interval = setInterval(updateEverything, 60000);
+      
+      // Store interval ID for cleanup
+      intervalRef.current = interval;
+    }, msUntilNextMinute);
+    
+    // Clean up both timeout and interval on unmount
+    return () => {
+      clearTimeout(timeout);
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, []);
 
   const REPEATING_TEXT_1 = Array(1000).fill('Welcome To The MFMS 2025        ');
