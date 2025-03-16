@@ -21,7 +21,11 @@ export default function BottomTabs() {
               <Image
                 resizeMode="contain"
                 source={item.icon}
-                style={[styles.tabBarIcon, focused && styles.tabBarIconFocused]}
+                style={[
+                  styles.tabBarIcon,
+                  item.name === 'MFMS' && styles.tabBarIconMFMS, // Apply special style for MFMS icon
+                  focused && styles.tabBarIconFocused
+                ]}
               />
             </View>
           ),
@@ -58,6 +62,10 @@ const styles = StyleSheet.create({
   tabBarIcon: {
     width: 30,
     height: 35,
+  },
+  tabBarIconMFMS: {
+    width: 40,  // Larger width for MFMS icon
+    height: 45, // Larger height for MFMS icon
   },
   tabBarIconFocused: {
     tintColor: colors.blue,

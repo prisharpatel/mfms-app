@@ -68,6 +68,7 @@ const FAQPage = ({ navigation }) => {
       <FlatList
         data={filteredFaqData}
         keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <View style={styles.faqItem}>
             <TouchableOpacity
