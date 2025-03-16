@@ -55,7 +55,7 @@ export default function PartnerScreen({ isExtended, setIsExtended }) {
     { id: '41', name: 'Malk', logo: require('../../../assets/images/partners/malk.png') },
     { id: '42', name: 'Wildflower', logo: require('../../../assets/images/partners/wildflower.png') },
     { id: '43', name: 'Essie', logo: require('../../../assets/images/partners/essie.png') },
-    { id: '44', name: 'Peachlab', logo: require('../../../assets/images/partners/peachlab.jpg') },
+    { id: '44', name: 'Peachlab', logo: require('../../../assets/images/partners/peachlab2.png') },
     { id: '45', name: 'Chanel', logo: require('../../../assets/images/partners/chanel.png') },
     { id: '46', name: 'SPARC', logo: require('../../../assets/images/partners/sparc.png') },
   ]

@@ -9,13 +9,12 @@ import NavigatorView from './RootNavigation';
 
 import { colors } from '../../styles';
 const iconHome = require('../../../assets/images/home.png');
-const iconTicket = require('../../../assets/images/tickets.png');
 const iconResumeDrop = require('../../../assets/images/resume.png');
 const iconPartners = require('../../../assets/images/handshake.png');
-const iconFFS = require('../../../assets/images/ffs_icon.png');
+const iconFFS = require('../../../assets/images/FW.jpeg');
 const iconFAQ = require('../../../assets/images/faq.png');
 const logoImage = require('../../../assets/images/secondary_white.png')
-const iconMFMS = require('../../../assets/images/primarylogo.png');
+const iconMFMS = require('../../../assets/images/mfmsappicon.jpeg');
 
 
 const drawerData = [
@@ -105,7 +104,11 @@ function CustomDrawerContent(props) {
             label={() => (
               <View style={styles.menuLabelFlex}>
                 <Image
-                  style={{ width: 25, height: 25, resizeMode: 'contain' }}
+                  // style={{ width: 25, height: 25, resizeMode: 'contain' }}
+                  // source={item.icon}
+                  style={(item.name === 'Fashion Forward Showcase' || item.name === 'Stay In Touch')
+                    ? styles.largerIcon 
+                    : styles.menuIcon}
                   source={item.icon}
                 />
                 <Text style={styles.menuTitle}>{item.name}</Text>
@@ -142,6 +145,8 @@ const styles = StyleSheet.create({
   menuTitle: {
     marginLeft: 10,
     color: colors.black,
+    fontFamily: "NeueHaasDisplayRoman",
+    fontWeight: '400',
   },
   menuLabelFlex: {
     color: colors.black,
@@ -164,6 +169,16 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 200,
     resizeMode: 'contain',
+  },
+  menuIcon: {
+    width: 25, 
+    height: 25, 
+    resizeMode: 'contain'
+  },
+  largerIcon: {
+    width: 30,  // Slightly wider to maintain aspect ratio
+    height: 35, // Taller as requested
+    resizeMode: 'contain'
   },
 });
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { colors, fonts } from '../../styles';
-import { set } from 'react-native-reanimated';
 
 // Speaker Data Array
 const speakers = [
