@@ -110,6 +110,14 @@ const speakers = [
     image: require('../../../assets/images/speakers/James_Bee.jpg'),
     description: 'James Bee is a Brooklyn-based fashion photographer known for his sensual, intimate, and provocative style. Drawing from his background as a competitive ballroom dancer, he directs subjects to express emotion through movement, capturing it in striking, evocative imagery. \nHis clients include Calvin Klein, Rhode Beauty, Skims, Cult Gaia, MAC, Vogue, V Magazine, and PAPER Magazine. He has also collaborated with artists such as Rosalía, Muni Long, Camila Cabello, and Nicola Formichetti.'
   },
+  {
+    id: '16',
+    name: 'Sami Clarke Barnett',
+    title: 'Co-Founder of FORM', 
+    image: require('../../../assets/images/speakers/Sami_Barnett.jpg'),
+    description: 'Sami Clarke is a formidable fitness force beloved by exercise fans everywhere. Born into a family of athletes and bodybuilders, Sami Clarke’s passion for fitness and wellness was in her blood. She decided to take her passion for wellness more intentionally during the COVID quarantine; with everyone staying home and desperate for both physical and mental stimulation, Sami knew she had the expertise a lot of people were needing. After building both her Instagram and YouTube community to over a million followers, Sami launched FORM with best friend Sami Spalter in August 2021. Sami is not only the face of FORM, but truly the heart and soul. FORM’s mission is to make Sami’s wellness tools accessible to anyone and everyone, where ever they may be on their wellness journey.'
+  },
+  
 ];
 // sort speakers by name
 speakers.sort((a, b) => {
