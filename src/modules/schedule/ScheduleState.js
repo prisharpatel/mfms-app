@@ -13,7 +13,7 @@ const schedule = [
     id: 1,
     startTime: new Date('2025-03-28T09:30:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
     endTime: new Date('2025-03-28T09:40:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
-    speakers: 'Izzy Saunders | MFMS Co-President and Lila Grayson | MFMS Co-President',
+    speakers: 'Izzy Saunders | MFMS Co-President, Lila Grayson | MFMS Co-President',
     title: 'Opening Remarks',
     location: 'Robertson Auditorium',
   },
@@ -21,8 +21,8 @@ const schedule = [
     id: 2,
     startTime: new Date('2025-03-28T09:40:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
     endTime: new Date('2025-03-28T10:15:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
-    speakers: '',
-    title: 'Panel #1',
+    speakers: 'Chelsea Parke Kramer | Founder and CEO of Parke, Ella Rose McFadin | Founder of Skin by Ella, Dianna Cohen | Founder of Crown Affair, (Moderator) Jessica Williams | Head of Brand and Partnerships of Shopify',
+    title: 'From Followers to Founders: Creators Building Thriving Businesses',
     location: 'Robertson Auditorium',
   },
   {
@@ -122,6 +122,15 @@ const schedule = [
     location: 'Robertson Auditorium',
   },
 ];
+
+// Helper function to format speakers text with line breaks
+const formatSpeakers = (speakersText) => {
+  if (!speakersText) return '';
+  
+  // Replace commas with line breaks
+  return speakersText.split(',').map(speaker => speaker.trim()).join('\n');
+};
+
 
 export function loadSchedule() {
   return {

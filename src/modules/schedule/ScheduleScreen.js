@@ -9,8 +9,14 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
     loadSchedule();
   }, []);
 
-  const renderSession = (session) => (
+  const formatSpeakers = (speakersText) => {
+    if (!speakersText) return '';
+    
+    // Replace commas with line breaks
+    return speakersText.split(',').map(speaker => speaker.trim()).join('\n');
+  };
 
+  const renderSession = (session) => (
     <View
       key={session.id}
       style={[
@@ -20,9 +26,14 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
     >
       <Text style={styles.time}>{session.startTime} - {session.endTime}</Text>
       <Text style={styles.title}>{session.title}</Text>
-      <Text style={styles.speakers}>{session.speakers}</Text>
-      <Text style={styles.location}>{session.location}</Text>
+      {session.speakers && (
+      <Text style={styles.speakers}>
+        {formatSpeakers(session.speakers)}
+      </Text>
+      )}      
+  <Text style={styles.location}>{session.location}</Text>
     </View>
+
   );
 
   return (
@@ -96,7 +107,7 @@ const styles = StyleSheet.create({
   },
   speakers: {
     fontFamily: "NeueHaasDisplayRoman",
-    fontSize: 17,
+    fontSize: 16.5,
     color: colors.black,
   },
   location: {
