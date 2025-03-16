@@ -104,9 +104,7 @@ function CustomDrawerContent(props) {
             label={() => (
               <View style={styles.menuLabelFlex}>
                 <Image
-                  // style={{ width: 25, height: 25, resizeMode: 'contain' }}
-                  // source={item.icon}
-                  style={(item.name === 'Fashion Forward Showcase' || item.name === 'Stay In Touch')
+                  style={item.name === 'Stay In Touch'
                     ? styles.largerIcon 
                     : styles.menuIcon}
                   source={item.icon}
@@ -143,10 +141,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
   menuTitle: {
-    marginLeft: 10,
+    marginLeft: 15,
     color: colors.black,
     fontFamily: "NeueHaasDisplayRoman",
-    fontWeight: '400',
+    fontWeight: '500',
+    fontSize: 15,
   },
   menuLabelFlex: {
     color: colors.black,
@@ -171,13 +170,13 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   menuIcon: {
-    width: 25, 
-    height: 25, 
+    width: 31, 
+    height: 31, 
     resizeMode: 'contain'
   },
   largerIcon: {
-    width: 30,  // Slightly wider to maintain aspect ratio
-    height: 35, // Taller as requested
+    width: 36,  // Slightly wider to maintain aspect ratio
+    height: 36, // Taller as requested
     resizeMode: 'contain'
   },
 });
