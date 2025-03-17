@@ -37,10 +37,13 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
     <View style={styles.speakersContainer}>
       {speakersArray.map((speaker, index) => (
         <View key={index} style={styles.speakerItem}>
-          <Text style={styles.speakerName}>{speaker.name}</Text>
-          {speaker.title && (
-            <Text style={styles.speakerTitle}>{speaker.title}</Text>
-          )}
+          {/* Right-aligned text container */}
+          <View style={styles.speakerTextContainer}>
+            <Text style={styles.speakerName}>{speaker.name}</Text>
+            {speaker.title && (
+              <Text style={styles.speakerTitle}>{speaker.title}</Text>
+            )}
+          </View>
         </View>
       ))}
     </View>
@@ -158,22 +161,30 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     borderTopWidth: 1,
     borderTopColor: colors.gray + '30',
+    alignItems: 'flex-end', // Align all content to the right
+  },
+  speakerTextContainer: {
+    alignItems: 'flex-end', // Align text to the right
   },
   speakerItem: {
     marginBottom: 8,
+    width: '100%', // Take full width to allow alignment
+    alignItems: 'flex-end', // Align to the right
   },
   speakerName: {
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 17,
     fontWeight: '500',
     color: colors.black,
+    textAlign: 'right', // Right-align the text
   },
   speakerTitle: {
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 17,
-    fontStyle: 'italic', // This makes the title italic
-    color: colors.gray,  // Different color to distinguish from name
+    fontStyle: 'italic',
+    color: colors.gray,
     marginTop: 2,
+    textAlign: 'right', // Right-align the text
   },
   location: {
     marginTop: 7,
@@ -182,27 +193,6 @@ const styles = StyleSheet.create({
     color: colors.darkGray,
     
   },
-  // button: {
-  //   backgroundColor: "#F4F4F2",
-  //   paddingVertical: 12,
-  //   paddingHorizontal: 16,
-  //   borderRadius: 10,
-  //   shadowColor: colors.gray,
-  //   shadowOffset: { width: 0, height: 2 },
-  //   shadowOpacity: 0.5,
-  //   shadowRadius: 4,
-  //   alignSelf: 'center',
-  //   marginVertical: 20,
-  //   marginHorizontal: 20,
-  // },
-  // buttonText: {
-  //   color: colors.black,
-  //   fontWeight: 'bold',
-  //   textAlign: 'center',
-  //   fontSize: 16,
-  //   fontFamily: "NeueHaasDisplayRoman",
-  // },
-
   button: {
     backgroundColor: colors.white,  
     borderColor: colors.gray,
@@ -245,4 +235,25 @@ const styles = StyleSheet.create({
     paddingTop: 2, // Align icon vertically with the time text
     paddingLeft: 8,
   },
+  // button: {
+  //   backgroundColor: "#F4F4F2",
+  //   paddingVertical: 12,
+  //   paddingHorizontal: 16,
+  //   borderRadius: 10,
+  //   shadowColor: colors.gray,
+  //   shadowOffset: { width: 0, height: 2 },
+  //   shadowOpacity: 0.5,
+  //   shadowRadius: 4,
+  //   alignSelf: 'center',
+  //   marginVertical: 20,
+  //   marginHorizontal: 20,
+  // },
+  // buttonText: {
+  //   color: colors.black,
+  //   fontWeight: 'bold',
+  //   textAlign: 'center',
+  //   fontSize: 16,
+  //   fontFamily: "NeueHaasDisplayRoman",
+  // },
+
 }); 
