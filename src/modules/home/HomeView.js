@@ -13,14 +13,24 @@ export default function HomeScreen({ navigation }) {
   const summitStart = new Date("2025-03-28T08:45:00"); 
   const summitEnd = new Date("2025-03-28T17:00:00");
   const intervalRef = useRef(null);
- 
+  const TEST_MODE = false;
+  const TEST_DATE = new Date('2025-03-28T10:00:00');
+  
 
   const events = [
     {
       id: 1,
+      startTime: new Date('2025-03-28T08:45:00'),
+      endTime: new Date('2025-03-28T09:30:00'),
+      speakers: '',
+      title: 'Check-In',
+      location: 'Ross Winter Garden',
+    },
+    {
+      id: 1,
       startTime: new Date('2025-03-28T09:30:00'),
       endTime: new Date('2025-03-28T09:40:00'),
-      speakers: 'Izzy Saunders | MFMS Co-President and Lila Grayson | MFMS Co-President',
+      speakers: '',
       title: 'Opening Remarks',
       location: 'Robertson Auditorium',
     },
@@ -29,7 +39,7 @@ export default function HomeScreen({ navigation }) {
       startTime: new Date('2025-03-28T09:40:00'),
       endTime: new Date('2025-03-28T10:15:00'),
       speakers: '',
-      title: 'Panel #1',
+      title: 'From Followers to Founders: Creators Building Thriving Businesses',
       location: 'Robertson Auditorium',
     },
     {
@@ -37,7 +47,7 @@ export default function HomeScreen({ navigation }) {
       startTime: new Date('2025-03-28T10:20:00'),
       endTime: new Date('2025-03-28T10:55:00'),
       speakers: '',
-      title: 'Panel #2',
+      title: 'Beyond the Bottle: Translating Fashion to Fragrance',
       location: 'Robertson Auditorium',
     },
     {
@@ -53,7 +63,7 @@ export default function HomeScreen({ navigation }) {
       startTime: new Date('2025-03-28T11:00:00'),
       endTime: new Date('2025-03-28T11:30:00'),
       speakers: '',
-      title: 'Panel #3',
+      title: 'Lights, Camera, Style: How Entertainment is Shaping the Beauty and Fashion Industry',
       location: 'Robertson Auditorium',
     },
     {
@@ -61,7 +71,7 @@ export default function HomeScreen({ navigation }) {
       startTime: new Date('2025-03-28T11:35:00'),
       endTime: new Date('2025-03-28T12:10:00'),
       speakers: '',
-      title: 'Panel #4',
+      title: 'The New Rules of Luxury Fashion',
       location: 'Robertson Auditorium',
     },
     {
@@ -77,7 +87,7 @@ export default function HomeScreen({ navigation }) {
       startTime: new Date('2025-03-28T13:15:00'),
       endTime: new Date('2025-03-28T13:45:00'),
       speakers: '',
-      title: 'Conversation #1',
+      title: 'The Power of Influence: Fitness, Wellness & Fashion in Media',
       location: 'Robertson Auditorium',
     },
     {
@@ -85,8 +95,8 @@ export default function HomeScreen({ navigation }) {
       startTime: new Date('2025-03-28T13:50:00'),
       endTime: new Date('2025-03-28T14:20:00'),
       speakers: '',
-      title: 'To Be Announced',
-      location: 'To Be Announced',
+      title: 'Redefining the Game: The Intersection of Sports and Fashion',
+      location: 'Robertson Auditorium',
     },
     {
       id: 10,
@@ -101,7 +111,7 @@ export default function HomeScreen({ navigation }) {
       startTime: new Date('2025-03-28T15:25:00'),
       endTime: new Date('2025-03-28T16:00:00'),
       speakers: '',
-      title: 'Keynote #1',
+      title: 'Steering a Fashion Legacy',
       location: 'Robertson Auditorium',
     },
     {
@@ -109,7 +119,7 @@ export default function HomeScreen({ navigation }) {
       startTime: new Date('2025-03-28T16:05:00'),
       endTime: new Date('2025-03-28T16:40:00'),
       speakers: '',
-      title: 'Conversation #2',
+      title: 'The Business of Being You: Scaling Influence and Lifestyle into a Lasting Brand',
       location: 'Robertson Auditorium',
     },
     {
@@ -124,7 +134,7 @@ export default function HomeScreen({ navigation }) {
       id: 14,
       startTime: new Date('2025-03-28T16:50:00'),
       endTime: new Date('2025-03-28T17:00:00'),
-      speakers: 'Kylie Stenzler | MFMS COO',
+      speakers: '',
       title: 'Closing Remarks',
       location: 'Robertson Auditorium',
     },
@@ -136,9 +146,12 @@ export default function HomeScreen({ navigation }) {
   const [countdown, setCountdown] = useState([]);
 
   useEffect(() => {
+
+    
     const updateEverything = () => {
       // 1. Update current time
-      const currentTime = new Date();
+      // const currentTime = new Date();
+      const currentTime = TEST_MODE ? TEST_DATE : new Date();
       setCurrentTime(currentTime);
       
       // 2. Find current event
@@ -220,7 +233,7 @@ export default function HomeScreen({ navigation }) {
 
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false} >
       <ImageBackground
         source={require('../../../assets/images/background.png')}
         style={styles.bgImage}
@@ -315,7 +328,7 @@ export default function HomeScreen({ navigation }) {
           {upcomingEvent.length > 0 && currentTime > summitStart && (
 
             <>
-              {currentEvent && <Text size={14}> {'\n'} </Text>}
+              {currentEvent && <Text size={11}> {'\n'} </Text>}
               <Text style={styles.subtitleRight}>Coming Up:</Text>
 
               {upcomingEvent.map((event, index) => (
@@ -334,6 +347,7 @@ export default function HomeScreen({ navigation }) {
                   {index < 1 && <View style={styles.dividerBlack} />}
                 </View>
               ))}
+              {currentEvent && <Text size={20}> {'\n'} </Text>}
             </>
           )}
         </View>
@@ -341,7 +355,7 @@ export default function HomeScreen({ navigation }) {
         {currentTime >= summitEnd && (
           <View style={styles.section}>
             <Text style={styles.endTitle}>Thank you for attending,</Text>
-            <Text style={styles.endTitle}>see you next year.</Text>
+            <Text style={styles.endTitle}>see you next year!</Text>
             <Text size={18}> {'\n'} </Text>
             <Text style={styles.touch}>Let's stay in touch.</Text>
             <Text size={5}> {'\n'} </Text>
@@ -355,6 +369,10 @@ export default function HomeScreen({ navigation }) {
               </Text>
             </TouchableOpacity>
             <View style={styles.socialIconsContainer}>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.michiganfashionmediasummit.com/the-loop')}>
+                <Icon name="newspaper-o" size={30} color={colors.black} marginRight={3} />
+              </TouchableOpacity>
+
               <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/the_mfms/?hl=en')}>
                 <Icon name="instagram" size={30} color={colors.black} style={styles.socialIcon} />
               </TouchableOpacity>
@@ -463,14 +481,14 @@ const styles = StyleSheet.create({
   countdown: {
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 36,
-    fontWeight: '800', //semi-bold
+    fontWeight: '700', //semi-bold
     textAlign: 'left',
     color: colors.black,
   },
   countdownTime: {
     fontFamily: "NeueHaasDisplayRoman",
     textAlign: "center",
-    fontWeight: "800",
+    fontWeight: "700",
     marginTop: 30,
     fontSize: 25,
     color: colors.black,
@@ -541,6 +559,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     alignItems: 'flex-start',
     marginHorizontal: 20, 
+    marginBottom: 10,
   },
   comingUpPanelName: {
     fontFamily: "NeueHaasDisplayRoman",
@@ -553,7 +572,7 @@ const styles = StyleSheet.create({
     textAlign: 'right', 
   },
   comingUpLocation:{
-    fontFamily: "NeueHaasDisplayRoman",
+    fontFamily: "Arial",
     fontSize: 16,
     fontWeight: '400', 
     flexShrink: 1,
@@ -561,6 +580,7 @@ const styles = StyleSheet.create({
     color: colors.black,
     alignSelf: 'flex-end', // Align to right
     textAlign: 'right', 
+    fontStyle: 'italic',
   },
   time: {
     fontFamily: "Times New Roman",
