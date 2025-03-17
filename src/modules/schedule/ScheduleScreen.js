@@ -56,7 +56,7 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
         <View style={styles.sessionTextContainer}>
           <Text style={styles.time}>{session.startTime} - {session.endTime}</Text>
           <Text style={styles.title}>{session.title}</Text>
-          <Text style={styles.location}>{session.location}</Text>
+          <Text style={styles.location}>@ {session.location}</Text>
         </View>
         
         {/* Icon on the right */}
@@ -83,14 +83,14 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
     <View style={styles.container}>  
       <ScrollView>
         <Text style={styles.header}>Schedule</Text>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           activeOpacity={1} // Prevents automatic opacity change
           style={[isPressed ? styles.buttonPressed : styles.button]}          onPress={() => Linking.openURL('https://www.michiganfashionmediasummit.com/mfms-2025-schedule')}
           onPressIn={() => setIsPressed(true)}
           onPressOut={() => setIsPressed(false)}
         >
           <Text style={styles.buttonText}>Updated Schedule</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         {schedule.map(renderSession)}
       </ScrollView>
     </View>
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     paddingTop: 8,
     borderTopWidth: 1,
-    borderTopColor: colors.gray + '20',
+    borderTopColor: colors.gray + '30',
   },
   speakerItem: {
     marginBottom: 8,
