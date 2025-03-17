@@ -1,13 +1,18 @@
 import React,  { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import { colors, fonts } from '../../styles';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function ScheduleScreen({ schedule, selectedSessions, loadSchedule }) {
   const [isPressed, setIsPressed] = useState(false);
+  const [expandedSession, setExpandedSession] = useState(null);
 
   React.useEffect(() => {
     loadSchedule();
   }, []);
+  const toggleDropdown = (sessionId) => {
+    setExpandedSession(expandedSession === sessionId ? null : sessionId);
+  };
 
   const formatSpeakers = (speakersText) => {
     if (!speakersText) return '';
@@ -19,21 +24,35 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
   const renderSession = (session) => (
     <View
       key={session.id}
-      style={[
-        styles.sessionCard,
-        selectedSessions.includes(session.id) && styles.selectedCard
-      ]}
+      style={[styles.sessionCard, selectedSessions.includes(session.id) && styles.selectedCard]}
     >
-      <Text style={styles.time}>{session.startTime} - {session.endTime}</Text>
-      <Text style={styles.title}>{session.title}</Text>
-      {session.speakers && (
-      <Text style={styles.speakers}>
-        {formatSpeakers(session.speakers)}
-      </Text>
-      )}      
-  <Text style={styles.location}>{session.location}</Text>
+      {/* Modified header layout */}
+      <View style={styles.sessionHeader}>
+        <View style={styles.sessionTextContainer}>
+          <Text style={styles.time}>{session.startTime} - {session.endTime}</Text>
+          <Text style={styles.title}>{session.title}</Text>
+          <Text style={styles.location}>{session.location}</Text>
+        </View>
+        
+        {/* Icon now positioned at the right */}
+        <TouchableOpacity 
+          onPress={() => toggleDropdown(session.id)}
+          style={styles.iconContainer}
+        >
+          <Icon 
+            name={expandedSession === session.id ? 'chevron-up' : 'chevron-down'} 
+            size={20} 
+            color={colors.black}
+          />
+        </TouchableOpacity>
+      </View>
+      
+      {/* Moved location inside sessionTextContainer above */}
+      {/* Speakers section remains the same */}
+      {expandedSession === session.id && session.speakers && (
+        <Text style={styles.speakers}>{session.speakers}</Text>
+      )}
     </View>
-
   );
 
   return (
@@ -165,5 +184,18 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontWeight: 'bold',
     fontFamily: "NeueHaasDisplayRoman",
+  },
+  sessionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between', // This pushes the icon to the right
+    alignItems: 'flex-start', // Align items to the top
+  },
+  sessionTextContainer: {
+    flex: 1, // Take up available space
+    paddingRight: 16, // Add some space between text and icon
+  },
+  iconContainer: {
+    paddingTop: 2, // Align icon vertically with the time text
+    paddingLeft: 8,
   },
 }); 
