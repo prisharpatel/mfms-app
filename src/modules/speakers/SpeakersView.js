@@ -85,14 +85,14 @@ const speakers = [
   {
     id: '12',
     name: 'Mike Sainristil',
-    title: 'NFL Cornerback for the Washington Commanders and Captain of Michigan’s National Championship Team 144 ', // TODO
+    title: 'NFL Cornerback for the Washington Commanders and Captain of Michigan’s National Championship Team 144 ', 
     image: require('../../../assets/images/speakers/Mike_Sainristil.jpg'),
     description: 'Mike Sainristil is a Haitian-American Cornerback for the Washington Commanders. After fleeing Haiti, his family settled in Everett, Massachusetts where Mike solidified himself as one of the best players in the state. As a senior he was the Massachusetts 2018 Gatorade Player of the Year. After playing both sides of the ball in high school, he committed to Michigan as a Wide Receiver. \nIn 2022, as Captain of the Michigan football team, Sainristil moved to cornerback. He became first team All American and helped lead his team to the 2023 big ten championship game where he was named MVP. He then went on to record the game clinching interception in the 2024 college football playoff national championship intercepting Michael Penix Jr. and returning it 81 yards.' 
   },
   {
     id: '13',
     name: 'Paige Lorenze',
-    title: 'Founder, Entrepreneuer', // TODO
+    title: 'Founder, Entrepreneuer', 
     image: require('../../../assets/images/speakers/Paige_Lorenze.jpg'),
     description: "As a content creator and entrepreneur, Paige Lorenze built her extremely loyal community through style tips and showing her trendsetting lifestyle. Paige’s unique content and love of life’s simple pleasures inspired her move to a cozy Connecticut cottage in 2022 where the Dairy Boy lifestyle began to take shape. What started as a simple catchphrase between Paige and her followers has evolved into worldwide phenomenon and propelled her community of over a million to build a space for conversations, connections, and a different kind of brand that makes her Americana lifestyle to be accessible to anyone. \nThrough her relationship with American tennis pro Tommy Paul, Paige has taken the tennis world by storm. Bringing her followers along for the ride on all the ATP tour stops, Paige’s love of tennis has garnered the attention of international media through her appearance on Netflix’s Break Point while her fashion-focused community eagerly awaits her behind-the-scenes content from each tournament. Paige continues to grow her Dairy Boy brand, opening a headquarters in Los Angeles in January. Most recently, Paige was named the Miami Open's 'Chief Lifestyle Officer' where she documented her favorite destinations on the grounds for the @miamiopen account and co-hosted promotional content alongside the tournament's host Andrew Kransy."
   },
