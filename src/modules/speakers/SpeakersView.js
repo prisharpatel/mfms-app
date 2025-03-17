@@ -131,7 +131,9 @@ const SpeakersScreen = () => {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>MFMS 2025 Speakers</Text>
+      <Text style={styles.title}>Speakers</Text>
+      <View style={styles.divider} />        
+      
       <Text style={styles.subtitle}>Click on our speakers to learn more.</Text>
 
       {/* Speaker Grid */}
@@ -176,13 +178,22 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     paddingTop: 25,
   },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
+  title:{
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 36,
+    fontWeight: '600', //semi-bold
     textAlign: 'center',
-    fontStyle: 'italic',
-    marginBottom: 10,
-    fontFamily: "Arial"
+    color: colors.black,
+    marginHorizontal: 20,
+  },
+  divider: {
+    width: '50%', 
+    alignSelf: 'center',
+    height: 1, 
+    backgroundColor: colors.black,  
+    marginTop: 8,
+    marginBottom: 20, 
+    marginHorizontal: 20,
   },
   subtitle: {
     fontSize: 16,

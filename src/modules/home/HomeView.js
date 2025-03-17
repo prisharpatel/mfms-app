@@ -247,7 +247,8 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.title}>Media Summit</Text>
 
           <View style={styles.divider} />
-          {(currentTime < summitStart || !currentEvent) && <View style={styles.titleContainer}>
+          {(currentTime < summitStart || !currentEvent) && 
+          <View style={styles.titleContainer}>
             <Text style={styles.titleDate}>03/28/25</Text>
             <Text style={styles.titleLocation}>Ross School of Business</Text>
           </View>}

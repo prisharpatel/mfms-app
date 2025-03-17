@@ -48,8 +48,8 @@ const AboutScreen = () => {
     <SafeAreaView style={styles.safeArea}>
         {/* Header Section */}
         <View style={styles.section}>
-          {/* <Text> {'\n'} </Text> */}
           <Text style={styles.title}>Who We Are</Text>
+          <View style={styles.divider} />
         </View>
 
         <ScrollView 
@@ -113,15 +113,22 @@ const AboutScreen = () => {
 
 const styles = StyleSheet.create({
   title:{
-    fontFamily: "Arial",
-    fontSize: 28,
+    marginTop: 25,
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 36,
     fontWeight: '600', //semi-bold
-    textAlign: 'left',
-    fontStyle: "italic",
+    textAlign: 'center',
     color: colors.black,
     marginHorizontal: 20,
-    marginTop: 25,
-    marginBottom: 8
+  },
+  divider: {
+    width: '50%', 
+    alignSelf: 'center',
+    height: 1, 
+    backgroundColor: colors.black,  
+    marginTop: 8,
+    marginBottom: 20, 
+    marginHorizontal: 20,
   },
   safeArea: {
     flex: 1,

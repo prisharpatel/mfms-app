@@ -86,14 +86,7 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
     <View style={styles.container}>  
       <ScrollView>
         <Text style={styles.header}>Schedule</Text>
-        {/* <TouchableOpacity
-          activeOpacity={1} // Prevents automatic opacity change
-          style={[isPressed ? styles.buttonPressed : styles.button]}          onPress={() => Linking.openURL('https://www.michiganfashionmediasummit.com/mfms-2025-schedule')}
-          onPressIn={() => setIsPressed(true)}
-          onPressOut={() => setIsPressed(false)}
-        >
-          <Text style={styles.buttonText}>Updated Schedule</Text>
-        </TouchableOpacity> */}
+        <View style={styles.divider} />        
         {schedule.map(renderSession)}
       </ScrollView>
     </View>
@@ -107,12 +100,21 @@ const styles = StyleSheet.create({
     paddingTop: 25,
   },
   header:{
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 36,
+    fontWeight: '600', //semi-bold
     textAlign: 'center',
-    fontStyle: 'italic',
-    marginBottom: 10,
-    fontFamily: "Arial"
+    color: colors.black,
+    marginHorizontal: 20,
+  },
+  divider: {
+    width: '50%', 
+    alignSelf: 'center',
+    height: 1, 
+    backgroundColor: colors.black,  
+    marginTop: 8,
+    marginBottom: 20, 
+    marginHorizontal: 20,
   },
   sessionCard: {
     backgroundColor: colors.white,

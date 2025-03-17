@@ -15,7 +15,7 @@ const TicketsScreen = () => {
               resizeMode="cover"
       >
         <Text style={styles.sectionTitle}>About Tickets</Text>
-
+        <View style={styles.dividerHeader} />
         <View style={styles.ticketContainer}>
           <Text style={styles.ticketType}>General Admission</Text>
           <Text style={styles.ticketPrice}>$35</Text>
@@ -51,7 +51,7 @@ const TicketsScreen = () => {
 
         <View style={styles.divider} />
 
-        <Text style={styles.sectionTitle}>Your MFMS Ticket</Text>
+        <Text style={styles.sectionTitle2}>Your MFMS Ticket</Text>
         <Text style={styles.description}>
           The MFMS handles all ticket transactions through Eventbrite. Click the button below to purchase your ticket.
         </Text>
@@ -80,22 +80,39 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   sectionTitle: {
-    marginBottom: 10,
+    // marginBottom: 5,
     marginTop: 25,
-    fontFamily: "Arial",
-    fontSize: 28,
+    // fontFamily: "Arial",
+    // fontSize: 28,
+    // fontWeight: '600', //semi-bold
+    // textAlign: 'center',
+    // fontStyle: "italic",
+    // color: colors.black,
+    // marginHorizontal: 20,
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 36,
     fontWeight: '600', //semi-bold
     textAlign: 'center',
-    fontStyle: "italic",
     color: colors.black,
     marginHorizontal: 20,
+  },
+  sectionTitle2:{
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 30,
+    marginTop: 25,
+    fontWeight: '600', //semi-bold
+    textAlign: 'center',
+    color: colors.black,
+    marginHorizontal: 20,
+
   },
   description: {
     fontSize: 16,
     color: colors.gray,
     textAlign: 'center',
     fontFamily: "NeueHaasDisplayRoman",
-    width: "100%"
+    width: "100%",
+    marginTop: 10,
   },
   ticketContainer: {
     flexDirection: 'row',
@@ -125,6 +142,14 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.gray,
     marginTop: 30,
   },
+  dividerHeader: {
+    width: '70%', 
+    height: 1, 
+    alignSelf: 'center',
+    backgroundColor: colors.black,  
+    marginVertical: 8,
+    marginHorizontal: 20,
+  },
   button: {
     backgroundColor: colors.white, // White background
     borderColor: colors.gray, // Black border color
@@ -134,7 +159,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     marginHorizontal: '20%',
     borderWidth: 2, // Black border
-    marginTop: 50
+    marginTop: 20
   },
   buttonPressed: {
     backgroundColor: colors.black, 
@@ -145,7 +170,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     marginHorizontal: '20%',
     borderWidth: 2, // Black border
-    marginTop: 50
+    marginTop: 20
   },
   buttonText: {
     color: colors.black,
