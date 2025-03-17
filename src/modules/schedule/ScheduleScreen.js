@@ -18,7 +18,7 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
     if (!speakersText) return [];
     
     // Split the text by commas to get individual speakers
-    const speakerParts = speakersText.split(',').map(speaker => speaker.trim());
+    const speakerParts = speakersText.split(';').map(speaker => speaker.trim());
     
     // Process each speaker to separate name and title
     return speakerParts.map(speaker => {
@@ -54,31 +54,39 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
       key={session.id}
       style={[styles.sessionCard, selectedSessions.includes(session.id) && styles.selectedCard]}
     >
-      {/* Header layout with time, title, location */}
-      <View style={styles.sessionHeader}>
-        <View style={styles.sessionTextContainer}>
-          <Text style={styles.time}>{session.startTime} - {session.endTime}</Text>
-          <Text style={styles.title}>{session.title}</Text>
-          <Text style={styles.location}>@ {session.location}</Text>
+      {/* Make the entire card act as a button only if there are speakers */}
+      <TouchableOpacity 
+        activeOpacity={session.speakers && session.speakers !== '' ? 0.7 : 1}
+        onPress={() => {
+          if (session.speakers && session.speakers !== '') {
+            toggleDropdown(session.id);
+          }
+        }}
+      >
+        <View style={styles.sessionHeader}>
+          <View style={styles.sessionTextContainer}>
+            <Text style={styles.time}>{session.startTime} - {session.endTime}</Text>
+            <Text style={styles.title}>{session.title}</Text>
+            <Text style={styles.location}>{session.location}</Text>
+          </View>
+          
+          {/* Only show dropdown icon if speakers exist */}
+          {session.speakers && session.speakers !== '' && (
+            <View style={styles.iconContainer}>
+              <Icon 
+                name={expandedSession === session.id ? 'chevron-up' : 'chevron-down'} 
+                size={20} 
+                color={colors.black}
+              />
+            </View>
+          )}
         </View>
         
-        {/* Icon on the right */}
-        <TouchableOpacity 
-          onPress={() => toggleDropdown(session.id)}
-          style={styles.iconContainer}
-        >
-          <Icon 
-            name={expandedSession === session.id ? 'chevron-up' : 'chevron-down'} 
-            size={20} 
-            color={colors.black}
-          />
-        </TouchableOpacity>
-      </View>
-      
-      {/* Speakers section with italics for titles */}
-      {expandedSession === session.id && session.speakers && (
-        renderFormattedSpeakers(formatSpeakers(session.speakers))
-      )}
+        {/* Speakers section with italics for titles */}
+        {expandedSession === session.id && session.speakers && (
+          renderFormattedSpeakers(formatSpeakers(session.speakers))
+        )}
+      </TouchableOpacity>
     </View>
   );
 
@@ -150,7 +158,6 @@ const styles = StyleSheet.create({
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 19.5,
     fontWeight: 'bold',
-    marginBottom: 4,
     color: colors.black
   },
   speakers: {
@@ -193,7 +200,7 @@ const styles = StyleSheet.create({
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 16,
     color: colors.darkGray,
-    
+    textTransform: "capitalize"
   },
   button: {
     backgroundColor: colors.white,  

@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   dividerHeader: {
-    width: '70%', 
+    width: '75%', 
     height: 1, 
     alignSelf: 'center',
     backgroundColor: colors.black,  

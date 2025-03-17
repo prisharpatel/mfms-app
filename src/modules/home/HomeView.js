@@ -19,7 +19,7 @@ export default function HomeScreen({ navigation }) {
 
   const events = [
     {
-      id: 1,
+      id: 0,
       startTime: new Date('2025-03-28T08:45:00'),
       endTime: new Date('2025-03-28T09:30:00'),
       speakers: '',
