@@ -15,18 +15,43 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
   };
 
   const formatSpeakers = (speakersText) => {
-    if (!speakersText) return '';
+    if (!speakersText) return [];
     
-    // Replace commas with line breaks
-    return speakersText.split(',').map(speaker => speaker.trim()).join('\n');
+    // Split the text by commas to get individual speakers
+    const speakerParts = speakersText.split(',').map(speaker => speaker.trim());
+    
+    // Process each speaker to separate name and title
+    return speakerParts.map(speaker => {
+      if (speaker.includes('|')) {
+        // If there's a pipe, split into name and title
+        const [name, title] = speaker.split('|').map(part => part.trim());
+        return { name, title };
+      } else {
+        // If no pipe, just use the whole text as name
+        return { name: speaker, title: null };
+      }
+    });
   };
+
+  const renderFormattedSpeakers = (speakersArray) => (
+    <View style={styles.speakersContainer}>
+      {speakersArray.map((speaker, index) => (
+        <View key={index} style={styles.speakerItem}>
+          <Text style={styles.speakerName}>{speaker.name}</Text>
+          {speaker.title && (
+            <Text style={styles.speakerTitle}>{speaker.title}</Text>
+          )}
+        </View>
+      ))}
+    </View>
+  );
 
   const renderSession = (session) => (
     <View
       key={session.id}
       style={[styles.sessionCard, selectedSessions.includes(session.id) && styles.selectedCard]}
     >
-      {/* Modified header layout */}
+      {/* Header layout with time, title, location */}
       <View style={styles.sessionHeader}>
         <View style={styles.sessionTextContainer}>
           <Text style={styles.time}>{session.startTime} - {session.endTime}</Text>
@@ -34,7 +59,7 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
           <Text style={styles.location}>{session.location}</Text>
         </View>
         
-        {/* Icon now positioned at the right */}
+        {/* Icon on the right */}
         <TouchableOpacity 
           onPress={() => toggleDropdown(session.id)}
           style={styles.iconContainer}
@@ -47,10 +72,9 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
         </TouchableOpacity>
       </View>
       
-      {/* Moved location inside sessionTextContainer above */}
-      {/* Speakers section remains the same */}
+      {/* Speakers section with italics for titles */}
       {expandedSession === session.id && session.speakers && (
-        <Text style={styles.speakers}>{session.speakers}</Text>
+        renderFormattedSpeakers(formatSpeakers(session.speakers))
       )}
     </View>
   );
@@ -129,11 +153,34 @@ const styles = StyleSheet.create({
     fontSize: 16.5,
     color: colors.black,
   },
+  speakersContainer: {
+    marginTop: 12,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: colors.gray + '20',
+  },
+  speakerItem: {
+    marginBottom: 8,
+  },
+  speakerName: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 17,
+    fontWeight: '500',
+    color: colors.black,
+  },
+  speakerTitle: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 17,
+    fontStyle: 'italic', // This makes the title italic
+    color: colors.gray,  // Different color to distinguish from name
+    marginTop: 2,
+  },
   location: {
     marginTop: 7,
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 16,
     color: colors.darkGray,
+    
   },
   // button: {
   //   backgroundColor: "#F4F4F2",
