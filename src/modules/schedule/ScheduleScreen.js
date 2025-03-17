@@ -37,7 +37,7 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
     <View style={styles.speakersContainer}>
       {speakersArray.map((speaker, index) => (
         <View key={index} style={styles.speakerItem}>
-          {/* Right-aligned text container */}
+          {/* Left-aligned text container */}
           <View style={styles.speakerTextContainer}>
             <Text style={styles.speakerName}>{speaker.name}</Text>
             {speaker.title && (
@@ -170,22 +170,22 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     borderTopWidth: 1,
     borderTopColor: colors.gray + '30',
-    alignItems: 'flex-end', // Align all content to the right
+    alignItems: 'flex-start', // Change to flex-start to align to the left
   },
   speakerTextContainer: {
-    alignItems: 'flex-end', // Align text to the right
+    alignItems: 'flex-start', // Change to flex-start to align to the left
   },
   speakerItem: {
     marginBottom: 8,
-    width: '100%', // Take full width to allow alignment
-    alignItems: 'flex-end', // Align to the right
+    width: '100%', 
+    alignItems: 'flex-start', // Change to flex-start to align to the left
   },
   speakerName: {
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 17,
     fontWeight: '500',
     color: colors.black,
-    textAlign: 'right', // Right-align the text
+    textAlign: 'left', // Change to left alignment
   },
   speakerTitle: {
     fontFamily: "NeueHaasDisplayRoman",
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     color: colors.gray,
     marginTop: 2,
-    textAlign: 'right', // Right-align the text
+    textAlign: 'left', // Change to left alignment
   },
   location: {
     marginTop: 7,
