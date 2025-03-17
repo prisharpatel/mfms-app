@@ -12,8 +12,48 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
   const formatSpeakers = (speakersText) => {
     if (!speakersText) return '';
     
-    // Replace commas with line breaks
-    return speakersText.split(',').map(speaker => speaker.trim()).join('\n');
+    // Split the text by commas to separate speakers
+    const speakersArray = speakersText.split(',').map(speaker => speaker.trim());
+    
+    // Process each speaker to format with name and title
+    return speakersArray.map(speaker => {
+      // Check if speaker has a pipe separator for name/title
+      if (speaker.includes('|')) {
+        const [name, title] = speaker.split('|').map(part => part.trim());
+        
+        // Return the formatted speaker with name and italicized title
+        return `${name} {italic}${title}{/italic}`;
+      }
+      // If no pipe, just return the speaker text
+      return speaker;
+    }).join('\n'); // Add extra line break between speakers
+  };
+
+  const renderFormattedSpeakers = (formattedText) => {
+    if (!formattedText) return null;
+    
+    // Split the text by our formatting markers
+    const parts = formattedText.split(/(\{italic\}|\{\/italic\})/);
+    
+    return (
+      <Text style={styles.speakers}>
+        {parts.map((part, index) => {
+          if (part === '{italic}') {
+            // This is just a marker, don't render anything
+            return null;
+          } else if (part === '{/italic}') {
+            // This is just a marker, don't render anything
+            return null;
+          } else if (index > 0 && parts[index - 1] === '{italic}') {
+            // This part should be italicized - make sure to set fontStyle explicitly
+            return <Text key={index} style={[styles.speakerTitle, {fontStyle: 'italic', fontWeight: '400'}]}>{part}</Text>;
+          } else {
+            // Regular text - make it slightly bolder for contrast
+            return <Text key={index} style={{fontWeight: '600'}}>{part}</Text>;
+          }
+        })}
+      </Text>
+    );
   };
 
   const renderSession = (session) => (
@@ -26,12 +66,8 @@ export default function ScheduleScreen({ schedule, selectedSessions, loadSchedul
     >
       <Text style={styles.time}>{session.startTime} - {session.endTime}</Text>
       <Text style={styles.title}>{session.title}</Text>
-      {session.speakers && (
-      <Text style={styles.speakers}>
-        {formatSpeakers(session.speakers)}
-      </Text>
-      )}      
-  <Text style={styles.location}>{session.location}</Text>
+      {session.speakers && renderFormattedSpeakers(formatSpeakers(session.speakers))}
+      <Text style={styles.location}>{session.location}</Text>
     </View>
 
   );
@@ -103,18 +139,27 @@ const styles = StyleSheet.create({
     fontSize: 19.5,
     fontWeight: 'bold',
     marginBottom: 4,
-    color: colors.black
+    color: colors.blue
+  },
+  speakerTitle: {
+    fontFamily: "Arial",
+    fontSize: 15, // Slightly smaller than the name
+    fontStyle: 'italic',
+    color: colors.darkGray, // Different color to distinguish from name
+    lineHeight: 20,
   },
   speakers: {
-    fontFamily: "NeueHaasDisplayRoman",
+    fontFamily: "Arial",
     fontSize: 16.5,
     color: colors.black,
+    lineHeight: 25, // Increase line height for better readability
   },
   location: {
     marginTop: 7,
     fontFamily: "NeueHaasDisplayRoman",
     fontSize: 16,
     color: colors.darkGray,
+    fontWeight: 'bold',
   },
   // button: {
   //   backgroundColor: "#F4F4F2",
