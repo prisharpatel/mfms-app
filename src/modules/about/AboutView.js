@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   divider: {
-    width: '50%', 
+    width: '60%', 
     alignSelf: 'center',
     height: 1, 
     backgroundColor: colors.black,  
