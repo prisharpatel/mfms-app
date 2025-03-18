@@ -72,7 +72,7 @@ const speakers = [
     id: '10',
     name: 'Bonnie Abraham',
     title: 'Senior Vice President of Retail at Balenciaga Americas',
-    image: require('../../../assets/images/speakers/Bonnie_Abraham.jpg'),
+    image: require('../../../assets/images/speakers/Bonnie_Abraham.jpeg'),
     description: "Bonnie Abraham is the Senior Vice President of Retail at Balenciaga Americas, overseeing Balenciaga’s 60 stores across the United States, Canada, Brazil, and Mexico. With a strategic focus on business growth and luxury, she plays a pivotal role in developing and executing strategies that enhance retail performance, elevate the client experience, and strengthen Balenciaga’s regional impact. \nAfter graduating from the University of North Texas with a bachelor’s degree in Fashion and Business, Bonnie began her career in the Neiman Marcus Executive Development Program. Before joining Balenciaga, she held executive roles in Merchandising and Retail at leading luxury fashion houses, including Gucci, Burberry, Valentino, and Chanel."
   },
   {
@@ -92,7 +92,7 @@ const speakers = [
   {
     id: '13',
     name: 'Paige Lorenze',
-    title: 'Founder, Entrepreneuer', 
+    title: 'Founder, Entrepreneuer, and Digital Creator', 
     image: require('../../../assets/images/speakers/Paige_Lorenze.jpg'),
     description: "As a content creator and entrepreneur, Paige Lorenze built her extremely loyal community through style tips and showing her trendsetting lifestyle. Paige’s unique content and love of life’s simple pleasures inspired her move to a cozy Connecticut cottage in 2022 where the Dairy Boy lifestyle began to take shape. What started as a simple catchphrase between Paige and her followers has evolved into worldwide phenomenon and propelled her community of over a million to build a space for conversations, connections, and a different kind of brand that makes her Americana lifestyle to be accessible to anyone. \nThrough her relationship with American tennis pro Tommy Paul, Paige has taken the tennis world by storm. Bringing her followers along for the ride on all the ATP tour stops, Paige’s love of tennis has garnered the attention of international media through her appearance on Netflix’s Break Point while her fashion-focused community eagerly awaits her behind-the-scenes content from each tournament. Paige continues to grow her Dairy Boy brand, opening a headquarters in Los Angeles in January. Most recently, Paige was named the Miami Open's 'Chief Lifestyle Officer' where she documented her favorite destinations on the grounds for the @miamiopen account and co-hosted promotional content alongside the tournament's host Andrew Kransy."
   },
@@ -117,6 +117,20 @@ const speakers = [
     image: require('../../../assets/images/speakers/Sami_Barnett.jpg'),
     description: 'Sami Clarke is a formidable fitness force beloved by exercise fans everywhere. Born into a family of athletes and bodybuilders, Sami Clarke’s passion for fitness and wellness was in her blood. She decided to take her passion for wellness more intentionally during the COVID quarantine; with everyone staying home and desperate for both physical and mental stimulation, Sami knew she had the expertise a lot of people were needing. After building both her Instagram and YouTube community to over a million followers, Sami launched FORM with best friend Sami Spalter in August 2021. Sami is not only the face of FORM, but truly the heart and soul. FORM’s mission is to make Sami’s wellness tools accessible to anyone and everyone, where ever they may be on their wellness journey.'
   },
+  {
+    id: '17',
+    name: 'Emilie Rubenfeld',
+    title: 'Global President of Carolina Herrera', 
+    image: require('../../../assets/images/speakers/Emilie_Headshot.png'),
+    description: "Emilie Rubinfeld has been a leader in luxury fashion for over a decade. Throughout her career, she has built brand & business strategies for iconic US and European based fashion houses.  Today, Emilie Rubinfeld is the Global President of Carolina Herrera – the New York-based fashion brand internationally recognized for iconic style and bold elegance, owned by Puig, the Barcelona, Spain based beauty and fashion company. \nFounded by the namesake designer in 1981, Carolina Herrera creates women’s luxury ready-to-wear and accessory collections distributed globally at over 200 points of sale.  As President, Emilie is leading the organization to be at the forefront of women's luxury fashion while building a thriving and enduring global brand for the future. Prior to the role of President, Emilie held the position of Chief Marketing Officer at the company.  During her career in fashion, Emilie has had senior marketing and communications roles at the US-subsidiary of Italian fashion brand, Giorgio Armani, as well as the Swiss-based women’s luxury brand, Akris. \nEmilie sits on the Board of Directors for the University of Michigan’s Alumni Association as well as the Fashion Scholarship Foundation (FSF).  She was a founding member of the Social Justice Center Advisory Committee at New York's Fashion Institute of Technology (FIT) and has been a supporter of Dress for Success, supporting fundraising efforts through participation in the New York City Marathon. \nThroughout her career, she has been a mentor and advisor to independent designers and emerging talent in the fashion industry – and has supported the Council of Fashion Designers of America’s (CFDA) Vogue Fashion Fund as a business mentor.  She is a graduate of the University of Michigan with a Liberal Arts degree, majoring in both, Art History and Political Science." 
+  },
+  {
+    id: '18',
+    name: 'Shelby Silva',
+    title: 'VP of Operations at FORM', 
+    image: require('../../../assets/images/speakers/Shelby_Silva.jpg'),
+    description: 'Check out our website for an updated bio of Shelby Silva.'
+},
   
 ];
 // sort speakers by name
