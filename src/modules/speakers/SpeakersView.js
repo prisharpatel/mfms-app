@@ -9,7 +9,7 @@ const speakers = [
     id: '1',
     name: 'Emily Blair',
     image: require('../../../assets/images/speakers/Emily_Blair.jpg'),
-    title: 'CEO and Founder of Emily Blair Media',
+    title: 'CEO & Founder of Emily Blair Media',
     description: "Emily has been navigating the cutthroat entertainment industry since she was in high school following a chance encounter with a reporter at Us Weekly magazine. By the time she was a senior at Chapman University majoring in Strategic and Corporate Communication, Emily simultaneously worked as a full-time journalist at Us Weekly, balancing a schedule of final exams and Oscars red carpets. \nFollowing graduation, on the brink of the pandemic, Emily noticed a huge shift in the world of celebrity, and understood that a new wave of digitally-native talent was rapidly emerging - and unfortunately, so many of her colleagues were uninterested in covering them, and publicists she’d come to work with didn’t understand how to represent them. With her veteran understanding of the evolving editorial landscape, matched with her growing enthusiasm in the creator economy, Emily reverse-engineered the journalist-publicist relationship, and launched Emily Blair Media. \nEBM's roster includes global top-charting podcasters, reality television stars, athletes, musicians, fashion bloggers, below-the-line artists, and D2C brands across beauty, lifestyle, wellness, fashion and tech. Within the past six years, Emily has won multiple accolades and awards, expanded internationally, became one of the youngest editorial producers for Vogue, and employs a team of 25 women. As a PR professional with extensive experience in crisis management, media relations, and brand development, Emily has been pivotal in guiding her clients through crises — from digital backlash to public relations pitfalls. \nHer tenure as a journalist uniquely enables her to forecast media response, and to halt and strategically mitigate a crisis in its tracks. Her insights into navigating high-stakes situations and successfully acting amidst unexpected challenges has made her an invaluable asset to her clients’ communication teams, and has saved many of them who boast several million online followers from “cancel culture,” negative press, and severed partnerships. Her savvy approach to thinking critically and creatively, and her ability to handle each client’s publicity with a unique and authentic outlook, has positioned her as an industry leader, across many competitors and colleagues with decades of experience under their belts.",
   },
   {
@@ -30,7 +30,7 @@ const speakers = [
     id: '4',
     name: 'Jon Dinapoli',
     image: require('../../../assets/images/speakers/Jon_Dinapoli.jpg'),
-    title: 'Founder + Chief Creative, Jon Michael Design',
+    title: 'Founder & Chief Creative, Jon Michael Design',
     description: 'Jon Dinapoli, Founder and Chief Creative of Jon Michael Design, is a designer and leader with 25 years of experience in the luxury beauty and fashion industry. His vast experience spans a variety of designer, lifestyle, and celebrity brands, with a focus on multiple mediums and creative solutions. With formal training in graphic design and photography, he embodies the perfect blend of creativity, design, and strong business acumen. \nJon Michael Design is a full-service creative agency specializing in branding, packaging, 2D and 3D design, strategy, digital, advertising, merchandising, and more. JMD collaborates with many brands in the fashion and celebrity space, with a primary focus on the beauty category.',
   },
   {
@@ -44,7 +44,7 @@ const speakers = [
     id: '6',
     name: 'Chelsea Parke Kramer',
     image: require('../../../assets/images/speakers/Chelsea_Kramer.png'),
-    title: 'Founder & CEO, Parke',
+    title: 'Founder & CEO of Parke',
     description: "Chelsea Parke, born in 1997 in New Jersey, is the visionary founder of Parke, a brand established out of her love for fashion and the quest for beautiful, classic pieces to elevate wardrobes. From a young age, Chelsea exhibited an ambitious drive, always knowing she would run her own business. Her journey in fashion began with her admiration for the perfect pair of jeans and a favorite white tee, leading her to create her namesake brand, Parke, in 2022. \nChelsea's mission is to help individuals build their closets with high-quality, comfortable, stylish, and versatile items designed to live with them for years. Parke’s first collection introduced the now signature Crossover Shorts, which exceeded expectations and led Chelsea to focus on creating elevated basics to replace the fast fashion items that were not meeting her standards. In 2023, Parke expanded from denim to everyday basics, offering pieces designed to be worn daily, paired with both high-end and casual items. \nChelsea's commitment to quality and style continued to drive the brand’s success. By 2024, Parke took denim manufacturing in-house, launching The Baggy Straight and other styles, showcasing the brand's dedication to excellence and innovation in denim design. Chelsea’s vision is to create clothing that transitions seamlessly from workouts to coffee dates and from the beach to nights out, ensuring that customers live in their Parke pieces. \nChelsea's passion for fashion was evident from a young age, with memories of her shopping sprees at Short Hills Mall and her mother’s obsession with True Religion jeans. Her love for denim is deeply rooted in her childhood experiences and continued through her college years at Dickinson College in Pennsylvania, where she studied Art History, the closest subject to fashion. In addition to her fashion endeavors, Chelsea was a college athlete, playing field hockey and lacrosse, and serving as the captain of both teams. Her leadership skills and determination on the field translate into her business acumen and dedication to her brand.",
   },
   {
@@ -64,7 +64,7 @@ const speakers = [
   {
     id: '9',
     name: 'Lori Singer',
-    title: 'President at Parlux Fragrances', 
+    title: 'President of Parlux Fragrances', 
     image: require('../../../assets/images/speakers/Lori_Singer.jpg'),
     description: "A proud University of Michigan alum, Lori Singer has been a transformative force at Parlux Ltd. since assuming the role of President in 2019. A visionary leader with a unique ability to merge cultural influence with prestige fragrance, she has redefined how brands engage with modern consumers while preserving their luxury heritage. Under Lori's leadership, Parlux delivered one of beauty's biggest success stories - the launch of Billie Eilish's debut fragrance and her subsequent collection as one of the fastest-growing artist fragrance lines in history. She also revitalized legacy fragrance house Vince Camuto, is launching Paris Hilton's 30th fragrance and introduced The Shop Men's Grooming Line in collaboration with LeBron James and Maverick Carter.\nBefore joining Parlux, Lori built an impressive career at Coty as Group Vice President of Global Marketing, driving growth for some of the most iconic names in luxury fragrance, including Marc Jacobs, Balenciaga, Calvin Klein, and Vera Wang. Her expertise in crafting compelling brand narratives and consumer-first strategies laid the foundation for her success at Parlux.\nLori’s impact on the beauty industry has been widely celebrated, with honors including the 2024 WWD x Beauty Inc. Top 50 Women in Power and the prestigious Cosmetic Executive Women (CEW) Achiever Award. She also plays a key role in shaping the industry’s future as a board member of both CEW and The Fragrance Foundation, further solidifying her leadership and influence.\nThrough strategic partnerships, cultural foresight, and digital innovation, Lori Singer is not just shaping the future of fragrance—she is redefining the future of beauty."
   },
@@ -78,7 +78,7 @@ const speakers = [
   {
     id: '11',
     name: 'Jessica Williams',
-    title: 'Head of Brand & Partnerships, Shopify',
+    title: 'Head of Brand & Partnerships at Shopify',
     image: require('../../../assets/images/speakers/Jessica_Williams.jpg'),
     description: 'Jessica is the Head of Brand and Partnerships at Shopify, where she leads a team dedicated to inspiring the next generation of entrepreneurs to build with and love Shopify. They bring this mission to life through campaigns that celebrate the spirit of entrepreneurship and strategic collaborations with renowned and emerging creators and celebrities, including MrBeast, Emma Chamberlain, Charli and Dixie D’Amelio, Cassey Ho, Ashley Alexander, Kai Cenat, Nicki Minaj, and Drake. These partners share their personal business journeys, motivating their audiences to pursue their own entrepreneurial ambitions. \nBefore joining Shopify, Jessica led consumer partnerships at Coinbase, exploring the intersections of crypto with sports, music, and fashion. Prior to that, she held various roles in product marketing, brand marketing, and partnerships at Visa.'
   },
@@ -129,8 +129,22 @@ const speakers = [
     name: 'Shelby Silva',
     title: 'VP of Operations at FORM', 
     image: require('../../../assets/images/speakers/Shelby_Silva.jpg'),
-    description: 'Check out our website for an updated bio of Shelby Silva.'
-},
+    description: 'Shelby is the VP of Operations at FORM and a producer of TRANSFORM, playing a pivotal role in building the brand from the ground up as FORM’s first-ever hire. Since before launch, Shelby has been instrumental in scaling operations, shaping the brand’s vision, and bringing FORM’s innovative fitness and activewear experiences to life. Based in Los Angeles, she has always been passionate about fitness and wellness, sharing her journey and lifestyle on social media.'
+  },
+  {
+    id: '19',
+    name: "Sophia Rzankowski",
+    title: "Chief of Staff at Superconnector Studio",
+    image: require('../../../assets/images/speakers/Sophia_Rzankowski.jpg'),
+    description: "Sophia Rzankowski is Chief of Staff at Superconnector Studios, one of Fast Company’s “World’s Most Innovative Companies” for the past two years, working at the intersection of brands and entertainment. Sophia helps lead LVMH’s brand entertainment studio, 22 Montaigne Entertainment, a platform dedicated to co-developing and co-producing original film and TV projects across its portfolio of 75+ luxury brands, including Tiffany & Co., Dior, and Louis Vuitton. \nWith a deep passion for shaping the future of how brands participate in storytelling, Sophia is dedicated to bridging the worlds of luxury & entertainment to bring culturally compelling narratives to life. \nPrior to Superconnector Studios, she worked in film development, consulting, and marketing. A Michigan native, Sophia studied Business and the Entertainment Industry at the University of Southern California and is now based in NYC."
+  },
+  {
+    id: '20',
+    name: 'Seth Ader',
+    title: 'Vice President of Sports Marketing at ESPN',
+    image: require('../../../assets/images/speakers/Seth_Ader.png'),
+    description: "Seth Ader is vice president of brand marketing. A 24-year veteran of the company, Ader oversees marketing efforts related to the overarching ESPN brand, including new and historic brand campaigns like There’s No Place Like Sports and This is SportsCenter, ESPN’s original content including ESPN films such as The Last Dance and the 30 for 30 franchise, and marketing related to studio shows, digital products, sports betting and fantasy games, ESPN’s consumer products licensing business, and ESPN Audio. \nPreviously, Ader oversaw consumer marketing and sponsorship development of the following ESPN rights: the NFL, NBA, MLB, NHL, MLS, UEFA, the TCS New York City Marathon, Special Olympics World Games and the Little League World Series. Prior to that, he served as senior director, leading the marketing efforts for a wide array of sports properties, including the 2006, 2010, and 2014 FIFA World Cups. Additionally, Ader was responsible for the award-winning This is SportsCenter franchise for a number of years, maintaining the unique and consistent personality of that signature campaign. \nA graduate of the University of Michigan, Ader joined ESPN in 2001 as a marketing manager, driving the marketing efforts of original entertainment programming, ESPN The Magazine and the launch of ESPN Deportes and ESPN HD networks. After two years, Seth was promoted to director of marketing responsible for the NFL and NBA. \nAder received two Sports Emmy awards for his collaboration with ESPN’s production team on elements for the 2010 FIFA World Cup and for the marketing campaign supporting the 2014 FIFA World Cup. Additionally, the work produced under Ader’s leadership has received numerous awards, including three Bronze Lions for This is SportsCenter, an Effie for Fantasy Football’s “It’s Good to Be Commissioner” campaign and several Sports Media Marketing Awards. \nPrior to ESPN, Ader’s previous roles included vice president of marketing of Book4Golf.com, director of marketing and public relations for Tear Drop/Tommy Armour Golf Co., sales manager for Conde Nast Publications and corporate marketing manager for the former New Jersey (now Brooklyn) Nets."
+  }
   
 ];
 // sort speakers by name
@@ -142,6 +156,7 @@ speakers.sort((a, b) => {
 
 const SpeakersScreen = () => {
   const navigation = useNavigation();
+  
   
   return (
     <View style={styles.container}>
