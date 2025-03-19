@@ -53,7 +53,7 @@ const schedule = [
     id: 5,
     startTime: new Date('2025-03-28T11:00:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
     endTime: new Date('2025-03-28T11:30:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
-    speakers: 'Donni Davy | Head Makeup Artist of Euphoria; Sophia Rzankowski | Chief of Staff at Superconnector Studios; James Bee | Photographer; (Moderator) Emily Blaire | CEO and Founder of Emily Blaire Media',
+    speakers: 'Donni Davy | Head Makeup Artist of Euphoria; Sophia Rzankowski | Chief of Staff at Superconnector Studios; James Bee | Photographer; (Moderator) Emily Blaire | CEO & Founder of Emily Blaire Media',
     title: 'Lights, Camera, Style: How Entertainment is Shaping the Beauty and Fashion Industry',
     location: 'Robertson Auditorium',
   },
@@ -78,8 +78,7 @@ const schedule = [
     id: 8,
     startTime: new Date('2025-03-28T13:15:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
     endTime: new Date('2025-03-28T13:45:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
-    speakers: 'Sami Clarke Barnett | Co-Founder of Form; JT Barnett, (Moderator) Shelby Silva ',
-    //TODO = add moderator title, add JT title
+    speakers: 'Sami Clarke Barnett | Co-Founder of Form; JT Barnett | Founder of CreatorX; (Moderator) Shelby Silva | VP of Operations at FORM ',
     title: 'The Power of Influence: Fitness, Wellness & Fashion in Media',
     location: 'Robertson Auditorium',
   },
@@ -88,7 +87,7 @@ const schedule = [
     startTime: new Date('2025-03-28T13:50:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
     endTime: new Date('2025-03-28T14:20:00').toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' }),
     speakers: 'Mike Sainristil | NFL Cornerback for the Washington Commanders and Captain of Michigan National Championship Team 144; Dan Soloman | Celebrity Stylist and CEO of Closet Tours; (Moderator) Seth Ader | Vice President of Brand Marketing at ESPN',
-    // TODO = add one more person 
+    // TODO = add one more person  - joe holden?
     title: 'Redefining the Game: The Intersection of Sports and Fashion',
     location: 'Robertson Auditorium',
   },

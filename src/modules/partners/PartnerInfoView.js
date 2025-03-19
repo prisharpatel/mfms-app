@@ -61,7 +61,10 @@ export default function PartnerScreen({ isExtended, setIsExtended }) {
     { id: '49', name: 'Earths Splendor', logo: require('../../../assets/images/partners/earths_splendor.png') },
     { id: '50', name: 'John Frieda', logo: require('../../../assets/images/partners/JohnFriedaLogo.png') },
     { id: '51', name: 'Biore', logo: require('../../../assets/images/partners/biore.png') },
-    { id: '52', name: 'Chanel', logo: require('../../../assets/images/partners/chanel.png') },
+    { id: '52', name: 'Color WOW', logo: require('../../../assets/images/partners/color_wow.png') },
+    { id: '53', name: 'Pharmaceris', logo: require('../../../assets/images/partners/Pharmaceris.png') },
+    { id: '54', name: 'Juice Plus', logo: require('../../../assets/images/partners/Juice_Plus.jpg') },
+    { id: '55', name: 'Hello Sunday', logo: require('../../../assets/images/partners/hello_sunday.png') },
     { id: '46', name: 'SPARC', logo: require('../../../assets/images/partners/sparc.png') },
   ]
 
