@@ -78,9 +78,9 @@ export default function HomeScreen({ navigation }) {
       id: 7,
       startTime: new Date('2025-03-28T12:10:00'),
       endTime: new Date('2025-03-28T13:15:00'),
-      speakers: 'Wolverine Worldwide',
+      speakers: 'Presented by Wolverine Worldwide',
       title: 'Lunch & Learn',
-      location: 'To Be Announced',
+      location: 'R2220',
     },
     {
       id: 8,
