@@ -9,6 +9,7 @@ import {
   Animated,
   Dimensions,
   Easing,
+  Linking,
 } from 'react-native';
 import { colors } from '../../styles';
 import { Text } from '../../components/StyledText';
@@ -195,7 +196,27 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
           />
         ))}
       </View>
-      <Text style={{ marginBottom: 40 }}>{"\n"}</Text>
+
+      <TouchableOpacity 
+        style={styles.learnMoreButton}
+        onPress={() => {
+          // Open the website URL
+          const url = 'https://www.michiganfashionmediasummit.com/fashion-forward-showcase';
+          Linking.canOpenURL(url)
+            .then((supported) => {
+              if (supported) {
+                return Linking.openURL(url);
+              } else {
+                console.log("Don't know how to open URI: " + url);
+                // Fallback for when URL scheme is not supported
+                alert("Could not open the webpage. Please visit michiganfashionmediasummit.com for more information.");
+              }
+            })
+            .catch((err) => console.error('An error occurred', err));
+        }}
+      >
+        <Text style={styles.learnMoreText}>Learn More</Text>
+      </TouchableOpacity>
       
     </ScrollView>
 
@@ -351,5 +372,21 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 5,
+  },
+  learnMoreButton: {
+    backgroundColor: colors.blue,
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 25,
+    alignSelf: 'center',
+    marginTop: 10,
+    marginBottom: 40,
+  },
+  learnMoreText: {
+    fontFamily: "NeueHaasDisplayRoman",
+    fontSize: 18,
+    fontWeight: '600',
+    color: colors.white,
+    textAlign: 'center',
   },
 });
