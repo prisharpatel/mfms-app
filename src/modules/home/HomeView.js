@@ -14,7 +14,7 @@ export default function HomeScreen({ navigation }) {
   const summitEnd = new Date("2025-03-28T17:00:00");
   const intervalRef = useRef(null);
   const TEST_MODE = false;
-  const TEST_DATE = new Date('2025-03-28T10:00:00');
+  const TEST_DATE = new Date('2025-03-28T9:00:00');
   
 
   const events = [

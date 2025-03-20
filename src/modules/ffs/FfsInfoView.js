@@ -31,7 +31,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const finalists = [
   { id: '1', name: 'Adelina Akhmetshina', source: require('../../../assets/images/ffs/Adelina.jpg')},
   { id: '2', name: 'Eden Meidl', source: require('../../../assets/images/ffs/Eden.jpg') },
-  { id: '3', name: 'Madeline Incammicia', source: require('../../../assets/images/speakers/default.png')},
+  { id: '3', name: 'Madeline Incammicia', source: require('../../../assets/images/ffs/Madeline.jpg')},
   { id: '4', name: 'Miles Watkins', source: require('../../../assets/images/ffs/Miles.jpg') },
   { id: '5', name: 'Preston Ross', source: require('../../../assets/images/ffs/Preston.jpg') },
   { id: '6', name: 'Rachel Goldstein', source: require('../../../assets/images/ffs/Rachel_Goldstein.png') },
@@ -146,7 +146,7 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
     </View>
 
     <Text style={styles.bottomtext}>Five finalists will present their work at the Michigan Fashion Media Summit before top industry leaders. One winner will receive an exclusive 
-    professional development opportunity. The FFS is a career-defining platform for student creatives to gain exposure and connections.</Text>
+    professional development opportunity wih our presenting sponsor Steve Madden. The FFS is a career-defining platform for student creatives to gain exposure and connections.</Text>
     
     <View style={styles.divider} />
     <Text style={styles.title}>2025 Finalists</Text>
@@ -158,7 +158,7 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
           style={styles.carouselNavButton} 
           onPress={() => navigateCarousel('prev')}
         >
-          <Icon name="chevron-left" size={24} color={colors.blue} />
+          <Icon name="chevron-left" size={24} color={colors.black} />
         </TouchableOpacity>
         
         {/* Finalist display */}
@@ -180,7 +180,7 @@ export default function FFSScreen({ isExtended, setIsExtended }) {
           style={styles.carouselNavButton}
           onPress={() => navigateCarousel('next')}
         >
-          <Icon name="chevron-right" size={24} color={colors.blue} />
+          <Icon name="chevron-right" size={24} color={colors.black} />
         </TouchableOpacity>
       </View>
       

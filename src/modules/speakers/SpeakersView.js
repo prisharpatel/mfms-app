@@ -149,9 +149,16 @@ const speakers = [
     id: '21',
     name: 'JT Barnett',
     title: 'Founder of CreatorX',
-    image: require('../../../assets/images/speakers/default.png'),
+    image: require('../../../assets/images/speakers/JT.jpg'),
     description: "JT Barnett is a dynamic professional whose career integrates brand strategy, entrepreneurship, and thought leadership in content creation. As the Founder and CEO of CreatorX, and a former professional athlete, he offers strategic advice to global organizations on content innovation and personal growth. His collaborations with renowned brands such as Tonal, Therabody, and Poppi highlight his influence and expertise. JT’s insights have been featured in leading publications like Business Insider, Fast Company, and Inc. Magazine, cementing his reputation as a thought leader."
-  }
+  },
+  // {
+  //   id: '22',
+  //   name: 'Marcus Collins',
+  //   title: 'Founder of CreatorX',
+  //   image: require('../../../assets/images/speakers/JT.jpg'),
+  //   description: "JT Barnett is a dynamic professional whose career integrates brand strategy, entrepreneurship, and thought leadership in content creation. As the Founder and CEO of CreatorX, and a former professional athlete, he offers strategic advice to global organizations on content innovation and personal growth. His collaborations with renowned brands such as Tonal, Therabody, and Poppi highlight his influence and expertise. JT’s insights have been featured in leading publications like Business Insider, Fast Company, and Inc. Magazine, cementing his reputation as a thought leader."
+  // }
   
 ];
 // sort speakers by name
