@@ -28,11 +28,11 @@ const drawerData = [
   //   icon: iconTicket,
   //   onPress: () => Linking.openURL('https://www.eventbrite.com/'),
   // },
-  {
-    name: 'Resume Drop',
-    icon: iconResumeDrop,
-    onPress: () => Linking.openURL('https://forms.gle/1YXDsY7ktsLKc2GR7'),
-  },
+  // {
+  //   name: 'Resume Drop',
+  //   icon: iconResumeDrop,
+  //   onPress: () => Linking.openURL('https://forms.gle/1YXDsY7ktsLKc2GR7'),
+  // },
   {
     name: 'FAQ',
     icon: iconFAQ,
